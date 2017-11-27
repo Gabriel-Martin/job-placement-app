@@ -4,6 +4,5 @@ module.exports = [
   require("./removeApplicant"),
   require("./updateApplicant"),
   require("./addJob"),
-  require("./login"),
-  require("./signUp")
+  require("./login")
 ];
