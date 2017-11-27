@@ -6,6 +6,19 @@ module.exports.register = (server, options, next) => {
     models: models
   });
 
+  server.auth.strategy("jwt", "jwt", {
+    key: "supersecretsecret",
+    validateFunc: (decoded, request, callback) => {
+      if (!decoded.id) return callback(null, false);
+      else return callback(null, true);
+    },
+    verifyOptions: {
+      algorithms: ["HS256"]
+    }
+  });
+
+  server.auth.default({ strategy: "jwt" });
+
   server.route(routes);
 
   next();

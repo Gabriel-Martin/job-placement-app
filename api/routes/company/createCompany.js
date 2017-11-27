@@ -2,6 +2,7 @@ module.exports = {
   method: "POST",
   path: "/api/company",
   config: {
+    auth: { mode: "optional" },
     handler: function(request, reply) {
       let company = new this.models.Company(request.payload);
 
