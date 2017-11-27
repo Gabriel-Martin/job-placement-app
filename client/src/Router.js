@@ -42,12 +42,12 @@ class Router extends Component {
                 path={"/applicant/profile"}
                 component={ApplicantProfile}
               />
-              <Route
+              <AuthenticatedRoute
                 exact
                 path={"/applicant/profile/settings"}
                 component={ApplicantProfileSettings}
               />
-              <Route
+              <AuthenticatedRoute
                 exact
                 path={"/applicant/applicationform"}
                 component={ApplicationForm}
