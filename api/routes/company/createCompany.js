@@ -2,6 +2,7 @@ module.exports = {
   method: "POST",
   path: "/api/company",
   config: {
+    auth: { mode: "optional" },
     handler: function(request, reply) {
       let company = new this.models.Company(request.payload);
 
@@ -12,7 +13,10 @@ module.exports = {
 
           reply(company);
         })
-        .catch(err => reply(err));
+        .catch(err => {
+          console.log(err);
+          reply(err);
+        });
     }
   }
 };
