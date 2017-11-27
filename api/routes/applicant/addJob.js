@@ -10,7 +10,9 @@ module.exports = {
         .get(applicantId)
         .then(applicant => applicant.addRelation("jobs", job))
         .then(result => reply(result))
-        .catch(err => reply(err));
+        .catch(err => {
+          console.log(err), reply(err);
+        });
     }
   }
 };

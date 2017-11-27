@@ -15,8 +15,9 @@ module.exports = db => {
       .required(),
     applicationStatus: db.type
       .string()
-      .enum("pending", "hired", "declined")
-      .required()
+      .enum("applied", "pending", "hired", "declined")
+      .required(),
+    jobId: db.type.string().required()
   });
 
   return Application;

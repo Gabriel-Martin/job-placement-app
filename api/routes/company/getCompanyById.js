@@ -5,7 +5,13 @@ module.exports = {
     handler: function(request, reply) {
       let companyId = request.params.companyId;
 
-      this.models.Company.get(companyId)
+      this.models.Company
+        .get(companyId)
+        .getJoin({
+          jobs: {
+            applications: true
+          }
+        })
         .then(company => reply(company))
         .catch(err => reply(err));
     }

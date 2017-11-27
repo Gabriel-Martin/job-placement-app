@@ -7,6 +7,7 @@ module.exports = {
 
       this.models.Job
         .filter({ id: id })
+        .getJoin({ applications: true })
         .then(result => reply(result))
         .catch(err => {
           console.log(err);
