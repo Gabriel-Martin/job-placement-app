@@ -28,7 +28,7 @@ module.exports = db => {
   });
 
   Company.define("generateJWT", function() {
-    return jwt.sign(Object.assign({}, this), supersecretsecret, {
+    return jwt.sign(Object.assign({}, this), "supersecretsecret", {
       algorithm: "HS256"
     });
   });

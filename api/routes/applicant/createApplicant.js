@@ -14,7 +14,10 @@ module.exports = {
           delete applicant.password;
           reply(applicant);
         })
-        .catch(err => reply(err));
+        .catch(err => {
+          console.log(err);
+          reply(err);
+        });
     }
   }
 };

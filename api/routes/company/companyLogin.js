@@ -26,7 +26,10 @@ module.exports = {
           return company.generateJWT();
         })
         .then(token => reply({ token }))
-        .catch(err => reply(err));
+        .catch(err => {
+          console.log(err);
+          reply(err);
+        });
     }
   }
 };

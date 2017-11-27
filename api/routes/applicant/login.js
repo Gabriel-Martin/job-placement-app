@@ -8,12 +8,13 @@ module.exports = {
     handler: function(request, reply) {
       let { email, password } = request.payload;
 
-      this.models.Applicant.filter({ email: email })
-        .then(applicant => {
-          if (applicant.length === 0) {
+      this.models.Applicant
+        .filter({ email: email })
+        .then(applicants => {
+          if (applicants.length === 0) {
             throw "email/password combo invalid";
           } else {
-            let [applicant] = applicant;
+            let [applicant] = applicants;
             return applicant.comparePassword(password);
           }
         })
@@ -26,7 +27,10 @@ module.exports = {
           }
         })
         .then(token => reply({ token }))
-        .catch(err => reply(err));
+        .catch(err => {
+          console.log(err);
+          reply(err);
+        });
     }
   }
 };
