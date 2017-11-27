@@ -9,7 +9,7 @@ module.exports = db => {
     phone: db.type.string().required(),
     email: db.type.string().required(),
     date: db.type.string().required(),
-    eductaion: db.type
+    education: db.type
       .string()
       .enum("highschool", "GED", "college")
       .required(),

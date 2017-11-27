@@ -1,6 +1,6 @@
 const thinky = require("thinky");
 
-const db = thinky.apply({
+const db = thinky({
   db: "JobPlacementApp"
 });
 
