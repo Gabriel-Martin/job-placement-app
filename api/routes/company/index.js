@@ -3,5 +3,6 @@ module.exports = [
   require("./getCompanyById"),
   require("./removeCompany"),
   require("./updateCompany"),
-  require("./getAllCompanies")
+  require("./getAllCompanies"),
+  require("./companyLogin")
 ];

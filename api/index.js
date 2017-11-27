@@ -1,6 +1,8 @@
 const Hapi = require("hapi");
 const api = require("./api");
 
+const hapiAuthJWT = require("hapi-auth-jwt2");
+
 const server = new Hapi.Server();
 
 server.connection({
@@ -15,7 +17,7 @@ server.connection({
 });
 
 server
-  .register([{ register: api }])
+  .register([hapiAuthJWT, { register: api }])
   .then(() => {
     server
       .start()

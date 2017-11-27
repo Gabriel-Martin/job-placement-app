@@ -7,7 +7,7 @@ module.exports = {
 
       this.models.Applicant
         .get(applicantId)
-        .getJoin({ jobs: true })
+        .getJoin({ jobs: true, applications: true })
         .then(applicant => reply(applicant))
         .catch(err => reply(err));
     }

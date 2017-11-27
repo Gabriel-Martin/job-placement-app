@@ -3,6 +3,8 @@ module.exports = [
   require("./getApplicantById"),
   require("./removeApplicant"),
   require("./updateApplicant"),
+  require("./removeJob"),
+  require("./removeApplication"),
   require("./addJob"),
-  require("./removeJob")
+  require("./login")
 ];
