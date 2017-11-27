@@ -1,0 +1,32 @@
+2017-11-27T09:33:28.611458000 0.011252s notice: Recursively removing directory /Users/digitalimm0rtal/Documents/devtree/week12/job-placement-app/api/rethinkdb_data/tmp
+2017-11-27T09:33:28.612860000 0.012658s notice: Initializing directory /Users/digitalimm0rtal/Documents/devtree/week12/job-placement-app/api/rethinkdb_data
+2017-11-27T09:33:28.612955000 0.012748s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/digitalimm0rtal/Documents/devtree/week12/job-placement-app/api/rethinkdb_data' did not already exist or is empty.)
+2017-11-27T09:33:28.612992000 0.012785s notice: Running rethinkdb 2.3.6 (CLANG 8.1.0 (clang-802.0.42))...
+2017-11-27T09:33:28.617312000 0.017106s notice: Running on Darwin 17.2.0 x86_64
+2017-11-27T09:33:28.617368000 0.017162s notice: Loading data from directory /Users/digitalimm0rtal/Documents/devtree/week12/job-placement-app/api/rethinkdb_data
+2017-11-27T09:33:28.701742000 0.101538s info: Automatically using cache size of 185 MB
+2017-11-27T09:33:28.702150000 0.101946s notice: Listening for intracluster connections on port 29015
+2017-11-27T09:33:28.703463000 0.103259s notice: Listening for client driver connections on port 28015
+2017-11-27T09:33:28.703582000 0.103378s notice: Listening for administrative HTTP connections on port 8080
+2017-11-27T09:33:28.703585000 0.103380s notice: Listening on cluster addresses: 127.0.0.1, ::1
+2017-11-27T09:33:28.703589000 0.103385s notice: Listening on driver addresses: 127.0.0.1, ::1
+2017-11-27T09:33:28.703592000 0.103388s notice: Listening on http addresses: 127.0.0.1, ::1
+2017-11-27T09:33:28.703596000 0.103392s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-11-27T09:33:28.703600000 0.103396s notice: Server ready, "macattack_lan_hmd" 8f0c4085-7f0b-4f5a-8ff0-54ac8c43ffff
+2017-11-27T09:33:37.648903000 9.048971s info: Table fb839041-2f9d-4055-853d-f4fea4a07526: Starting a new Raft election for term 1.
+2017-11-27T09:33:37.657304000 9.057372s info: Table fb839041-2f9d-4055-853d-f4fea4a07526: Added replica on this server.
+2017-11-27T09:33:37.657421000 9.057488s info: Table 5b149397-0b12-4d5a-a59d-b5bcf1bed0b0: Starting a new Raft election for term 1.
+2017-11-27T09:33:37.657540000 9.057607s info: Table 5b149397-0b12-4d5a-a59d-b5bcf1bed0b0: Added replica on this server.
+2017-11-27T09:33:37.657543000 9.057610s info: Table b43e6cac-684f-46e3-9b27-1977ab899db2: Starting a new Raft election for term 1.
+2017-11-27T09:33:37.657782000 9.057850s info: Table b43e6cac-684f-46e3-9b27-1977ab899db2: Added replica on this server.
+2017-11-27T09:33:37.691011000 9.091080s info: Table 75e5241c-568a-475d-b27a-4a9bc572b4a8: Starting a new Raft election for term 1.
+2017-11-27T09:33:37.691176000 9.091245s info: Table 75e5241c-568a-475d-b27a-4a9bc572b4a8: Added replica on this server.
+2017-11-27T09:33:37.705522000 9.105591s info: Table fb839041-2f9d-4055-853d-f4fea4a07526: This server is Raft leader for term 1. Latest log index is 0.
+2017-11-27T09:33:37.705647000 9.105716s info: Table 5b149397-0b12-4d5a-a59d-b5bcf1bed0b0: This server is Raft leader for term 1. Latest log index is 0.
+2017-11-27T09:33:37.720215000 9.120285s info: Table b43e6cac-684f-46e3-9b27-1977ab899db2: This server is Raft leader for term 1. Latest log index is 0.
+2017-11-27T09:33:37.720306000 9.120375s info: Table 75e5241c-568a-475d-b27a-4a9bc572b4a8: This server is Raft leader for term 1. Latest log index is 0.
+2017-11-27T09:33:48.943630000 20.344040s notice: Server got SIGINT from pid 10658, uid 501; shutting down...
+2017-11-27T09:33:48.943780000 20.344189s notice: Shutting down client connections...
+2017-11-27T09:33:48.943931000 20.344340s notice: All client connections closed.
+2017-11-27T09:33:48.943936000 20.344345s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-11-27T09:33:48.955103000 20.355513s notice: Storage engine shut down.

@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-as-promised": "^1.1.0",
+    "hapi": "16",
+    "hapi-auth-jwt2": "^7.3.0",
+    "jsonwebtoken": "^8.1.0",
+    "thinky": "^2.3.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  }
+}
