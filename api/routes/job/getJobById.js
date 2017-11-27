@@ -1,12 +1,12 @@
 module.exports = {
-  method: "POST",
-  path: "/api/job",
+  path: "/api/job/{jobId}",
+  method: "GET",
   config: {
     handler: function(request, reply) {
-      let newJob = new this.models.Job(request.payload);
+      let id = request.params.jobId;
 
-      newJob
-        .save()
+      this.models.Job
+        .filter({ id: id })
         .then(result => reply(result))
         .catch(err => {
           console.log(err);
