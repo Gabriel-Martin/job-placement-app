@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt-as-promised");
 const JWT = require("jsonwebtoken");
+
 module.exports = db => {
   let Applicant = db.createModel("Applicant", {
     firstName: db.type.string().required(),
@@ -21,6 +22,7 @@ module.exports = db => {
     return bcrypt
       .compare(password, this.password)
       .then(authed => (authed ? this : false))
+      .catch(bcrypt.MISMATCH_ERROR, () => "Invalid Email/Password Combo")
       .catch(error => error);
   });
 

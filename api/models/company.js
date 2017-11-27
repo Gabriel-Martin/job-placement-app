@@ -12,18 +12,15 @@ module.exports = db => {
   });
 
   Company.define("generatePassword", function() {
-    bcrypt
+    return bcrypt
       .genSalt(10)
-      .then(salt =>
-        bcrypt
-          .hash(this.password, salt)
-          .then(hash => Object.assign(this, { password: hash }))
-      )
+      .then(salt => bcrypt.hash(this.password, salt))
+      .then(hash => Object.assign(this, { password: hash }))
       .catch(err => console.log(err));
   });
 
   Company.define("comparePassword", function(password) {
-    bcrypt
+    return bcrypt
       .compare(password, this.password)
       .then(authed => (authed ? this : false))
       .catch(bcrypt.MISMATCH_ERROR, () => "Invalid Email/Password Combo")
@@ -41,10 +38,10 @@ module.exports = db => {
       if (companies.length > 0) {
         return next("Invalid Email/Password Combo");
       }
+      return this.generatePassword()
+        .then(() => next())
+        .catch(err => next(err));
     });
-    return this.generatePassword()
-      .then(() => next())
-      .catch(err => next(err));
   });
 
   return Company;
