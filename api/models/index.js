@@ -9,8 +9,8 @@ let Application = require("./application")(db);
 let Job = require("./job")(db);
 let Company = require("./company")(db);
 
-Applicant.hasAndBelongsToMany(Job, "jobs", "id", "id");
-Applicant.hasMany(Application, "applications", "id", "id");
+Applicant.hasMany(Job, "jobs", "id", "applicantId");
+Applicant.hasMany(Application, "applications", "id", "applicantId");
 
 module.exports = {
   Applicant: Applicant,

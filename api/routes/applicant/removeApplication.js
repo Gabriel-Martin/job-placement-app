@@ -1,13 +1,15 @@
 module.exports = {
-  method: "POST",
-  path: "/api/applicant/{applicantId}/job",
+  method: "DELETE",
+  path: "/api/applicant/{applicantId}/application",
   config: {
     handler: function(request, reply) {
       let applicantId = request.params.applicantId;
-      let job = request.payload;
+      let application = request.payload;
 
       this.models.Applicant.get(applicantId)
-        .then(applicant => applicant.addRelation("jobs", job))
+        .then(applicant =>
+          applicant.removeRelation("applications", application)
+        )
         .then(result => reply(result))
         .catch(err => {
           console.log(err);
