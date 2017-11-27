@@ -1,12 +1,12 @@
 module.exports = {
-  method: "POST",
-  path: "/api/applicant",
+  method: "GET",
+  path: "/api/applicant/{applicantId}",
   config: {
     handler: function(request, reply) {
-      let applicant = new this.models.Applicant(request.payload);
+      let applicantId = request.params.applicantId;
 
-      applicant
-        .save()
+      this.models.Applicant
+        .get(applicantId)
         .then(applicant => reply(applicant))
         .catch(err => reply(err));
     }
