@@ -28,7 +28,6 @@ class Router extends Component {
             <Route exact path={"/"} component={Homepage} />
             <Route exact path={"/login"} component={Login} />
             <Route exact path={"/signup"} component={Signup} />
-
             <Route exact path={"/login"} component={Login} />
             <Route exact path={"/signup"} component={Signup} />
             <Route
@@ -36,45 +35,52 @@ class Router extends Component {
               path={"/placeholder1"}
               component={JobDescriptionPage}
             />
-            <AuthenticatedRoute>
-              <Route
-                exact
-                path={"/applicant/profile"}
-                component={ApplicantProfile}
-              />
-              <AuthenticatedRoute
-                exact
-                path={"/applicant/profile/settings"}
-                component={ApplicantProfileSettings}
-              />
-              <AuthenticatedRoute
-                exact
-                path={"/applicant/applicationform"}
-                component={ApplicationForm}
-              />
-              <Route
-                exact
-                path={"/company/dashboard"}
-                component={CompanyDashboard}
-              />
-              <Route
-                exact
-                path={"/company/placeholder2"}
-                component={CompanyJobDescriptionPage}
-              />
-              <Route
-                exact
-                path={"/company/profile"}
-                component={CompanyProfile}
-              />
-              <Route
-                exact
-                path={"/company/profile/settings"}
-                component={CompanyProfileSettings}
-              />
-              <Route exact path={"/placeholder3"} component={CreateJob} />
-              <Route exact path={"/placeholder4"} component={EditJob} /> */
-            </AuthenticatedRoute>
+            <AuthenticatedRoute
+              exact
+              path={"/applicant/profile"}
+              component={ApplicantProfile}
+            />
+            <AuthenticatedRoute
+              exact
+              path={"/applicant/profile/settings"}
+              component={ApplicantProfileSettings}
+            />
+            <AuthenticatedRoute
+              exact
+              path={"/applicant/applicationform"}
+              component={ApplicationForm}
+            />
+            <AuthenticatedRoute
+              exact
+              path={"/company/dashboard"}
+              component={CompanyDashboard}
+            />
+            <AuthenticatedRoute
+              exact
+              path={"/company/placeholder2"}
+              component={CompanyJobDescriptionPage}
+            />
+            <AuthenticatedRoute
+              exact
+              path={"/company/profile"}
+              component={CompanyProfile}
+            />
+            <AuthenticatedRoute
+              exact
+              path={"/company/profile/settings"}
+              component={CompanyProfileSettings}
+            />
+            <AuthenticatedRoute
+              exact
+              path={"/placeholder3"}
+              component={CreateJob}
+            />
+            <AuthenticatedRoute
+              exact
+              path={"/placeholder4"}
+              component={EditJob}
+            />{" "}
+            */
           </Switch>
         </div>
       </BrowserRouter>
