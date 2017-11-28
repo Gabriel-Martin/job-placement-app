@@ -1,4 +1,4 @@
-const baseURL = (path = "") => `http://loaclhost:4040/api/applicant/${path}`;
+const baseURL = (path = "") => `http://localhost:4040/api/applicant/${path}`;
 
 const signUp = data => {
   return fetch(baseURL(), {

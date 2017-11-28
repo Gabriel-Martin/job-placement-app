@@ -63,8 +63,7 @@ class Router extends Component {
               exact
               path={"/job/edit/:jobId"}
               component={EditJob}
-            />{" "}
-            */
+            />
           </Switch>
         </div>
       </BrowserRouter>
