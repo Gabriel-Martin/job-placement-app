@@ -21,6 +21,9 @@ Company.hasMany(Job, "jobs", "id", "companyId");
 // relation for all job applications
 // displays all applications related to job on job object
 Job.hasMany(Application, "applications", "id", "jobId");
+// relation for job company
+// displays company related to job on job object
+Job.belongsTo(Company, "company", "companyId", "id");
 // relation for application job
 // displays job related to application on application object
 Application.belongsTo(Job, "job", "jobId", "id");

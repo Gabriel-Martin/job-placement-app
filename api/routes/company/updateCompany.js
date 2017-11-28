@@ -6,16 +6,10 @@ module.exports = {
       let updateCompany = request.payload;
       let companyId = request.params.companyId;
 
-      this.models.Company.get(companyId).then(doc =>
-        doc
-          .merge(updateCompany)
-          .save()
-          .then(result => reply(result))
-          .catch(err => {
-            console.log(err);
-            reply(err);
-          })
-      );
+      this.models.Company.get(companyId)
+        .update(updateCompany)
+        .then(response => reply(response))
+        .catch(err => reply(err));
     }
   }
 };

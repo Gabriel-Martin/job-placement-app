@@ -3,11 +3,10 @@ module.exports = {
   method: "GET",
   config: {
     handler: function(request, reply) {
-      let id = request.params.jobId;
+      let jobId = request.params.jobId;
 
-      this.models.Job
-        .filter({ id: id })
-        .getJoin({ applications: true })
+      this.models.Job.get(jobId)
+        .getJoin({ applications: true, company: true })
         .then(result => reply(result))
         .catch(err => {
           console.log(err);

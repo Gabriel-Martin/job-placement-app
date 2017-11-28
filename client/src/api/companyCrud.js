@@ -46,13 +46,34 @@ const remove = id => {
 };
 
 const getAll = () => {
-  return fetch(baseURL())
+  return fetch(baseURL(), {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    }
+  })
     .then(response => response.json())
     .catch(error => console.log(error));
 };
 
 const getById = id => {
-  return fetch(baseURL(id))
+  return fetch(baseURL(id), {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    }
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error));
+};
+
+const getCurrentCompany = () => {
+  return fetch(baseURL("current"), {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    }
+  })
     .then(response => response.json())
     .catch(error => console.log(error));
 };
@@ -63,5 +84,6 @@ export default {
   update,
   remove,
   getAll,
+  getCurrentCompany,
   getById
 };

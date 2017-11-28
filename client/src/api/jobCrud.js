@@ -34,14 +34,23 @@ const update = (id, data) => {
 
 const remove = id => {
   return fetch(baseURL(id), {
-    method: "DELETE"
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    }
   })
     .then(response => response.json())
     .catch(error => console.log(error));
 };
 
 const getById = id => {
-  return fetch(baseURL(id))
+  return fetch(baseURL(id), {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    }
+  })
     .then(response => response.json())
     .catch(error => console.log(error));
 };

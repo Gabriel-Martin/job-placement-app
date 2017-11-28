@@ -5,15 +5,12 @@ class CreateJob extends Component {
   constructor() {
     super();
 
-    this.state = {
-      job: {}
-    };
+    this.state = {};
   }
 
   formSubmit = submitE => {
-    let { job } = this.state;
     submitE.preventDefault();
-    api.create(job).then(job => {
+    api.create(this.state).then(() => {
       this.props.history.push("/company/profile");
     });
   };
@@ -25,10 +22,8 @@ class CreateJob extends Component {
 
     this.setState(state => {
       return {
-        job: {
-          ...state.job,
-          [name]: value
-        }
+        ...state,
+        [name]: value
       };
     });
   };

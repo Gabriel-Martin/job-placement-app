@@ -12,6 +12,14 @@ class CompanyProfileSettings extends Component {
     };
   }
 
+  componentDidMount() {
+    api.getCurrentCompany().then(company => {
+      this.setState(state => ({
+        ...company
+      }));
+    });
+  }
+
   onInputChange = changeEvent => {
     changeEvent.persist();
 
@@ -26,15 +34,13 @@ class CompanyProfileSettings extends Component {
   onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
 
-    let companyId = this.props.match.params.id;
+    let companyId = this.props.match.params.companyId;
     api.update(companyId, this.state).then(() => {
       this.props.history.push("/company/profile");
     });
   };
 
   render() {
-    console.log(localStorage);
-
     return (
       <div>
         <h1>Company Profile Settings</h1>
@@ -43,18 +49,21 @@ class CompanyProfileSettings extends Component {
             type="text"
             name={"logo"}
             placeholder={"Logo"}
+            value={this.state.logo}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"description"}
             placeholder={"Description"}
+            value={this.state.description}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"industry"}
             placeholder={"Industry"}
+            value={this.state.industry}
             onChange={this.onInputChange}
           />
           <input type="submit" />
