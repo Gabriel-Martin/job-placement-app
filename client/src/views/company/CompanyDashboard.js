@@ -21,6 +21,7 @@ class CompanyDashboard extends Component {
   render() {
     let { position = "", description = "", application = [] } = this.state;
     console.log(this.state);
+
     return (
       <div>
         <h1>CompanyDashboard</h1>
