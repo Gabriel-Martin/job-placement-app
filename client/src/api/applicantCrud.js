@@ -56,11 +56,50 @@ const getById = id => {
     .catch(error => console.log(error));
 };
 
+const addJob = (applicantId, jobId) => {
+  return fetch(baseURL(`${applicantId}/job`), {
+    method: "POST",
+    body: JSON.stringify({ id: jobId }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error));
+};
+
+const removeJob = (applicantId, jobId) => {
+  return fetch(baseURL(`${applicantId}/job`), {
+    method: "DELETE",
+    body: JSON.stringify({ id: jobId }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error));
+};
+
+const removeApp = (applicantId, appId) => {
+  return fetch(baseURL(`${applicantId}/application`), {
+    method: "DELETE",
+    body: JSON.stringify({ id: appId }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error));
+};
+
 export default {
   signUp,
   login,
   update,
   remove,
   getAll,
-  getById
+  getById,
+  addJob,
+  removeJob,
+  removeApp
 };
