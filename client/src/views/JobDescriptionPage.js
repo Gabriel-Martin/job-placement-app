@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import applicant from "../api/applicantCrud";
 import jobs from "../api/jobCrud";
 
 class JobDescriptionPage extends Component {
@@ -18,7 +18,15 @@ class JobDescriptionPage extends Component {
     });
   }
 
+  interested = jobId => {
+    applicant.addJob(jobId).then(() => {
+      this.props.history.push("/applicant/profile");
+    });
+  };
+
   render() {
+    let { jobId } = this.props.match.params;
+    console.log(this.state);
     let {
       company = {},
       description = "",
@@ -26,7 +34,7 @@ class JobDescriptionPage extends Component {
       payRate = "",
       experience = ""
     } = this.state;
-    console.log(this.state);
+
     return (
       <div>
         <h1>JobDescriptionPage</h1>
@@ -44,6 +52,12 @@ class JobDescriptionPage extends Component {
           {" "}
           <b>Experience:</b> {experience}{" "}
         </p>
+        <button onClick={() => this.interested(jobId)}>Interested?</button>
+        <button
+          onClick={() => this.props.history.push("/applicant/applicationform")}
+        >
+          Apply!
+        </button>
       </div>
     );
   }

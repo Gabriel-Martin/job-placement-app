@@ -4,19 +4,15 @@ module.exports = {
   config: {
     handler: function(request, reply) {
       let applicantId = request.params.applicantId;
+      let updatedApplicant = request.payload;
+
+      console.log(request.payload);
 
       this.models.Applicant
         .get(applicantId)
-        .then(applicant =>
-          applicant
-            .merge(request.payload)
-            .save()
-            .then(result => reply(result))
-        )
-        .catch(err => {
-          console.log(err);
-          reply(err);
-        });
+        .update(updatedApplicant)
+        .then(applicant => reply(applicant))
+        .catch(err => reply(err));
     }
   }
 };
