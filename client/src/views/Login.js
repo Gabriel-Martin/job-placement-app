@@ -1,26 +1,35 @@
 import React, { Component } from "react";
 
+import apiCompany from "../api/companyCrud";
+import apiApplicant from "../api/applicantCrud";
+
 class Login extends Component {
   constructor() {
     super();
 
     this.state = {
       login: true,
-      applicant: {
-        email: "",
-        password: ""
-      },
-      company: {
-        email: "",
-        password: ""
-      }
+      email: "",
+      password: ""
     };
   }
 
-  showSignup = () => {
+  onInputChange = eventChange => {
+    eventChange.persist();
+
+    this.setState(state => {
+      return {
+        ...this.state,
+        [eventChange.target.name]: eventChange.target.value
+      };
+    });
+  };
+
+  changeLoginState = () => {
     let login = this.state.login;
+
     if (login === true) {
-      return this.setState(state => {
+      this.setState(state => {
         return {
           login: false
         };
@@ -28,7 +37,7 @@ class Login extends Component {
     }
 
     if (login === false) {
-      return this.setState(state => {
+      this.setState(state => {
         return {
           login: true
         };
@@ -36,81 +45,70 @@ class Login extends Component {
     }
   };
 
-  onInputChangeApplicant = eventChangeApp => {
-    this.setState(state => {
-      return {
-        applicant: {
-          ...this.state.applicant,
-          [eventChangeApp.target.name]: eventChangeApp.target.value
-        }
-      };
+  onFormSubmit = eventChange => {
+    eventChange.preventDefault();
+    let login = this.state.login;
+
+    if (login === true) {
+      this.applicantLogin();
+    }
+    if (login === false) {
+      this.companyLogin();
+    }
+  };
+
+  applicantLogin = () => {
+    let loginData = this.state;
+
+    apiApplicant.login(loginData).then(data => {
+      if (data.err) {
+        return alert(data.err);
+      }
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        return this.props.history.push("/applicant/profile");
+      }
     });
   };
 
-  onInputChangeCompany = eventChangeComp => {
-    this.setState(state => {
-      return {
-        company: {
-          ...this.state.company,
-          [eventChangeComp.target.name]: eventChangeComp.target.value
-        }
-      };
+  companyLogin = () => {
+    let loginData = this.state;
+
+    apiCompany.login(loginData).then(data => {
+      if (data.err) {
+        return alert(data.err);
+      }
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        return this.props.history.push("/company/profile");
+      }
     });
-  };
-
-  onFormSubmitApplicant = eventChangeApp => {
-    eventChangeApp.persist();
-  };
-
-  onFormSubmitCompany = eventChangeComp => {
-    eventChangeComp.persist();
   };
 
   render() {
-    let login = this.state.login;
+    console.log(this.state.login);
     return (
       <div style={styles.PageStyle}>
-        {login ? (
-          <div>
-            <button onClick={() => this.showSignup()}>Company Login</button>
-            <h3>Applicant Login</h3>
-            <form style={styles.AppForm} onSubmit={this.onFormSubmitApplicant}>
-              <input
-                type="text"
-                name={"email"}
-                placeholder={"Email"}
-                onChange={this.onInputChangeApplicant}
-              />
-              <input
-                type="text"
-                name={"password"}
-                placeholder={"Password"}
-                onChange={this.onInputChangeApplicant}
-              />
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        ) : (
-          <div>
-            <button onClick={() => this.showSignup()}>Applicant Login</button>
-            <h3>Company Login</h3>
-            <form style={styles.CompForm} onSubmit={this.onFormSubmitCompany}>
-              <input
-                type="text"
-                name={"email"}
-                placeholder={"Email"}
-                onChange={this.onInputChangeCompany}
-              />
-              <input
-                type="text"
-                name={"password"}
-                placeholder={"Password"}
-                onChange={this.onInputChangeCompany}
-              />
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        )}
+        <div>
+          <h3>Login</h3>
+          <button onClick={() => this.changeLoginState()}>Switch Logins</button>
+
+          <form style={styles.AppForm} onSubmit={this.onFormSubmit}>
+            <input
+              type="text"
+              name={"email"}
+              placeholder={"Email"}
+              onChange={this.onInputChange}
+            />
+            <input
+              type="text"
+              name={"password"}
+              placeholder={"Password"}
+              onChange={this.onInputChange}
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     );
   }
@@ -118,11 +116,6 @@ class Login extends Component {
 
 const styles = {
   AppForm: {
-    display: "flex",
-    flexDirection: "column",
-    maxWidth: 150
-  },
-  CompForm: {
     display: "flex",
     flexDirection: "column",
     maxWidth: 150
