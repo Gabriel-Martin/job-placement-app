@@ -7,21 +7,9 @@ class ApplicantProfile extends Component {
   constructor() {
     super();
 
-<<<<<<< HEAD
     this.state = {
       application: []
     };
-  }
-
-  componentDidMount() {
-    api.getAll().then(data => {
-      this.setState(state => {
-        return {
-          application: data
-        };
-      });
-=======
-    this.state = {};
   }
 
   componentDidMount() {
@@ -29,16 +17,12 @@ class ApplicantProfile extends Component {
       this.setState(state => ({
         ...applicant
       }));
->>>>>>> c1e2489031ac1370af204ef1884e04749701ff99
     });
   }
 
   render() {
-<<<<<<< HEAD
     console.log(this.state.application);
-=======
     console.log(this.state);
->>>>>>> c1e2489031ac1370af204ef1884e04749701ff99
     return (
       <div>
         <h1>Applicant Profile</h1>
