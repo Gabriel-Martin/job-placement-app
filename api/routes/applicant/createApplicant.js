@@ -16,7 +16,7 @@ module.exports = {
         })
         .catch(err => {
           console.log(err);
-          reply(err);
+          reply({ err });
         });
     }
   }
