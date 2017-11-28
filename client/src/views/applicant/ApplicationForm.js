@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import api from "../../api/applicationCrud.js";
 
 class ApplicationForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       firstName: "",
@@ -17,7 +17,7 @@ class ApplicationForm extends Component {
       date: "",
       education: "highschool",
       applicationStatus: "applied",
-      jobId: "1d4bf836-9384-45f9-95e3-2daf10bd448f"
+      jobId: props.match.params.jobId
     };
   }
 
