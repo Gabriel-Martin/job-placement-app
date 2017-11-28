@@ -29,7 +29,8 @@ const update = (id, data) => {
     method: "PUT",
     body: JSON.stringify(data),
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
     }
   })
     .then(response => response.json())

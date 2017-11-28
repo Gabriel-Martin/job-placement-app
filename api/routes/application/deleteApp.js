@@ -2,9 +2,6 @@ module.exports = {
   method: "DELETE",
   path: "/api/application/{appId}",
   config: {
-    // auth: {
-    //   mode: "optional"
-    // },
     handler: function(request, reply) {
       let appId = request.params.appId;
 
