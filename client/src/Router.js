@@ -12,7 +12,6 @@ import ApplicantProfile from "./views/applicant/ApplicantProfile";
 import ApplicantProfileSettings from "./views/applicant/ApplicantProfileSettings";
 import ApplicationForm from "./views/applicant/ApplicationForm";
 import CompanyDashboard from "./views/company/CompanyDashboard";
-import CompanyJobDescriptionPage from "./views/company/CompanyJobDescriptionPage";
 import CompanyProfile from "./views/company/CompanyProfile";
 import CompanyProfileSettings from "./views/company/CompanyProfileSettings";
 import CreateJob from "./views/company/CreateJob";
@@ -28,13 +27,7 @@ class Router extends Component {
             <Route exact path={"/"} component={Homepage} />
             <Route exact path={"/login"} component={Login} />
             <Route exact path={"/signup"} component={Signup} />
-            <Route exact path={"/login"} component={Login} />
-            <Route exact path={"/signup"} component={Signup} />
-            <Route
-              exact
-              path={"/placeholder1"}
-              component={JobDescriptionPage}
-            />
+            <Route exact path={"/jobs/:jobId"} component={JobDescriptionPage} />
             <AuthenticatedRoute
               exact
               path={"/applicant/profile"}
@@ -57,11 +50,6 @@ class Router extends Component {
             />
             <AuthenticatedRoute
               exact
-              path={"/company/placeholder2"}
-              component={CompanyJobDescriptionPage}
-            />
-            <AuthenticatedRoute
-              exact
               path={"/company/profile"}
               component={CompanyProfile}
             />
@@ -70,14 +58,10 @@ class Router extends Component {
               path={"/company/profile/settings"}
               component={CompanyProfileSettings}
             />
+            <AuthenticatedRoute exact path={"/job/new"} component={CreateJob} />
             <AuthenticatedRoute
               exact
-              path={"/placeholder3"}
-              component={CreateJob}
-            />
-            <AuthenticatedRoute
-              exact
-              path={"/placeholder4"}
+              path={"/job/edit/:jobId"}
               component={EditJob}
             />{" "}
             */
