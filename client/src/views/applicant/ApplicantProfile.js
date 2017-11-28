@@ -7,9 +7,9 @@ class ApplicantProfile extends Component {
   constructor() {
     super();
 
-<<<<<<< HEAD
     this.state = {
-      application: []
+      applications: [],
+      jobs: []
     };
   }
 
@@ -20,25 +20,11 @@ class ApplicantProfile extends Component {
           application: data
         };
       });
-=======
-    this.state = {};
-  }
-
-  componentDidMount() {
-    applicant.getById().then(applicant => {
-      this.setState(state => ({
-        ...applicant
-      }));
->>>>>>> c1e2489031ac1370af204ef1884e04749701ff99
     });
   }
 
   render() {
-<<<<<<< HEAD
     console.log(this.state.application);
-=======
-    console.log(this.state);
->>>>>>> c1e2489031ac1370af204ef1884e04749701ff99
     return (
       <div>
         <h1>Applicant Profile</h1>
