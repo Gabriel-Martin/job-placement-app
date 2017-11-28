@@ -47,8 +47,7 @@ const remove = id => {
 const getById = id => {
   return fetch(baseURL(id), {
     headers: {
-      "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token")
+      "Content-Type": "application/json"
     }
   })
     .then(response => response.json())
