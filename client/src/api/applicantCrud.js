@@ -51,14 +51,19 @@ const getAll = () => {
     .catch(error => console.log(error));
 };
 
-const getById = id => {
-  return fetch(baseURL(id))
+const getById = () => {
+  return fetch(baseURL(), {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    }
+  })
     .then(response => response.json())
     .catch(error => console.log(error));
 };
 
-const addJob = (applicantId, jobId) => {
-  return fetch(baseURL(`${applicantId}/job`), {
+const addJob = jobId => {
+  return fetch(baseURL(`job`), {
     method: "POST",
     body: JSON.stringify({ id: jobId }),
     headers: {

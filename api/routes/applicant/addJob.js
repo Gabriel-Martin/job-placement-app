@@ -1,9 +1,9 @@
 module.exports = {
   method: "POST",
-  path: "/api/applicant/{applicantId}/job",
+  path: "/api/applicant/job",
   config: {
     handler: function(request, reply) {
-      let applicantId = request.params.applicantId;
+      let applicantId = request.auth.credentials.id;
       let job = request.payload;
 
       this.models.Applicant.get(applicantId)

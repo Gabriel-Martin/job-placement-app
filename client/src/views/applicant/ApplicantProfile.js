@@ -1,7 +1,24 @@
 import React, { Component } from "react";
 
+import applicant from "../../api/applicantCrud";
+
 class ApplicantProfile extends Component {
+  constructor() {
+    super();
+
+    this.state = {};
+  }
+
+  componentDidMount() {
+    applicant.getById().then(applicant => {
+      this.setState(state => ({
+        ...applicant
+      }));
+    });
+  }
+
   render() {
+    console.log(this.state);
     return (
       <div>
         <h1>Applicant Profile</h1>
