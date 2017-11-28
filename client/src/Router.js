@@ -35,7 +35,7 @@ class Router extends Component {
             />
             <AuthenticatedRoute
               exact
-              path={"/applicant/profile/settings/:applicantId"}
+              path={"/applicant/profile/settings"}
               component={ApplicantProfileSettings}
             />
             <AuthenticatedRoute

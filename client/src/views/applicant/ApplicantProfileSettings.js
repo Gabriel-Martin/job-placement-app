@@ -15,12 +15,42 @@ class ApplicantProfileSettings extends Component {
     };
   }
 
-  componetDidMount() {
-    let applicantId = this.props.match.params.applicantId;
+  onInputChange = event => {
+    event.persist();
 
-    apiApplicant.getById(applicantId).then(data => console.log(data));
+    this.setState(state => {
+      return {
+        applicant: {
+          ...this.state.applicant,
+          [event.target.name]: event.target.value
+        }
+      };
+    });
+  };
+
+  onFormSubmit = event => {
+    event.preventDefault();
+
+    apiApplicant
+      .update(this.state.applicant.id, this.state.applicant)
+      .then(data => console.log(data));
+  };
+
+  componentDidMount() {
+    apiApplicant.getById().then(data => {
+      this.setState(state => {
+        return {
+          applicant: {
+            ...this.state.applicant,
+            ...data
+          }
+        };
+      });
+    });
   }
   render() {
+    let applicant = this.state.applicant;
+
     return (
       <div>
         <h1>ApplicantProfileSettings</h1>
@@ -28,18 +58,21 @@ class ApplicantProfileSettings extends Component {
           <input
             type="text"
             name={"image"}
+            value={applicant.image}
             onChange={this.onInputChange}
             placeholder={"Image"}
           />
           <input
             type="text"
             name={"firstName"}
+            value={applicant.firstName}
             onChange={this.onInputChange}
             placeholder={"First Name"}
           />
           <input
             type="text"
             name={"lastName"}
+            value={applicant.lastName}
             onChange={this.onInputChange}
             placeholder={"Last Name"}
           />
