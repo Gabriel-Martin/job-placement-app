@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 
+import api from "../../api/companyCrud";
+
 class CompanyProfile extends Component {
+  constructor() {
+    super();
+
+    this.state = {};
+  }
+
+  componentDidMount() {}
+
   render() {
     return (
       <div>

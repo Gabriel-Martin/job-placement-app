@@ -6,8 +6,7 @@ module.exports = {
       let applicantId = request.params.applicantId;
       let job = request.payload;
 
-      this.models.Applicant
-        .get(applicantId)
+      this.models.Applicant.get(applicantId)
         .then(applicant => applicant.addRelation("jobs", job))
         .then(result => reply(result))
         .catch(err => {
