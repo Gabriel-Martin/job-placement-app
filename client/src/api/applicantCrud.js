@@ -29,7 +29,8 @@ const update = (id, data) => {
     method: "PUT",
     body: JSON.stringify(data),
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
     }
   })
     .then(response => response.json())
@@ -61,7 +62,8 @@ const addJob = (applicantId, jobId) => {
     method: "POST",
     body: JSON.stringify({ id: jobId }),
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
     }
   })
     .then(response => response.json())
@@ -73,7 +75,8 @@ const removeJob = (applicantId, jobId) => {
     method: "DELETE",
     body: JSON.stringify({ id: jobId }),
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
     }
   })
     .then(response => response.json())
@@ -85,7 +88,8 @@ const removeApp = (applicantId, appId) => {
     method: "DELETE",
     body: JSON.stringify({ id: appId }),
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
     }
   })
     .then(response => response.json())
