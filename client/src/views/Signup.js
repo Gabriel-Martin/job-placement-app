@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import apiCompany from "../api/companyCrud";
+import apiApplicant from "../api/applicantCrud";
+
 class Signup extends Component {
   constructor() {
     super();
@@ -40,6 +43,8 @@ class Signup extends Component {
   };
 
   onInputChangeApplicant = eventChangeApp => {
+    eventChangeApp.persist();
+
     this.setState(state => {
       return {
         applicant: {
@@ -51,6 +56,8 @@ class Signup extends Component {
   };
 
   onInputChangeCompany = eventChangeComp => {
+    eventChangeComp.persist();
+
     this.setState(state => {
       return {
         company: {
@@ -62,11 +69,33 @@ class Signup extends Component {
   };
 
   onFormSubmitApplicant = eventChangeApp => {
-    eventChangeApp.persist();
+    eventChangeApp.preventDefault();
+
+    let applicant = this.state.applicant;
+
+    apiApplicant.signUp(applicant).then(data => {
+      if (data.err) {
+        return alert(data.err);
+      }
+      if (!data.err) {
+        this.props.history.push("/login");
+      }
+    });
   };
 
   onFormSubmitCompany = eventChangeComp => {
-    eventChangeComp.persist();
+    eventChangeComp.preventDefault();
+
+    let company = this.state.company;
+
+    apiCompany.signUp(company).then(data => {
+      if (data.err) {
+        return alert(data.err);
+      }
+      if (!data.err) {
+        this.props.history.push("/login");
+      }
+    });
   };
 
   render() {
