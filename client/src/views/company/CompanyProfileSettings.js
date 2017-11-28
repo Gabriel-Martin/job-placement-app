@@ -33,7 +33,8 @@ class CompanyProfileSettings extends Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log(localStorage);
+
     return (
       <div>
         <h1>Company Profile Settings</h1>
