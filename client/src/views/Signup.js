@@ -104,8 +104,8 @@ class Signup extends Component {
       <div style={styles.PageStyle}>
         {signup ? (
           <div>
-            <button onClick={() => this.showSignup()}>Company Signup</button>
             <h3>Applicant Signup</h3>
+            <button onClick={() => this.showSignup()}>Company Signup</button>
             <form style={styles.AppForm} onSubmit={this.onFormSubmitApplicant}>
               <input
                 type="text"
@@ -136,8 +136,8 @@ class Signup extends Component {
           </div>
         ) : (
           <div>
-            <button onClick={() => this.showSignup()}>Applicant Signup</button>
             <h3>Company Signup</h3>
+            <button onClick={() => this.showSignup()}>Applicant Signup</button>
             <form style={styles.CompForm} onSubmit={this.onFormSubmitCompany}>
               <input
                 type="text"

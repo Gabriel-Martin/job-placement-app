@@ -22,7 +22,7 @@ class Router extends Component {
     return (
       <BrowserRouter>
         <div>
-          <NavBar />
+          <Route path={"/"} component={NavBar} />
           <Switch>
             <Route exact path={"/"} component={Homepage} />
             <Route exact path={"/login"} component={Login} />
