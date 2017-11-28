@@ -6,7 +6,9 @@ class Homepage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      jobs: []
+    };
   }
 
   componentDidMount() {
@@ -18,22 +20,27 @@ class Homepage extends Component {
   }
 
   render() {
-    let { jobs = [] } = this.state;
+    let { jobs } = this.state;
     console.log(jobs);
     return (
       <div>
         <h1>Homepage</h1>
-        {jobs.map(job => (
-          <div
-            style={{ border: "1px solid black", margin: "5px", padding: "5px" }}
-            key={job.id}
-            onClick={() => this.props.history.push(`/jobs/${job.id}`)}
-          >
-            <h2> {job.company.companyName} </h2>
-            <h3> {job.position} </h3>
-            <p> {job.description} </p>
-          </div>
-        ))}
+        {jobs &&
+          jobs.map(job => (
+            <div
+              style={{
+                border: "1px solid black",
+                margin: "5px",
+                padding: "5px"
+              }}
+              key={job.id}
+              onClick={() => this.props.history.push(`/jobs/${job.id}`)}
+            >
+              <h2> {job.company.companyName} </h2>
+              <h3> {job.position} </h3>
+              <p> {job.description} </p>
+            </div>
+          ))}
       </div>
     );
   }
