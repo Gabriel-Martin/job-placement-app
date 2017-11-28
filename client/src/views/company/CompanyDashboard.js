@@ -23,7 +23,7 @@ class CompanyDashboard extends Component {
     console.log(this.state);
     return (
       <div>
-        <h1>CompanyDashboard</h1>
+        <h1>Company Dashboard</h1>
         <h3>Position: {position} </h3>
         <p>Description: {description} </p>
         <div style={{ display: "flex", justifyContent: "space-around" }}>
