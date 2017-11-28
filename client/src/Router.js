@@ -55,7 +55,7 @@ class Router extends Component {
             />
             <AuthenticatedRoute
               exact
-              path={"/company/profile/settings"}
+              path={"/company/profile/settings/:companyId"}
               component={CompanyProfileSettings}
             />
             <AuthenticatedRoute exact path={"/job/new"} component={CreateJob} />
