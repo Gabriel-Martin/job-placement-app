@@ -8,7 +8,7 @@ class Login extends Component {
     super();
 
     this.state = {
-      login: true,
+      login: "Applicant",
       email: "",
       password: ""
     };
@@ -28,18 +28,18 @@ class Login extends Component {
   changeLoginState = () => {
     let login = this.state.login;
 
-    if (login === true) {
+    if (login === "Company") {
       this.setState(state => {
         return {
-          login: false
+          login: "Applicant"
         };
       });
     }
 
-    if (login === false) {
+    if (login === "Applicant") {
       this.setState(state => {
         return {
-          login: true
+          login: "Company"
         };
       });
     }
@@ -49,10 +49,10 @@ class Login extends Component {
     eventChange.preventDefault();
     let login = this.state.login;
 
-    if (login === true) {
+    if (login === "Applicant") {
       this.applicantLogin();
     }
-    if (login === false) {
+    if (login === "Company") {
       this.companyLogin();
     }
   };
@@ -86,11 +86,12 @@ class Login extends Component {
   };
 
   render() {
+    let { login } = this.state;
     console.log(this.state.login);
     return (
       <div style={styles.PageStyle}>
         <div>
-          <h3>Login</h3>
+          <h3>{login} Login</h3>
           <button onClick={() => this.changeLoginState()}>Switch Logins</button>
 
           <form style={styles.AppForm} onSubmit={this.onFormSubmit}>
