@@ -37,7 +37,6 @@ class ApplicationForm extends Component {
 
     api.create(this.state).then(data => {
       this.props.history.push("/applicant/profile");
-      // add Application to Applicant
     });
   };
 

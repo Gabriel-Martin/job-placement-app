@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import api from "../../api/applicationCrud";
+// import api from "../../api/applicantCrud";
 
 import applicant from "../../api/applicantCrud";
 
@@ -7,38 +7,24 @@ class ApplicantProfile extends Component {
   constructor() {
     super();
 
-<<<<<<< HEAD
     this.state = {
-      application: []
+      applications: [],
+      jobs: []
     };
   }
 
   componentDidMount() {
-    api.getAll().then(data => {
+    applicant.getCurrent().then(applicant => {
       this.setState(state => {
         return {
-          application: data
+          ...applicant
         };
       });
-=======
-    this.state = {};
-  }
-
-  componentDidMount() {
-    applicant.getById().then(applicant => {
-      this.setState(state => ({
-        ...applicant
-      }));
->>>>>>> c1e2489031ac1370af204ef1884e04749701ff99
     });
   }
 
   render() {
-<<<<<<< HEAD
-    console.log(this.state.application);
-=======
     console.log(this.state);
->>>>>>> c1e2489031ac1370af204ef1884e04749701ff99
     return (
       <div>
         <h1>Applicant Profile</h1>
@@ -53,6 +39,9 @@ class ApplicantProfile extends Component {
             }}
           >
             <h3>Interested</h3>
+            <div>
+              {this.state.jobs.map(j => <div key={j.id}>{j.position}</div>)}
+            </div>
           </div>
           <div
             style={{
@@ -65,7 +54,9 @@ class ApplicantProfile extends Component {
           >
             <h3>Applied</h3>
             <div>
-              {this.state.application.map(app => <div>{app.city}</div>)}
+              {this.state.applications.map(app => (
+                <div key={app.id}>{app.job.position}</div>
+              ))}
             </div>
           </div>
           <div

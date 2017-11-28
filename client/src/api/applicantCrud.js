@@ -51,8 +51,8 @@ const getAll = () => {
     .catch(error => console.log(error));
 };
 
-const getById = () => {
-  return fetch(baseURL(), {
+const getCurrent = () => {
+  return fetch(baseURL("current"), {
     headers: {
       "Content-Type": "application/json",
       Authorization: localStorage.getItem("token")
@@ -107,7 +107,7 @@ export default {
   update,
   remove,
   getAll,
-  getById,
+  getCurrent,
   addJob,
   removeJob,
   removeApp
