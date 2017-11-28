@@ -40,7 +40,7 @@ class Router extends Component {
             />
             <AuthenticatedRoute
               exact
-              path={"/applicant/applicationform"}
+              path={"/applicant/applicationform/:jobId"}
               component={ApplicationForm}
             />
             <AuthenticatedRoute

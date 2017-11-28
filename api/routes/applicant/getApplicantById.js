@@ -5,8 +5,14 @@ module.exports = {
     handler: function(request, reply) {
       let applicantId = request.auth.credentials.id;
 
-      this.models.Applicant.get(applicantId)
-        .getJoin({ jobs: true, applications: true })
+      this.models.Applicant
+        .get(applicantId)
+        .getJoin({
+          jobs: true,
+          applications: {
+            job: true
+          }
+        })
         .then(applicant => {
           delete applicant.password;
           reply(applicant);

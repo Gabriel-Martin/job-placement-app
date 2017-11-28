@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import api from "../../api/applicationCrud";
+// import api from "../../api/applicantCrud";
 
 import applicant from "../../api/applicantCrud";
 
@@ -8,20 +8,22 @@ class ApplicantProfile extends Component {
     super();
 
     this.state = {
-      application: []
+      applications: [],
+      jobs: []
     };
   }
 
   componentDidMount() {
-    applicant.getById().then(applicant => {
-      this.setState(state => ({
-        ...applicant
-      }));
+    applicant.getCurrent().then(applicant => {
+      this.setState(state => {
+        return {
+          ...applicant
+        };
+      });
     });
   }
 
   render() {
-    console.log(this.state.application);
     console.log(this.state);
     return (
       <div>
@@ -37,6 +39,9 @@ class ApplicantProfile extends Component {
             }}
           >
             <h3>Interested</h3>
+            <div>
+              {this.state.jobs.map(j => <div key={j.id}>{j.position}</div>)}
+            </div>
           </div>
           <div
             style={{
@@ -49,7 +54,9 @@ class ApplicantProfile extends Component {
           >
             <h3>Applied</h3>
             <div>
-              {this.state.application.map(app => <div>{app.city}</div>)}
+              {this.state.applications.map(app => (
+                <div key={app.id}>{app.job.position}</div>
+              ))}
             </div>
           </div>
           <div

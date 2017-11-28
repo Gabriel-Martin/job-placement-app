@@ -54,7 +54,8 @@ class JobDescriptionPage extends Component {
         </p>
         <button onClick={() => this.interested(jobId)}>Interested?</button>
         <button
-          onClick={() => this.props.history.push("/applicant/applicationform")}
+          onClick={() =>
+            this.props.history.push(`/applicant/applicationform/${jobId}`)}
         >
           Apply!
         </button>
