@@ -1,7 +1,27 @@
 import React, { Component } from "react";
+import api from "../../api/applicationCrud";
 
 class ApplicantProfile extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      application: []
+    };
+  }
+
+  componentDidMount() {
+    api.getAll().then(data => {
+      this.setState(state => {
+        return {
+          application: data
+        };
+      });
+    });
+  }
+
   render() {
+    console.log(this.state.application);
     return (
       <div>
         <h1>Applicant Profile</h1>
@@ -27,6 +47,9 @@ class ApplicantProfile extends Component {
             }}
           >
             <h3>Applied</h3>
+            <div>
+              {this.state.application.map(app => <div>{app.city}</div>)}
+            </div>
           </div>
           <div
             style={{

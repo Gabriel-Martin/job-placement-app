@@ -74,5 +74,3 @@ class CompanyProfileSettings extends Component {
 }
 
 export default CompanyProfileSettings;
-
-// not working yet

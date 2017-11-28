@@ -5,14 +5,17 @@ module.exports = {
     handler: function(request, reply) {
       let app = this.models.Application(request.payload);
 
-      let userId = request.auth.credentials.id;
+      let applicantId = request.auth.credentials.id;
 
       app.applicantId = applicantId;
 
       app
         .save()
         .then(result => reply(result))
-        .catch(error => reply(error));
+        .catch(error => {
+          console.log(error);
+          reply(error);
+        });
     }
   }
 };
