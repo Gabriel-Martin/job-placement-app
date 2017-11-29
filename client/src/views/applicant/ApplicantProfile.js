@@ -28,7 +28,6 @@ class ApplicantProfile extends Component {
 
   render() {
     let { applicant, userType } = this.state;
-    console.log(this.state);
     let applied = [];
     let processing = [];
     let status = [];
@@ -39,7 +38,6 @@ class ApplicantProfile extends Component {
       applied = applicant.applications.filter(
         app => app.applicationStatus === "applied"
       );
-      console.log(applied);
     }
 
     if (applicant.applications) {
@@ -79,17 +77,21 @@ class ApplicantProfile extends Component {
           </Card>
           <Card>
             <Head3>Applied</Head3>
-            {applied.map(j => <MiniCard key={j.id}>{j.job.position}</MiniCard>)}
+            {applied.map(j => (
+              <MiniCard key={j.id}>{j.job && j.job.position}</MiniCard>
+            ))}
           </Card>
           <Card>
             <Head3>Processing</Head3>
             {processing.map(j => (
-              <MiniCard key={j.id}>{j.job.position}</MiniCard>
+              <MiniCard key={j.id}>{j.job && j.job.position}</MiniCard>
             ))}
           </Card>
           <Card>
             <Head3>Status</Head3>
-            {status.map(j => <MiniCard key={j.id}>{j.job.position}</MiniCard>)}
+            {status.map(j => (
+              <MiniCard key={j.id}>{j.job && j.job.position}</MiniCard>
+            ))}
           </Card>
         </AllCards>
       </Container>

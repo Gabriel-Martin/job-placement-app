@@ -27,7 +27,6 @@ class CompanyApplication extends Component {
   }
 
   render() {
-    console.log(this.state.applications);
     let { applications, userType } = this.state;
     return (
       <Containter>
