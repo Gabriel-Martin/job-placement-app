@@ -54,7 +54,7 @@ class ApplicationForm extends Component {
   onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
 
-    apiApplication.create(this.state).then(data => {
+    apiApplication.create(this.state.application).then(data => {
       this.props.history.push("/applicant/profile");
     });
   };

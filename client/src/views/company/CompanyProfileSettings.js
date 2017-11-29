@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import apiCompany from "../../api/companyCrud";
-
+import { Form, Input } from "semantic-ui-react";
+import styled from "styled-components";
 import NavBar from "../../components/NavBar";
 
 class CompanyProfileSettings extends Component {
@@ -15,18 +16,6 @@ class CompanyProfileSettings extends Component {
         industry: ""
       }
     };
-  }
-
-  componentDidMount() {
-    apiCompany.getCurrentCompany().then(company => {
-      this.setState(state => ({
-        ...state,
-        userType: localStorage.getItem("userType"),
-        company: {
-          ...company
-        }
-      }));
-    });
   }
 
   onInputChange = changeEvent => {
@@ -52,40 +41,65 @@ class CompanyProfileSettings extends Component {
     });
   };
 
+  componentDidMount() {
+    apiCompany.getCurrentCompany().then(company => {
+      console.log("data", company);
+      this.setState(state => ({
+        userType: localStorage.getItem("userType"),
+        company: company
+      }));
+    });
+  }
+
   render() {
     let { userType, company } = this.state;
-    console.log(company);
+    console.log(this.state);
+
     return (
-      <div>
+      <Container>
         <NavBar userType={userType} />
-        <h1>Company Profile Settings</h1>
-        <form onSubmit={this.onFormSubmit}>
-          <input
-            type="text"
-            name={"logo"}
-            placeholder={"Logo"}
-            value={company.logo}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"description"}
-            placeholder={"Description"}
-            value={company.description}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"industry"}
-            placeholder={"Industry"}
-            value={company.industry}
-            onChange={this.onInputChange}
-          />
-          <input type="submit" />
-        </form>
-      </div>
+        <Body>
+          <h1>Company Profile Settings</h1>
+          <Form onSubmit={this.onFormSubmit}>
+            <Form.Input
+              type="text"
+              name={"logo"}
+              placeholder={"Logo"}
+              value={company.logo}
+              onChange={this.onInputChange}
+            />
+            <Form.Input
+              type="text"
+              name={"description"}
+              placeholder={"Description"}
+              value={company.description}
+              onChange={this.onInputChange}
+            />
+            <Form.Input
+              type="text"
+              name={"industry"}
+              placeholder={"Industry"}
+              value={company.industry}
+              onChange={this.onInputChange}
+            />
+            <Form.Input type="submit" />
+          </Form>
+        </Body>
+      </Container>
     );
   }
 }
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
+
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 export default CompanyProfileSettings;

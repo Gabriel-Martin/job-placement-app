@@ -18,7 +18,8 @@ class CompanyDashboard extends Component {
     let { jobId } = this.props.match.params;
     apiJobs.getById(jobId).then(job => {
       this.setState(state => ({
-        ...job
+        ...job,
+        userType: localStorage.getItem("userType")
       }));
     });
   };
@@ -69,11 +70,16 @@ class CompanyDashboard extends Component {
   };
 
   render() {
-    let { position = "", description = "", applications = [] } = this.state;
+    let {
+      userType,
+      position = "",
+      description = "",
+      applications = []
+    } = this.state;
 
     return (
       <div>
-        <NavBar />
+        <NavBar userType={userType} />
         <h1>Company Dashboard</h1>
         <h3>Position: {position} </h3>
         <p>Description: {description} </p>
