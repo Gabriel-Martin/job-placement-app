@@ -36,7 +36,7 @@ class ApplicantProfileSettings extends Component {
 
     apiApplicant
       .update(this.state.applicant.id, this.state.applicant)
-      .then(data => console.log(data));
+      .then(data => this.props.history.push("/applicant/profile"));
   };
 
   componentDidMount() {
@@ -58,7 +58,7 @@ class ApplicantProfileSettings extends Component {
     return (
       <div>
         <NavBar userType={userType} />
-        <h1>ApplicantProfileSettings</h1>
+        <h1>Applicant Profile Settings</h1>
         <form onSubmit={this.onFormSubmit}>
           <input
             type="text"

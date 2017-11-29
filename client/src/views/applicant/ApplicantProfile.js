@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import styled from "styled-components";
 import apiApplicant from "../../api/applicantCrud";
-
+import apiJob from "../../api/jobCrud";
 import NavBar from "../../components/NavBar";
 
 class ApplicantProfile extends Component {
@@ -10,9 +10,7 @@ class ApplicantProfile extends Component {
     super();
 
     this.state = {
-      applications: [],
-      userType: "",
-      jobs: []
+      applicant: {}
     };
   }
 
@@ -20,38 +18,57 @@ class ApplicantProfile extends Component {
     apiApplicant.getCurrent().then(applicant => {
       this.setState(state => {
         return {
-          ...applicant,
-          userType: localStorage.getItem("userType")
+          userType: localStorage.getItem("userType"),
+          applicant: applicant
         };
       });
     });
   }
 
   render() {
-    let { id, applications, userType } = this.state;
+    let { applicant, userType } = this.state;
     console.log(this.state);
 
     // filtering all applications and assigning
     // to array based on 'status' property
-    let applied = applications.filter(
-      app => app.applicationStatus === "applied"
-    );
+    if (applicant.applications) {
+      let applied = applicant.applications.filter(
+        app => app.applicationStatus === "applied"
+      );
+    }
 
-    let processing = applications.filter(
-      app => app.applicationStatus === "pending"
-    );
+    if (applicant.applications) {
+      let processing = applicant.applications.filter(
+        app => app.applicationStatus === "pending"
+      );
+    }
 
-    let status = applications.filter(
-      app =>
-        app.applicationStatus === "hired" ||
-        app.applicationStatus === "declined"
-    );
+    if (applicant.applications) {
+      let status = applicant.applications.filter(
+        app =>
+          app.applicationStatus === "hired" ||
+          app.applicationStatus === "declined"
+      );
+    }
 
     return (
-      <div>
+      <Container>
         <NavBar userType={userType} />
-        <Link to={`/applicant/profile/settings/${id}`}>Applicant Settings</Link>
+        <Link to={`/applicant/profile/settings/${applicant.id}`}>
+          Applicant Settings
+        </Link>
         <h1>Applicant Profile</h1>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center"
+          }}
+        >
+          <h1 style={{ fontSize: "50px" }}>{applicant.firstName}'s Profile</h1>
+          <Img src={applicant.image} />
+        </div>
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           <div
             style={{
@@ -62,9 +79,11 @@ class ApplicantProfile extends Component {
               height: "100vh"
             }}
           >
-            <h3>Interested</h3>
+            <Head3>Interested</Head3>
             <div>
-              {this.state.jobs.map(j => <div key={j.id}>{j.position}</div>)}
+              <hr />
+              {applicant.jobs &&
+                applicant.jobs.map(j => <div key={j.id}>{j.position}</div>)}
             </div>
           </div>
           <div
@@ -76,12 +95,13 @@ class ApplicantProfile extends Component {
               height: "100vh"
             }}
           >
-            <h3>Applied</h3>
-            {applied.map(app => (
-              <div>
-                <h4> {app.job.position} </h4>
-              </div>
-            ))}
+            <Head3>Applied</Head3>
+            <div>
+              {applicant.applications &&
+                applicant.applications.map(app => (
+                  <div key={app.id}>{app.job.position}</div>
+                ))}
+            </div>
           </div>
           <div
             style={{
@@ -92,12 +112,7 @@ class ApplicantProfile extends Component {
               height: "100vh"
             }}
           >
-            <h3>Processing</h3>
-            {processing.map(app => (
-              <div>
-                <h4> {app.job.position} </h4>
-              </div>
-            ))}
+            <Head3>Processing</Head3>
           </div>
           <div
             style={{
@@ -108,18 +123,24 @@ class ApplicantProfile extends Component {
               height: "100vh"
             }}
           >
-            <h3>Status</h3>
-            {status.map(app => (
-              <div>
-                <h4> {app.job.position} </h4>
-                <p> Status: {app.applicationStatus} </p>
-              </div>
-            ))}
+            <Head3>Status</Head3>
           </div>
         </div>
-      </div>
+      </Container>
     );
   }
 }
+const Img = styled.img`
+  border-radius: 50%;
+  height: 75px;
+`;
 
+const Container = styled.div`
+  background-color: #ececec;
+`;
+
+const Head3 = styled.h3`
+  text-align: center;
+  font-size: 30px;
+`;
 export default ApplicantProfile;
