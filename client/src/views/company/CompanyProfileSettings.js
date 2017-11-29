@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import api from "../../api/companyCrud";
+import apiCompany from "../../api/companyCrud";
+
+import NavBar from "../../components/NavBar";
 
 class CompanyProfileSettings extends Component {
   constructor() {
@@ -13,7 +15,7 @@ class CompanyProfileSettings extends Component {
   }
 
   componentDidMount() {
-    api.getCurrentCompany().then(company => {
+    apiCompany.getCurrentCompany().then(company => {
       this.setState(state => ({
         ...company
       }));
@@ -35,7 +37,7 @@ class CompanyProfileSettings extends Component {
     submitEvent.preventDefault();
 
     let companyId = this.props.match.params.companyId;
-    api.update(companyId, this.state).then(() => {
+    apiCompany.update(companyId, this.state).then(() => {
       this.props.history.push("/company/profile");
     });
   };
@@ -43,6 +45,7 @@ class CompanyProfileSettings extends Component {
   render() {
     return (
       <div>
+        <NavBar />
         <h1>Company Profile Settings</h1>
         <form onSubmit={this.onFormSubmit}>
           <input

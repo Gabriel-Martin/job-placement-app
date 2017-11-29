@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
-import jobs from "../../api/jobCrud";
+import apiJobs from "../../api/jobCrud";
+
+import NavBar from "../../components/NavBar";
 
 class CompanyDashboard extends Component {
   constructor() {
@@ -11,7 +13,7 @@ class CompanyDashboard extends Component {
 
   componentDidMount() {
     let { jobId } = this.props.match.params;
-    jobs.getById(jobId).then(job => {
+    apiJobs.getById(jobId).then(job => {
       this.setState(state => ({
         ...job
       }));
@@ -20,10 +22,10 @@ class CompanyDashboard extends Component {
 
   render() {
     let { position = "", description = "", application = [] } = this.state;
-    console.log(this.state);
 
     return (
       <div>
+        <NavBar />
         <h1>Company Dashboard</h1>
         <h3>Position: {position} </h3>
         <p>Description: {description} </p>

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import apiApplicant from "../../api/applicantCrud";
 
+import NavBar from "../../components/NavBar";
+
 class ApplicantProfileSettings extends Component {
   constructor() {
     super();
@@ -37,7 +39,7 @@ class ApplicantProfileSettings extends Component {
   };
 
   componentDidMount() {
-    apiApplicant.getById().then(data => {
+    apiApplicant.getCurrent().then(data => {
       this.setState(state => {
         return {
           applicant: {
@@ -53,6 +55,7 @@ class ApplicantProfileSettings extends Component {
 
     return (
       <div>
+        <NavBar />
         <h1>ApplicantProfileSettings</h1>
         <form onSubmit={this.onFormSubmit}>
           <input

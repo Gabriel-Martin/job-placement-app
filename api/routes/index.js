@@ -2,5 +2,6 @@ module.exports = [
   ...require("./applicant"),
   ...require("./application"),
   ...require("./job"),
-  ...require("./company")
+  ...require("./company"),
+  require("./checkUserType")
 ];

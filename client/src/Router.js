@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import NavBar from "./components/NavBar";
 import AuthenticatedRoute from "./containers/AuthenticatedRoute";
 
 import Homepage from "./views/Homepage";
@@ -22,7 +21,6 @@ class Router extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Route path={"/"} component={NavBar} />
           <Switch>
             <Route exact path={"/"} component={Homepage} />
             <Route exact path={"/login"} component={Login} />
@@ -35,7 +33,7 @@ class Router extends Component {
             />
             <AuthenticatedRoute
               exact
-              path={"/applicant/profile/settings"}
+              path={"/applicant/profile/settings/:applicantId"}
               component={ApplicantProfileSettings}
             />
             <AuthenticatedRoute

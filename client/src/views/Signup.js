@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import apiCompany from "../api/companyCrud";
 import apiApplicant from "../api/applicantCrud";
 
+import NavBar from "../components/NavBar";
+
 class Signup extends Component {
   constructor() {
     super();
@@ -101,66 +103,74 @@ class Signup extends Component {
   render() {
     let signup = this.state.signup;
     return (
-      <div style={styles.PageStyle}>
-        {signup ? (
-          <div>
-            <h3>Applicant Signup</h3>
-            <button onClick={() => this.showSignup()}>Company Signup</button>
-            <form style={styles.AppForm} onSubmit={this.onFormSubmitApplicant}>
-              <input
-                type="text"
-                name={"firstName"}
-                placeholder={"First Name"}
-                onChange={this.onInputChangeApplicant}
-              />
-              <input
-                type="text"
-                name={"lastName"}
-                placeholder={"Last Name"}
-                onChange={this.onInputChangeApplicant}
-              />
-              <input
-                type="text"
-                name={"email"}
-                placeholder={"Email"}
-                onChange={this.onInputChangeApplicant}
-              />
-              <input
-                type="text"
-                name={"password"}
-                placeholder={"Password"}
-                onChange={this.onInputChangeApplicant}
-              />
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        ) : (
-          <div>
-            <h3>Company Signup</h3>
-            <button onClick={() => this.showSignup()}>Applicant Signup</button>
-            <form style={styles.CompForm} onSubmit={this.onFormSubmitCompany}>
-              <input
-                type="text"
-                name={"companyName"}
-                placeholder={"Company Name"}
-                onChange={this.onInputChangeCompany}
-              />
-              <input
-                type="text"
-                name={"email"}
-                placeholder={"Email"}
-                onChange={this.onInputChangeCompany}
-              />
-              <input
-                type="text"
-                name={"password"}
-                placeholder={"Password"}
-                onChange={this.onInputChangeCompany}
-              />
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        )}
+      <div>
+        <NavBar />
+        <div style={styles.PageStyle}>
+          {signup ? (
+            <div>
+              <h3>Applicant Signup</h3>
+              <button onClick={() => this.showSignup()}>Company Signup</button>
+              <form
+                style={styles.AppForm}
+                onSubmit={this.onFormSubmitApplicant}
+              >
+                <input
+                  type="text"
+                  name={"firstName"}
+                  placeholder={"First Name"}
+                  onChange={this.onInputChangeApplicant}
+                />
+                <input
+                  type="text"
+                  name={"lastName"}
+                  placeholder={"Last Name"}
+                  onChange={this.onInputChangeApplicant}
+                />
+                <input
+                  type="text"
+                  name={"email"}
+                  placeholder={"Email"}
+                  onChange={this.onInputChangeApplicant}
+                />
+                <input
+                  type="text"
+                  name={"password"}
+                  placeholder={"Password"}
+                  onChange={this.onInputChangeApplicant}
+                />
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          ) : (
+            <div>
+              <h3>Company Signup</h3>
+              <button onClick={() => this.showSignup()}>
+                Applicant Signup
+              </button>
+              <form style={styles.CompForm} onSubmit={this.onFormSubmitCompany}>
+                <input
+                  type="text"
+                  name={"companyName"}
+                  placeholder={"Company Name"}
+                  onChange={this.onInputChangeCompany}
+                />
+                <input
+                  type="text"
+                  name={"email"}
+                  placeholder={"Email"}
+                  onChange={this.onInputChangeCompany}
+                />
+                <input
+                  type="text"
+                  name={"password"}
+                  placeholder={"Password"}
+                  onChange={this.onInputChangeCompany}
+                />
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
