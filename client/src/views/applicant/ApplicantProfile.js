@@ -59,10 +59,11 @@ class ApplicantProfile extends Component {
     return (
       <Container>
         <NavBar userType={userType} />
-        <SLink to={`/applicant/profile/settings/${applicant.id}`}>
-          Applicant Settings
-        </SLink>
-
+        <div>
+          <SLink to={`/applicant/profile/settings/${applicant.id}`}>
+            Applicant Settings
+          </SLink>
+        </div>
         <Center>
           <Title>{applicant.firstName}'s Profile</Title>
           <Img src={applicant.image} />
@@ -96,7 +97,7 @@ class ApplicantProfile extends Component {
   }
 }
 
-const SLink = styled.div.attrs("link")`
+const SLink = styled(Link)`
   float: right;
   padding: 15px;
 `;

@@ -11,7 +11,9 @@ class CompanyProfile extends Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      company: {}
+    };
   }
 
   componentDidMount() {
@@ -24,27 +26,82 @@ class CompanyProfile extends Component {
   }
 
   render() {
+    console.log(this.state);
     let { id = "", jobs = [], userType = "" } = this.state;
 
     return (
-      <div>
+      <Container>
         <NavBar userType={userType} />
         <Link to={`/company/profile/settings/${id}`}>Company Settings</Link>
-        <h1>CompanyProfile</h1>
-        {jobs.map(job => (
-          <div
-            style={{ border: "1px solid black", margin: "5px", padding: "5px" }}
-            key={job.id}
-            onClick={() =>
-              this.props.history.push(`/company/dashboard/${job.id}`)}
-          >
-            <h3> {job.position} </h3>
-            <p> {job.description} </p>
-          </div>
-        ))}
-      </div>
+        <Center>
+          <Title>{this.state.companyName}'s Profile</Title>
+          <Img src={this.state.company.logo} />
+        </Center>
+        <Center>
+          <div>{this.state.company.description}</div>
+        </Center>
+        <Center>
+          <div>{this.state.company.industry}</div>
+        </Center>
+        <AllCards>
+          {jobs.map(job => (
+            <Card
+              key={job.id}
+              onClick={() =>
+                this.props.history.push(`/company/dashboard/${job.id}`)}
+            >
+              <h3> {job.position} </h3>
+              <p> {job.description} </p>
+            </Card>
+          ))}
+        </AllCards>
+      </Container>
     );
   }
 }
+
+const Container = styled.div`
+  background-color: #ececec;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Card = styled.div`
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+  border: 15px solid #fff;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+`;
+
+const AllCards = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  padding: 10px !important;
+`;
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 15px;
+`;
+
+const Title = styled.div`
+  font-size: 50px;
+  padding: 20px;
+`;
+
+const Img = styled.img`
+  border-radius: 50%;
+  height: 75px;
+`;
 
 export default CompanyProfile;

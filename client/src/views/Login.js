@@ -14,6 +14,7 @@ class Login extends Component {
 
     this.state = {
       login: "Applicant",
+      loginNext: "Company",
       email: "",
       password: ""
     };
@@ -36,7 +37,10 @@ class Login extends Component {
     if (login === "Company") {
       this.setState(state => {
         return {
-          login: "Applicant"
+          login: "Applicant",
+          loginNext: "Company",
+          email: "",
+          password: ""
         };
       });
     }
@@ -44,7 +48,10 @@ class Login extends Component {
     if (login === "Applicant") {
       this.setState(state => {
         return {
-          login: "Company"
+          login: "Company",
+          loginNext: "Applicant",
+          email: "",
+          password: ""
         };
       });
     }
@@ -112,7 +119,7 @@ class Login extends Component {
   };
 
   render() {
-    let { login } = this.state;
+    let { login, loginNext } = this.state;
 
     return (
       <Container>
@@ -120,7 +127,7 @@ class Login extends Component {
         <Body>
           <Head3>{login} Login</Head3>
           <div>
-            <Button onClick={() => this.changeLoginState()}>{login}</Button>
+            <Button onClick={() => this.changeLoginState()}>{loginNext}</Button>
           </div>
 
           <Form size={"huge"} onSubmit={this.onFormSubmit}>
@@ -128,12 +135,14 @@ class Login extends Component {
               type="text"
               name={"email"}
               placeholder={"Email"}
+              value={this.state.email}
               onChange={this.onInputChange}
             />
             <Form.Input
               type="text"
               name={"password"}
               placeholder={"Password"}
+              value={this.state.password}
               onChange={this.onInputChange}
             />
             <Button type="submit">Submit</Button>
@@ -163,8 +172,6 @@ const Button = styled.button`
   color: #f9eed6;
 `;
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 export default Login;
