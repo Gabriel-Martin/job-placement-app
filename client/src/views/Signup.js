@@ -105,6 +105,7 @@ class Signup extends Component {
     let signup = this.state.signup;
     return (
       <Container>
+        <NavBar />
         {signup ? (
           <Body>
             <Head3>Applicant Signup</Head3>
@@ -169,9 +170,7 @@ class Signup extends Component {
   }
 }
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 const Head3 = styled.h3`
   text-align: center;

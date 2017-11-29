@@ -93,6 +93,7 @@ class Login extends Component {
 
     return (
       <Container>
+        <NavBar />
         <Body>
           <Head3>{login} Login</Head3>
           <div>
@@ -139,8 +140,6 @@ const Button = styled.button`
   color: #f9eed6;
 `;
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 export default Login;
