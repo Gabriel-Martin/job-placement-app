@@ -86,7 +86,7 @@ class Login extends Component {
       .then(() => {
         apiCheckUser.checkUser().then(data => {
           if (!data.userType) {
-            localStorage.setItem("userType", "none");
+            return localStorage.setItem("userType", "none");
           }
           localStorage.setItem("userType", data.userType);
           return this.props.history.push("/applicant/profile");
@@ -110,7 +110,7 @@ class Login extends Component {
       .then(() => {
         apiCheckUser.checkUser().then(data => {
           if (!data.userType) {
-            localStorage.setItem("userType", "none");
+            return localStorage.setItem("userType", "none");
           }
           localStorage.setItem("userType", data.userType);
           return this.props.history.push("/company/profile");

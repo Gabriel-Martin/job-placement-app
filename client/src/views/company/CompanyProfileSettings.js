@@ -13,7 +13,8 @@ class CompanyProfileSettings extends Component {
       company: {
         logo: "",
         description: "",
-        industry: ""
+        industry: "",
+        email: ""
       }
     };
   }
@@ -61,6 +62,13 @@ class CompanyProfileSettings extends Component {
           <Form onSubmit={this.onFormSubmit}>
             <Form.Input
               type="text"
+              name={"email"}
+              placeholder={"email"}
+              value={company.email}
+              onChange={this.onInputChange}
+            />
+            <Form.Input
+              type="text"
               name={"logo"}
               placeholder={"Logo"}
               value={company.logo}
@@ -96,8 +104,6 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 export default CompanyProfileSettings;
