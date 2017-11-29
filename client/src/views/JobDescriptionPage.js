@@ -18,7 +18,7 @@ class JobDescriptionPage extends Component {
     apiJobs.getById(jobId).then(job => {
       this.setState(state => ({
         userType: localStorage.getItem("userType"),
-        ...job
+        job: job
       }));
     });
   }
@@ -32,14 +32,9 @@ class JobDescriptionPage extends Component {
   render() {
     let { jobId } = this.props.match.params;
 
-    let {
-      company = {},
-      description = "",
-      position = "",
-      payRate = "",
-      experience = "",
-      userType = ""
-    } = this.state;
+    let { job = {}, userType = "" } = this.state;
+
+    console.log(this.state);
 
     return (
       <Container>
@@ -47,16 +42,17 @@ class JobDescriptionPage extends Component {
         >
         <Title>Job Description</Title>
         <Card>
-          <h3>Company: {company.companyName} </h3>
-          <h4>Position: {position} </h4>
+          <h3>Company: {job.company && job.company.companyName} </h3>
+
+          <h4>Position: {job.position} </h4>
           <p>
-            <b>Description:</b> {description}
+            <b>Description:</b> {job.description}
           </p>
           <p>
-            <b>Payrate:</b> ${payRate}
+            <b>Payrate:</b> ${job.payRate}
           </p>
           <p>
-            <b>Experience:</b> {experience}
+            <b>Experience:</b> {job.experience}
           </p>
           {userType === "applicant" && (
             <Column>
