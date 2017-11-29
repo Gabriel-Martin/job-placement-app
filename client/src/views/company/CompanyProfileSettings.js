@@ -36,14 +36,13 @@ class CompanyProfileSettings extends Component {
     submitEvent.preventDefault();
 
     let companyId = this.props.match.params.companyId;
-    apiCompany.update(companyId, this.state).then(() => {
+    apiCompany.update(companyId, this.state.company).then(() => {
       this.props.history.push("/company/profile");
     });
   };
 
   componentDidMount() {
     apiCompany.getCurrentCompany().then(company => {
-      console.log("data", company);
       this.setState(state => ({
         userType: localStorage.getItem("userType"),
         company: company

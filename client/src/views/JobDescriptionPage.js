@@ -17,6 +17,7 @@ class JobDescriptionPage extends Component {
     let { jobId } = this.props.match.params;
     apiJobs.getById(jobId).then(job => {
       this.setState(state => ({
+        userType: localStorage.getItem("userType"),
         ...job
       }));
     });
@@ -36,12 +37,13 @@ class JobDescriptionPage extends Component {
       description = "",
       position = "",
       payRate = "",
-      experience = ""
+      experience = "",
+      userType = ""
     } = this.state;
 
     return (
       <Container>
-        <NavBar />
+        <NavBar userType={userType} />
         >
         <Title>Job Description</Title>
         <Card>
@@ -56,17 +58,21 @@ class JobDescriptionPage extends Component {
           <p>
             <b>Experience:</b> {experience}
           </p>
-          <Column>
-            <Button onClick={() => this.interested(jobId)}>Interested?</Button>
+          {userType === "applicant" && (
+            <Column>
+              <Button onClick={() => this.interested(jobId)}>
+                Interested?
+              </Button>
 
-            <Button
-              onClick={() =>
-                this.props.history.push(`/applicant/applicationform/${jobId}`)
-              }
-            >
-              Apply!
-            </Button>
-          </Column>
+              <Button
+                onClick={() =>
+                  this.props.history.push(`/applicant/applicationform/${jobId}`)
+                }
+              >
+                Apply!
+              </Button>
+            </Column>
+          )}
         </Card>
       </Container>
     );
