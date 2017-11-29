@@ -52,7 +52,6 @@ class CompanyProfileSettings extends Component {
 
   render() {
     let { userType, company } = this.state;
-    console.log(this.state);
 
     return (
       <Container>
