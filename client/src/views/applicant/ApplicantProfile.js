@@ -26,7 +26,22 @@ class ApplicantProfile extends Component {
   }
 
   render() {
-    let { id } = this.state;
+    let { id, applications } = this.state;
+    console.log(this.state);
+
+    let applied = applications.filter(
+      app => app.applicationStatus === "applied"
+    );
+
+    let processing = applications.filter(
+      app => app.applicationStatus === "pending"
+    );
+
+    let status = applications.filter(
+      app =>
+        app.applicationStatus === "hired" ||
+        app.applicationStatus === "declined"
+    );
 
     return (
       <div>
@@ -58,7 +73,11 @@ class ApplicantProfile extends Component {
             }}
           >
             <h3>Applied</h3>
-            <div />
+            {applied.map(app => (
+              <div>
+                <h4> {app.job.position} </h4>
+              </div>
+            ))}
           </div>
           <div
             style={{
@@ -70,6 +89,11 @@ class ApplicantProfile extends Component {
             }}
           >
             <h3>Processing</h3>
+            {processing.map(app => (
+              <div>
+                <h4> {app.job.position} </h4>
+              </div>
+            ))}
           </div>
           <div
             style={{
@@ -81,6 +105,12 @@ class ApplicantProfile extends Component {
             }}
           >
             <h3>Status</h3>
+            {status.map(app => (
+              <div>
+                <h4> {app.job.position} </h4>
+                <p> Status: {app.applicationStatus} </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
