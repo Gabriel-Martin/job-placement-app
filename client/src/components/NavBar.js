@@ -26,52 +26,16 @@ class NavBar extends Component {
         <div>
           {(userType === "none" && (
             <div>
-              <button
-                onClick={() => {
-                  this.props.history.push("/");
-                }}
-              >
-                Home
-              </button>
-              <button
-                onClick={() => {
-                  this.props.history.push("/signup");
-                }}
-              >
-                Signup
-              </button>
-              <button
-                onClick={() => {
-                  this.props.history.push("/login");
-                }}
-              >
-                Login
-              </button>
+              <SLink to={"/"}> Home </SLink>&nbsp;&nbsp;&nbsp;
+              <SLink to={"/signup"}>Signup</SLink>&nbsp;&nbsp;&nbsp;
+              <SLink to={"/login"}> Login </SLink>&nbsp;&nbsp;&nbsp;
             </div>
           )) ||
             (userType === undefined && (
               <div>
-                <button
-                  onClick={() => {
-                    this.props.history.push("/");
-                  }}
-                >
-                  Home
-                </button>
-                <button
-                  onClick={() => {
-                    this.props.history.push("/signup");
-                  }}
-                >
-                  Signup
-                </button>
-                <button
-                  onClick={() => {
-                    this.props.history.push("/login");
-                  }}
-                >
-                  Login
-                </button>
+                <SLink to={"/"}> Home </SLink>&nbsp;&nbsp;&nbsp;
+                <SLink to={"/signup"}>Signup</SLink>&nbsp;&nbsp;&nbsp;
+                <SLink to={"/login"}> Login </SLink>&nbsp;&nbsp;&nbsp;
               </div>
             ))}
         </div>
@@ -79,35 +43,17 @@ class NavBar extends Component {
         <div>
           {userType === "company" && (
             <div>
-              <button
-                onClick={() => {
-                  this.props.history.push("/");
-                }}
-              >
-                Home
-              </button>
-              <button
-                onClick={() => {
-                  this.props.history.push("/company/profile");
-                }}
-              >
-                Profile
-              </button>
-              <button
-                onClick={() => {
-                  this.props.history.push("/job/new");
-                }}
-              >
-                Create Job
-              </button>
+              <SLink to={"/"}>Home</SLink>
+              <SLink to={"/company/profile"}>Profile</SLink>
+              <SLink to={"/job/new"}>Create Job</SLink>
 
-              <button
+              <Span
                 onClick={() => {
                   this.signout();
                 }}
               >
                 Signout
-              </button>
+              </Span>
             </div>
           )}
         </div>
@@ -115,27 +61,15 @@ class NavBar extends Component {
         <div>
           {userType === "applicant" && (
             <div>
-              <button
-                onClick={() => {
-                  this.props.history.push("/");
-                }}
-              >
-                Home
-              </button>
-              <button
-                onClick={() => {
-                  this.props.history.push("/applicant/profile");
-                }}
-              >
-                Profile
-              </button>
-              <button
+              <SLink to={"/"}>Home</SLink>
+              <SLink to={"/applicant/profile"}>Profile</SLink>
+              <Span
                 onClick={() => {
                   this.signout();
                 }}
               >
                 Signout
-              </button>
+              </Span>
             </div>
           )}
         </div>
@@ -168,7 +102,7 @@ const Span = styled.span`
   color: #fff;
 
   &:hover {
-    color: #947cb0;
+    color: #568ea3;
     text-decoration: underline;
   }
 `;
