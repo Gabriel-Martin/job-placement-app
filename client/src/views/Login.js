@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import apiCompany from "../api/companyCrud";
 import apiApplicant from "../api/applicantCrud";
 
+import NavBar from "../components/NavBar";
+
 class Login extends Component {
   constructor() {
     super();
@@ -87,28 +89,33 @@ class Login extends Component {
 
   render() {
     let { login } = this.state;
-    console.log(this.state.login);
-    return (
-      <div style={styles.PageStyle}>
-        <div>
-          <h3>{login} Login</h3>
-          <button onClick={() => this.changeLoginState()}>Switch Logins</button>
 
-          <form style={styles.AppForm} onSubmit={this.onFormSubmit}>
-            <input
-              type="text"
-              name={"email"}
-              placeholder={"Email"}
-              onChange={this.onInputChange}
-            />
-            <input
-              type="text"
-              name={"password"}
-              placeholder={"Password"}
-              onChange={this.onInputChange}
-            />
-            <button type="submit">Submit</button>
-          </form>
+    return (
+      <div>
+        <NavBar />
+        <div style={styles.PageStyle}>
+          <div>
+            <h3>{login} Login</h3>
+            <button onClick={() => this.changeLoginState()}>
+              Switch Logins
+            </button>
+
+            <form style={styles.AppForm} onSubmit={this.onFormSubmit}>
+              <input
+                type="text"
+                name={"email"}
+                placeholder={"Email"}
+                onChange={this.onInputChange}
+              />
+              <input
+                type="text"
+                name={"password"}
+                placeholder={"Password"}
+                onChange={this.onInputChange}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
     );

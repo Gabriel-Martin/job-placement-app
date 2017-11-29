@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import api from "../../api/jobCrud";
+import apiJobs from "../../api/jobCrud";
+
+import NavBar from "../../components/NavBar";
 
 class CreateJob extends Component {
   constructor() {
@@ -10,7 +12,7 @@ class CreateJob extends Component {
 
   formSubmit = submitE => {
     submitE.preventDefault();
-    api.create(this.state).then(() => {
+    apiJobs.create(this.state).then(() => {
       this.props.history.push("/company/profile");
     });
   };
@@ -31,6 +33,7 @@ class CreateJob extends Component {
   render() {
     return (
       <div>
+        <NavBar />
         <h1>Create Job</h1>
         <form onSubmit={this.formSubmit}>
           <input

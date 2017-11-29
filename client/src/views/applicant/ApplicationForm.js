@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import api from "../../api/applicationCrud.js";
 import styled from "styled-components";
 import { Input, Form, Button, Dropdown } from "semantic-ui-react";
+import apiApplication from "../../api/applicationCrud.js";
+
+import NavBar from "../../components/NavBar";
 
 class ApplicationForm extends Component {
   constructor(props) {
@@ -37,13 +39,12 @@ class ApplicationForm extends Component {
   onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
 
-    api.create(this.state).then(data => {
+    apiApplication.create(this.state).then(data => {
       this.props.history.push("/applicant/profile");
     });
   };
 
   render() {
-    console.log(this.state);
     return (
       <Container>
         <Padding>

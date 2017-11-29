@@ -7,6 +7,7 @@ module.exports = db => {
     lastName: db.type.string().required(),
     password: db.type.string().required(),
     email: db.type.string().required(),
+    userType: db.type.string().default("applicant"),
     image: db.type.string()
   });
 
