@@ -75,7 +75,6 @@ class Login extends Component {
     apiApplicant
       .login(loginData)
       .then(data => {
-        console.log(data);
         if (data.err) {
           return alert(data.err);
         }
@@ -172,6 +171,8 @@ const Button = styled.button`
   color: #f9eed6;
 `;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 export default Login;

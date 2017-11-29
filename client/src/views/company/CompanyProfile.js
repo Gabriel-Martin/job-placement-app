@@ -26,7 +26,6 @@ class CompanyProfile extends Component {
   }
 
   render() {
-    console.log(this.state);
     let { id = "", jobs = [], userType = "" } = this.state;
 
     return (
@@ -48,7 +47,8 @@ class CompanyProfile extends Component {
             <Card
               key={job.id}
               onClick={() =>
-                this.props.history.push(`/company/dashboard/${job.id}`)}
+                this.props.history.push(`/company/dashboard/${job.id}`)
+              }
             >
               <h3> {job.position} </h3>
               <p> {job.description} </p>
