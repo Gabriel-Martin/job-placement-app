@@ -8,6 +8,7 @@
     "hapi": "16",
     "hapi-auth-jwt2": "^7.3.0",
     "jsonwebtoken": "^8.1.0",
+    "nodemailer": "^4.4.0",
     "thinky": "^2.3.9"
   },
   "devDependencies": {

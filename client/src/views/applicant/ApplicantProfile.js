@@ -29,23 +29,27 @@ class ApplicantProfile extends Component {
   render() {
     let { applicant, userType } = this.state;
     console.log(this.state);
+    let applied = [];
+    let processing = [];
+    let status = [];
 
     // filtering all applications and assigning
     // to array based on 'status' property
     if (applicant.applications) {
-      let applied = applicant.applications.filter(
+      applied = applicant.applications.filter(
         app => app.applicationStatus === "applied"
       );
+      console.log(applied);
     }
 
     if (applicant.applications) {
-      let processing = applicant.applications.filter(
+      processing = applicant.applications.filter(
         app => app.applicationStatus === "pending"
       );
     }
 
     if (applicant.applications) {
-      let status = applicant.applications.filter(
+      status = applicant.applications.filter(
         app =>
           app.applicationStatus === "hired" ||
           app.applicationStatus === "declined"
@@ -68,23 +72,24 @@ class ApplicantProfile extends Component {
           <Card>
             <Head3>Interested</Head3>
 
-            <MiniCard>
-              {applicant.jobs &&
-                applicant.jobs.map(j => <div key={j.id}>{j.position}</div>)}
-            </MiniCard>
+            {applicant.jobs &&
+              applicant.jobs.map(j => (
+                <MiniCard key={j.id}>{j.position}</MiniCard>
+              ))}
           </Card>
           <Card>
             <Head3>Applied</Head3>
-            <MiniCard>
-              {applicant.jobs &&
-                applicant.jobs.map(j => <div key={j.id}>{j.position}</div>)}
-            </MiniCard>
+            {applied.map(j => <MiniCard key={j.id}>{j.job.position}</MiniCard>)}
           </Card>
           <Card>
             <Head3>Processing</Head3>
+            {processing.map(j => (
+              <MiniCard key={j.id}>{j.job.position}</MiniCard>
+            ))}
           </Card>
           <Card>
             <Head3>Status</Head3>
+            {status.map(j => <MiniCard key={j.id}>{j.job.position}</MiniCard>)}
           </Card>
         </AllCards>
       </Container>
@@ -114,7 +119,9 @@ const Img = styled.img`
   height: 75px;
 `;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 const MiniCard = styled.div`
   border: 1px solid #fff;
