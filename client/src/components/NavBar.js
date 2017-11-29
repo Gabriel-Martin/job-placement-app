@@ -17,7 +17,7 @@ class NavBar extends Component {
     this.props.history.push("/");
   };
 
-  componentWillMount() {
+  componentDidMount() {
     apiCheckUser.checkUser().then(data => {
       if (data.userType === "company") {
         localStorage.setItem("userType", data.userType);
@@ -31,19 +31,20 @@ class NavBar extends Component {
     });
   }
 
-  componentWillReceiveProps(props) {
-    apiCheckUser.checkUser().then(data => {
-      if (data.userType === "company") {
-        localStorage.setItem("userType", data.userType);
-      }
-      if (data.userType === "applicant") {
-        localStorage.setItem("userType", data.userType);
-      }
-      if (!data.userType) {
-        localStorage.setItem("userType", "none");
-      }
-    });
-  }
+  // componentWillReceiveProps(props) {
+  //   console.log(props, "navbar");
+  //   apiCheckUser.checkUser().then(data => {
+  //     if (data.userType === "company") {
+  //       localStorage.setItem("userType", data.userType);
+  //     }
+  //     if (data.userType === "applicant") {
+  //       localStorage.setItem("userType", data.userType);
+  //     }
+  //     if (!data.userType) {
+  //       localStorage.setItem("userType", "none");
+  //     }
+  //   });
+  // }
 
   render() {
     let userType = localStorage.getItem("userType");
