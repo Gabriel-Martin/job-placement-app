@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 class NavBar extends Component {
@@ -24,5 +25,25 @@ class NavBar extends Component {
     );
   }
 }
+
+// style for the nav-bar
+// not implemented yet because Caleb is still working on navbar
+
+// const SLink = styled(Link)`
+//   text-decoration: none;
+//   padding: 10px;
+//   font-size: 18px;
+//   color: #fff;
+
+//   &:hover {
+//     color: #568ea3;
+//     text-decoration: underline;
+//   }
+// `;
+
+// const Container = styled.div`
+//   background-color: black;
+//   padding: 15px;
+// `;
 
 export default NavBar;

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import api from "../../api/applicationCrud.js";
+import styled from "styled-components";
+import { Input, Form, Button, Dropdown } from "semantic-ui-react";
 
 class ApplicationForm extends Component {
   constructor(props) {
@@ -43,80 +45,102 @@ class ApplicationForm extends Component {
   render() {
     console.log(this.state);
     return (
-      <div>
-        <h1>ApplicationForm</h1>
-        <form onSubmit={this.onFormSubmit}>
-          <input
-            type="text"
-            name={"firstName"}
-            placeholder={"First Name"}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"lastName"}
-            placeholder={"Last Name"}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"address"}
-            placeholder={"Address"}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"city"}
-            placeholder={"City"}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"state"}
-            placeholder={"state"}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"zip"}
-            placeholder={"zip"}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"phone"}
-            placeholder={"phone"}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"email"}
-            placeholder={"email"}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"date"}
-            placeholder={"date"}
-            onChange={this.onInputChange}
-          />
-          <input
-            type="text"
-            name={"education"}
-            placeholder={"education"}
-            value={this.state.education}
-            options={[
-              { text: "highschool", value: "highschool" },
-              { text: "GED", value: "GED" },
-              { text: "college", value: "college" }
-            ]}
-            onChange={this.onInputChange}
-          />
-          <input type="submit" />
-        </form>
-      </div>
+      <Container>
+        <Padding>
+          <h1>ApplicationForm</h1>
+          <Form onSubmit={this.onFormSubmit}>
+            <InputWidth>
+              <Form.Input
+                type="text"
+                name={"firstName"}
+                placeholder={"First Name"}
+                onChange={this.onInputChange}
+              />
+              <Form.Input
+                type="text"
+                name={"lastName"}
+                placeholder={"Last Name"}
+                onChange={this.onInputChange}
+              />
+              <Form.Input
+                type="text"
+                name={"address"}
+                placeholder={"Address"}
+                onChange={this.onInputChange}
+              />
+              <Form.Input
+                type="text"
+                name={"city"}
+                placeholder={"City"}
+                onChange={this.onInputChange}
+              />
+              <Form.Input
+                type="text"
+                name={"state"}
+                placeholder={"state"}
+                onChange={this.onInputChange}
+              />
+              <Form.Input
+                type="text"
+                name={"zip"}
+                placeholder={"zip"}
+                onChange={this.onInputChange}
+              />
+              <Form.Input
+                type="text"
+                name={"phone"}
+                placeholder={"phone"}
+                onChange={this.onInputChange}
+              />
+              <Form.Input
+                type="text"
+                name={"email"}
+                placeholder={"email"}
+                onChange={this.onInputChange}
+              />
+              <Form.Input
+                type="text"
+                name={"date"}
+                placeholder={"date"}
+                onChange={this.onInputChange}
+              />
+              <Input
+                type="text"
+                name={"education"}
+                placeholder={"education"}
+                value={this.state.education}
+                onChange={this.onInputChange}
+                label={
+                  <Dropdown
+                    defaultValue=""
+                    labelPosition="right"
+                    options={[
+                      { text: "highschool", value: "highschool" },
+                      { text: "GED", value: "GED" },
+                      { text: "college", value: "college" }
+                    ]}
+                  />
+                }
+              />
+              <Padding>
+                <Button color={"instagram"} type="submit">
+                  Submit
+                </Button>
+              </Padding>
+            </InputWidth>
+          </Form>
+        </Padding>
+      </Container>
     );
   }
 }
+const Container = styled.div`
+  min-height: 100vh;
+  background-color: #ececec;
+`;
+
+const Padding = styled.div`padding: 10px;`;
+
+const InputWidth = styled.div`width: 400px;`;
 
 export default ApplicationForm;

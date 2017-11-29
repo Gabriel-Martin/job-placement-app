@@ -28,30 +28,60 @@ class CompanyApplication extends Component {
     return (
       <Containter>
         <Title>Application</Title>
-        <div>
-          Name:
-          {applications.firstName} {applications.lastName}
-        </div>
-        <div>Address: {applications.address}</div>
-        <div>City: {applications.city}</div>
-        <div>State: {applications.state}</div>
-        <div>Zip: {applications.zip}</div>
-        <div>Email: {applications.email}</div>
-        <div>Phone: {applications.phone}</div>
-        <div>Education: {applications.education}</div>
+        <Card>
+          <TextStyle>
+            <div>
+              Name:
+              {applications.firstName} {applications.lastName}
+            </div>
+          </TextStyle>
+          <TextStyle>
+            <div>Address: {applications.address}</div>
+          </TextStyle>
+          <TextStyle>
+            <div>City: {applications.city}</div>
+          </TextStyle>
+          <TextStyle>
+            <div>State: {applications.state}</div>
+          </TextStyle>
+          <TextStyle>
+            <div>Zip: {applications.zip}</div>
+          </TextStyle>
+          <TextStyle>
+            <div>Email: {applications.email}</div>
+          </TextStyle>
+          <TextStyle>
+            <div>Phone: {applications.phone}</div>
+          </TextStyle>
+          <TextStyle>
+            <div>Education: {applications.education}</div>
+          </TextStyle>
+        </Card>
       </Containter>
     );
   }
 }
 
+const Card = styled.div`
+  border: 275px solid #fff;
+  margin: 10px auto;
+  border-radius: 15px;
+  background-color: #fff;
+`;
+
 const Containter = styled.div`
-  background-color: #d3d3d3;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: #ececec;
   min-height: 100vh;
 `;
 
 const Title = styled.h1`
-  font-size: 100px;
+  font-size: 60px;
   text-align: center;
 `;
+
+const TextStyle = styled.div`padding: 5px;`;
 
 export default CompanyApplication;
