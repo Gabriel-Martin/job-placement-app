@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import styled from "styled-components";
 import jobs from "../api/jobCrud";
 
 class Homepage extends Component {
@@ -24,7 +24,7 @@ class Homepage extends Component {
     console.log(jobs);
     return (
       <div>
-        <h1>Homepage</h1>
+        <Head>Homepage</Head>
         {jobs &&
           jobs.map(job => (
             <div
@@ -47,3 +47,8 @@ class Homepage extends Component {
 }
 
 export default Homepage;
+
+const Head = styled.h1`
+  text-align: center;
+  font-size: 75px;
+`;

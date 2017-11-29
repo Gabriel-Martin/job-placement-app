@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-
+import { Form, Input } from "semantic-ui-react";
 import apiCompany from "../api/companyCrud";
 import apiApplicant from "../api/applicantCrud";
+import styled from "styled-components";
 
 class Signup extends Component {
   constructor() {
@@ -101,86 +102,93 @@ class Signup extends Component {
   render() {
     let signup = this.state.signup;
     return (
-      <div style={styles.PageStyle}>
+      <Container>
         {signup ? (
-          <div>
-            <h3>Applicant Signup</h3>
-            <button onClick={() => this.showSignup()}>Company Signup</button>
-            <form style={styles.AppForm} onSubmit={this.onFormSubmitApplicant}>
-              <input
+          <Body>
+            <Head3>Applicant Signup</Head3>
+            <Button onClick={() => this.showSignup()}>Company Signup</Button>
+            <Form size={"huge"} onSubmit={this.onFormSubmitApplicant}>
+              <Form.Input
                 type="text"
                 name={"firstName"}
                 placeholder={"First Name"}
                 onChange={this.onInputChangeApplicant}
               />
-              <input
+              <Form.Input
                 type="text"
                 name={"lastName"}
                 placeholder={"Last Name"}
                 onChange={this.onInputChangeApplicant}
               />
-              <input
+              <Form.Input
                 type="text"
                 name={"email"}
                 placeholder={"Email"}
                 onChange={this.onInputChangeApplicant}
               />
-              <input
+              <Form.Input
                 type="text"
                 name={"password"}
                 placeholder={"Password"}
                 onChange={this.onInputChangeApplicant}
               />
-              <button type="submit">Submit</button>
-            </form>
-          </div>
+              <Button type="submit">Submit</Button>
+            </Form>
+          </Body>
         ) : (
-          <div>
-            <h3>Company Signup</h3>
-            <button onClick={() => this.showSignup()}>Applicant Signup</button>
-            <form style={styles.CompForm} onSubmit={this.onFormSubmitCompany}>
-              <input
+          <Body>
+            <Head3>Company Signup</Head3>
+            <Button onClick={() => this.showSignup()}>Applicant Signup</Button>
+            <Form size={"huge"} onSubmit={this.onFormSubmitCompany}>
+              <Form.Input
                 type="text"
                 name={"companyName"}
                 placeholder={"Company Name"}
                 onChange={this.onInputChangeCompany}
               />
-              <input
+              <Form.Input
                 type="text"
                 name={"email"}
                 placeholder={"Email"}
                 onChange={this.onInputChangeCompany}
               />
-              <input
+              <Form.Input
                 type="text"
                 name={"password"}
                 placeholder={"Password"}
                 onChange={this.onInputChangeCompany}
               />
-              <button type="submit">Submit</button>
-            </form>
-          </div>
+              <Button type="submit">Submit</Button>
+            </Form>
+          </Body>
         )}
-      </div>
+      </Container>
     );
   }
 }
 
-const styles = {
-  AppForm: {
-    display: "flex",
-    flexDirection: "column",
-    maxWidth: 150
-  },
-  CompForm: {
-    display: "flex",
-    flexDirection: "column",
-    maxWidth: 150
-  },
-  PageStyle: {
-    display: "flex",
-    justifyContent: "center"
-  }
-};
+const Container = styled.div`
+  background-color: #ececec;
+`;
+
+const Head3 = styled.h3`
+  text-align: center;
+  font-size: 50px;
+`;
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Button = styled.button`
+  font-size: 20px;
+  border-radius: 8px;
+  background-color: #526760;
+  color: #f9eed6;
+`;
 
 export default Signup;

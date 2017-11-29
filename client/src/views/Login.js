@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-
+import styled from "styled-components";
 import apiCompany from "../api/companyCrud";
 import apiApplicant from "../api/applicantCrud";
+import { Form, Input } from "semantic-ui-react";
 
 class Login extends Component {
   constructor() {
@@ -89,42 +90,55 @@ class Login extends Component {
     let { login } = this.state;
     console.log(this.state.login);
     return (
-      <div style={styles.PageStyle}>
-        <div>
-          <h3>{login} Login</h3>
-          <button onClick={() => this.changeLoginState()}>Switch Logins</button>
+      <Container>
+        <Body>
+          <Head3>{login} Login</Head3>
+          <div>
+            <Button onClick={() => this.changeLoginState()}>{login}</Button>
+          </div>
 
-          <form style={styles.AppForm} onSubmit={this.onFormSubmit}>
-            <input
+          <Form size={"huge"} onSubmit={this.onFormSubmit}>
+            <Form.Input
               type="text"
               name={"email"}
               placeholder={"Email"}
               onChange={this.onInputChange}
             />
-            <input
+            <Form.Input
               type="text"
               name={"password"}
               placeholder={"Password"}
               onChange={this.onInputChange}
             />
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </div>
+            <Button type="submit">Submit</Button>
+          </Form>
+        </Body>
+      </Container>
     );
   }
 }
+const Head3 = styled.h3`
+  text-align: center;
+  font-size: 50px;
+`;
 
-const styles = {
-  AppForm: {
-    display: "flex",
-    flexDirection: "column",
-    maxWidth: 150
-  },
-  PageStyle: {
-    display: "flex",
-    justifyContent: "center"
-  }
-};
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Button = styled.button`
+  font-size: 20px;
+  border-radius: 8px;
+  background-color: #526760;
+  color: #f9eed6;
+`;
+
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 export default Login;

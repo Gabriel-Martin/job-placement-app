@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import api from "../../api/applicantCrud";
-
 import applicant from "../../api/applicantCrud";
 
 class ApplicantProfile extends Component {
