@@ -58,11 +58,7 @@ class ApplicantProfile extends Component {
             }}
           >
             <h3>Applied</h3>
-            <div>
-              {this.state.applications.map(app => (
-                <div key={app.id}>{app.job.position}</div>
-              ))}
-            </div>
+            <div />
           </div>
           <div
             style={{
