@@ -43,15 +43,17 @@ class CompanyProfileSettings extends Component {
 
   componentDidMount() {
     apiCompany.getCurrentCompany().then(company => {
+      console.log("data", company);
       this.setState(state => ({
         userType: localStorage.getItem("userType"),
-        ...company
+        company: company
       }));
     });
   }
 
   render() {
     let { userType, company } = this.state;
+    console.log(this.state);
 
     return (
       <Container>
@@ -96,6 +98,8 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 export default CompanyProfileSettings;
