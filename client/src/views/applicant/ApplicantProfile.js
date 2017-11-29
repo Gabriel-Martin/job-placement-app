@@ -55,102 +55,90 @@ class ApplicantProfile extends Component {
     return (
       <Container>
         <NavBar userType={userType} />
-        <Link to={`/applicant/profile/settings/${applicant.id}`}>
+        <SLink to={`/applicant/profile/settings/${applicant.id}`}>
           Applicant Settings
-        </Link>
-        <h1>Applicant Profile</h1>
+        </SLink>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center"
-          }}
-        >
-          <h1 style={{ fontSize: "50px" }}>{applicant.firstName}'s Profile</h1>
+        <Center>
+          <Title>{applicant.firstName}'s Profile</Title>
           <Img src={applicant.image} />
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "1px solid black",
-              width: "20%",
-              height: "100vh"
-            }}
-          >
+        </Center>
+        <AllCards>
+          <Card>
             <Head3>Interested</Head3>
-            <div>
-              <hr />
+
+            <MiniCard>
               {applicant.jobs &&
                 applicant.jobs.map(j => <div key={j.id}>{j.position}</div>)}
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "1px solid black",
-              width: "20%",
-              height: "100vh"
-            }}
-          >
+            </MiniCard>
+          </Card>
+          <Card>
             <Head3>Applied</Head3>
-            <div>
-              {applicant.applications &&
-                applicant.applications.map(app => (
-                  <div key={app.id}>{app.job.position}</div>
-                ))}
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "1px solid black",
-              width: "20%",
-              height: "100vh"
-            }}
-          >
+            <MiniCard>
+              {applicant.jobs &&
+                applicant.jobs.map(j => <div key={j.id}>{j.position}</div>)}
+            </MiniCard>
+          </Card>
+          <Card>
             <Head3>Processing</Head3>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "1px solid black",
-              width: "20%",
-              height: "100vh"
-            }}
-          >
+          </Card>
+          <Card>
             <Head3>Status</Head3>
-          </div>
-        </div>
+          </Card>
+        </AllCards>
       </Container>
     );
   }
 }
+
+const SLink = styled.div.attrs("link")`
+  float: right;
+  padding: 15px;
+`;
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 15px;
+`;
+
+const Title = styled.div`
+  font-size: 50px;
+  padding: 20px;
+`;
+
 const Img = styled.img`
   border-radius: 50%;
   height: 75px;
 `;
 
-const Container = styled.div`
-  background-color: #ececec;
+const Container = styled.div`background-color: #ececec;`;
+
+const MiniCard = styled.div`
+  border: 1px solid #fff;
+  background-color: #f8f8ff;
+  border-radius: 5px;
+  padding: 15px;
 `;
 
-<<<<<<< HEAD
-// const Card = styled.div`
-//   border: 1px solid;
-//   border-radius: 5px;
-//   padding: 15px;
-// `;
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+  border: 15px solid #bdc3c7;
+  border-radius: 15px;
+  background-color: #bdc3c7;
+`;
 
-=======
+const AllCards = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
 const Head3 = styled.h3`
   text-align: center;
   font-size: 30px;
 `;
->>>>>>> c0e42a585302366ce36daec0a7faf564789fca21
 export default ApplicantProfile;
