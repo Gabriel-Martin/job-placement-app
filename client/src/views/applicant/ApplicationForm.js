@@ -51,62 +51,67 @@ class ApplicationForm extends Component {
           <input
             type="text"
             name={"firstName"}
-            placeholder={"info"}
+            placeholder={"First Name"}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"lastName"}
-            placeholder={"info"}
+            placeholder={"Last Name"}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"address"}
-            placeholder={"info"}
+            placeholder={"Address"}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"city"}
-            placeholder={"info"}
+            placeholder={"City"}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"state"}
-            placeholder={"info"}
+            placeholder={"state"}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"zip"}
-            placeholder={"info"}
+            placeholder={"zip"}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"phone"}
-            placeholder={"info"}
+            placeholder={"phone"}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"email"}
-            placeholder={"info"}
+            placeholder={"email"}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"date"}
-            placeholder={"info"}
+            placeholder={"date"}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"education"}
-            placeholder={"info"}
+            placeholder={"education"}
             value={this.state.education}
+            options={[
+              { text: "highschool", value: "highschool" },
+              { text: "GED", value: "GED" },
+              { text: "college", value: "college" }
+            ]}
             onChange={this.onInputChange}
           />
           <input type="submit" />

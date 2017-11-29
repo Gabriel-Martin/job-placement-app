@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import apiJobs from "../../api/jobCrud";
 
@@ -39,7 +40,17 @@ class CompanyDashboard extends Component {
               height: "100vh"
             }}
           >
-            <h3>Applications</h3>
+            <h3>All Applications</h3>
+            <div>
+              {applications.map(app => (
+                <div key={app.id}>
+                  Name:
+                  <Link to={`/company/application/${app.id}`}>
+                    {app.firstName} {app.lastName}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
           <div
             style={{

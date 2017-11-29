@@ -13,6 +13,7 @@ import ApplicationForm from "./views/applicant/ApplicationForm";
 import CompanyDashboard from "./views/company/CompanyDashboard";
 import CompanyProfile from "./views/company/CompanyProfile";
 import CompanyProfileSettings from "./views/company/CompanyProfileSettings";
+import CompanyApplication from "./views/company/CompanyApplication";
 import CreateJob from "./views/company/CreateJob";
 import EditJob from "./views/company/EditJob";
 
@@ -55,6 +56,11 @@ class Router extends Component {
               exact
               path={"/company/profile/settings/:companyId"}
               component={CompanyProfileSettings}
+            />
+            <AuthenticatedRoute
+              exact
+              path={"/company/application/:applicationId"}
+              component={CompanyApplication}
             />
             <AuthenticatedRoute exact path={"/job/new"} component={CreateJob} />
             <AuthenticatedRoute
