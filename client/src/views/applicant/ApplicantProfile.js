@@ -29,23 +29,27 @@ class ApplicantProfile extends Component {
   render() {
     let { applicant, userType } = this.state;
     console.log(this.state);
+    let applied = [];
+    let processing = [];
+    let status = [];
 
     // filtering all applications and assigning
     // to array based on 'status' property
     if (applicant.applications) {
-      let applied = applicant.applications.filter(
+      applied = applicant.applications.filter(
         app => app.applicationStatus === "applied"
       );
+      console.log(applied);
     }
 
     if (applicant.applications) {
-      let processing = applicant.applications.filter(
+      processing = applicant.applications.filter(
         app => app.applicationStatus === "pending"
       );
     }
 
     if (applicant.applications) {
-      let status = applicant.applications.filter(
+      status = applicant.applications.filter(
         app =>
           app.applicationStatus === "hired" ||
           app.applicationStatus === "declined"
@@ -55,82 +59,61 @@ class ApplicantProfile extends Component {
     return (
       <Container>
         <NavBar userType={userType} />
-        <Link to={`/applicant/profile/settings/${applicant.id}`}>
-          Applicant Settings
-        </Link>
-        <h1>Applicant Profile</h1>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center"
-          }}
-        >
-          <h1 style={{ fontSize: "50px" }}>{applicant.firstName}'s Profile</h1>
+        <div>
+          <SLink to={`/applicant/profile/settings/${applicant.id}`}>
+            Applicant Settings
+          </SLink>
+        </div>
+        <Center>
+          <Title>{applicant.firstName}'s Profile</Title>
           <Img src={applicant.image} />
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "1px solid black",
-              width: "20%",
-              height: "100vh"
-            }}
-          >
+        </Center>
+        <AllCards>
+          <Card>
             <Head3>Interested</Head3>
-            <div>
-              <hr />
-              {applicant.jobs &&
-                applicant.jobs.map(j => <div key={j.id}>{j.position}</div>)}
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "1px solid black",
-              width: "20%",
-              height: "100vh"
-            }}
-          >
+
+            {applicant.jobs &&
+              applicant.jobs.map(j => (
+                <MiniCard key={j.id}>{j.position}</MiniCard>
+              ))}
+          </Card>
+          <Card>
             <Head3>Applied</Head3>
-            <div>
-              {applicant.applications &&
-                applicant.applications.map(app => (
-                  <div key={app.id}>{app.job.position}</div>
-                ))}
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "1px solid black",
-              width: "20%",
-              height: "100vh"
-            }}
-          >
+            {applied.map(j => <MiniCard key={j.id}>{j.job.position}</MiniCard>)}
+          </Card>
+          <Card>
             <Head3>Processing</Head3>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "1px solid black",
-              width: "20%",
-              height: "100vh"
-            }}
-          >
+            {processing.map(j => (
+              <MiniCard key={j.id}>{j.job.position}</MiniCard>
+            ))}
+          </Card>
+          <Card>
             <Head3>Status</Head3>
-          </div>
-        </div>
+            {status.map(j => <MiniCard key={j.id}>{j.job.position}</MiniCard>)}
+          </Card>
+        </AllCards>
       </Container>
     );
   }
 }
+
+const SLink = styled(Link)`
+  float: right;
+  padding: 15px;
+`;
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 15px;
+`;
+
+const Title = styled.div`
+  font-size: 50px;
+  padding: 20px;
+`;
+
 const Img = styled.img`
   border-radius: 50%;
   height: 75px;
@@ -140,11 +123,27 @@ const Container = styled.div`
   background-color: #ececec;
 `;
 
-// const Card = styled.div`
-//   border: 1px solid;
-//   border-radius: 5px;
-//   padding: 15px;
-// `;
+const MiniCard = styled.div`
+  border: 1px solid #fff;
+  background-color: #f8f8ff;
+  border-radius: 5px;
+  padding: 15px;
+`;
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+  border: 15px solid #bdc3c7;
+  border-radius: 15px;
+  background-color: #bdc3c7;
+`;
+
+const AllCards = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 
 const Head3 = styled.h3`
   text-align: center;

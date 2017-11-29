@@ -11,7 +11,8 @@ let Company = require("./company")(db);
 
 // relation for "interested in" jobs on applicant side
 // displays all jobs related to applicant on applicant object
-Applicant.hasMany(Job, "jobs", "id", "applicantId");
+Applicant.hasAndBelongsToMany(Job, "jobs", "id", "id");
+Job.hasAndBelongsToMany(Applicant, "applicants", "id", "id");
 // relation for all applications of applicant
 // displays all applications related to applicant on applicant object
 Applicant.hasMany(Application, "applications", "id", "applicantId");

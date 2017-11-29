@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Input, Form, Button, Dropdown } from "semantic-ui-react";
 import apiApplication from "../../api/applicationCrud.js";
+import apiJob from "../../api/applicantCrud";
 
 import NavBar from "../../components/NavBar";
 
@@ -54,7 +55,7 @@ class ApplicationForm extends Component {
   onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
 
-    apiApplication.create(this.state).then(data => {
+    apiApplication.create(this.state.application).then(data => {
       this.props.history.push("/applicant/profile");
     });
   };
