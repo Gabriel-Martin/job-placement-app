@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import application from "../../api/applicationCrud";
+import NavBar from "../../components/NavBar";
 
 class CompanyApplication extends Component {
   constructor() {
     super();
 
     this.state = {
+      userType: "",
       applications: {}
     };
   }
@@ -16,6 +18,8 @@ class CompanyApplication extends Component {
     application.getById(appId).then(data => {
       this.setState(state => {
         return {
+          ...state,
+          userType: localStorage.getItem("userType"),
           applications: data
         };
       });
@@ -24,9 +28,10 @@ class CompanyApplication extends Component {
 
   render() {
     console.log(this.state.applications);
-    let { applications } = this.state;
+    let { applications, userType } = this.state;
     return (
       <Containter>
+        <NavBar userType={userType} />
         <Title>Application</Title>
         <Card>
           <TextStyle>
@@ -82,6 +87,8 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const TextStyle = styled.div`padding: 5px;`;
+const TextStyle = styled.div`
+  padding: 5px;
+`;
 
 export default CompanyApplication;
