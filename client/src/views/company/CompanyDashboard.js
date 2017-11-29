@@ -22,7 +22,7 @@ class CompanyDashboard extends Component {
   }
 
   render() {
-    let { position = "", description = "", application = [] } = this.state;
+    let { position = "", description = "", applications = [] } = this.state;
 
     return (
       <div>
