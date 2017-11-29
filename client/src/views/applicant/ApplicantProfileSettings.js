@@ -9,6 +9,7 @@ class ApplicantProfileSettings extends Component {
     super();
 
     this.state = {
+      userType: "",
       applicant: {
         image: "",
         firstName: "",
@@ -42,6 +43,7 @@ class ApplicantProfileSettings extends Component {
     apiApplicant.getCurrent().then(data => {
       this.setState(state => {
         return {
+          userType: localStorage.getItem("userType"),
           applicant: {
             ...this.state.applicant,
             ...data
@@ -51,11 +53,11 @@ class ApplicantProfileSettings extends Component {
     });
   }
   render() {
-    let applicant = this.state.applicant;
+    let { applicant, userType } = this.state;
 
     return (
       <div>
-        <NavBar />
+        <NavBar userType={userType} />
         <h1>ApplicantProfileSettings</h1>
         <form onSubmit={this.onFormSubmit}>
           <input

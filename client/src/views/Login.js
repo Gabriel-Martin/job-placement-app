@@ -6,6 +6,8 @@ import { Form, Input } from "semantic-ui-react";
 
 import NavBar from "../components/NavBar";
 
+import apiCheckUser from "../api/checkUserCrud.js";
+
 class Login extends Component {
   constructor() {
     super();
@@ -63,30 +65,49 @@ class Login extends Component {
   applicantLogin = () => {
     let loginData = this.state;
 
-    apiApplicant.login(loginData).then(data => {
-      console.log(data.userType);
-      if (data.err) {
-        return alert(data.err);
-      }
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        return this.props.history.push("/applicant/profile");
-      }
-    });
+    apiApplicant
+      .login(loginData)
+      .then(data => {
+        if (data.err) {
+          return alert(data.err);
+        }
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+        }
+      })
+      .then(() => {
+        apiCheckUser.checkUser().then(data => {
+          if (!data.userType) {
+            localStorage.setItem("userType", "none");
+          }
+          localStorage.setItem("userType", data.userType);
+          return this.props.history.push("/applicant/profile");
+        });
+      });
   };
 
   companyLogin = () => {
     let loginData = this.state;
 
-    apiCompany.login(loginData).then(data => {
-      if (data.err) {
-        return alert(data.err);
-      }
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        return this.props.history.push("/company/profile");
-      }
-    });
+    apiCompany
+      .login(loginData)
+      .then(data => {
+        if (data.err) {
+          return alert(data.err);
+        }
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+        }
+      })
+      .then(() => {
+        apiCheckUser.checkUser().then(data => {
+          if (!data.userType) {
+            localStorage.setItem("userType", "none");
+          }
+          localStorage.setItem("userType", data.userType);
+          return this.props.history.push("/company/profile");
+        });
+      });
   };
 
   render() {
@@ -141,6 +162,8 @@ const Button = styled.button`
   color: #f9eed6;
 `;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 export default Login;

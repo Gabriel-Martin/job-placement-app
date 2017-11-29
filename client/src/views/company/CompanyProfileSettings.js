@@ -8,16 +8,23 @@ class CompanyProfileSettings extends Component {
     super();
 
     this.state = {
-      logo: "",
-      description: "",
-      industry: ""
+      userType: "",
+      company: {
+        logo: "",
+        description: "",
+        industry: ""
+      }
     };
   }
 
   componentDidMount() {
     apiCompany.getCurrentCompany().then(company => {
       this.setState(state => ({
-        ...company
+        ...state,
+        userType: localStorage.getItem("userType"),
+        company: {
+          ...company
+        }
       }));
     });
   }
@@ -28,7 +35,10 @@ class CompanyProfileSettings extends Component {
     this.setState(state => {
       return {
         ...state,
-        [changeEvent.target.name]: changeEvent.target.value
+        company: {
+          ...state.company,
+          [changeEvent.target.name]: changeEvent.target.value
+        }
       };
     });
   };
@@ -43,30 +53,32 @@ class CompanyProfileSettings extends Component {
   };
 
   render() {
+    let { userType, company } = this.state;
+    console.log(company);
     return (
       <div>
-        <NavBar />
+        <NavBar userType={userType} />
         <h1>Company Profile Settings</h1>
         <form onSubmit={this.onFormSubmit}>
           <input
             type="text"
             name={"logo"}
             placeholder={"Logo"}
-            value={this.state.logo}
+            value={company.logo}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"description"}
             placeholder={"Description"}
-            value={this.state.description}
+            value={company.description}
             onChange={this.onInputChange}
           />
           <input
             type="text"
             name={"industry"}
             placeholder={"Industry"}
-            value={this.state.industry}
+            value={company.industry}
             onChange={this.onInputChange}
           />
           <input type="submit" />

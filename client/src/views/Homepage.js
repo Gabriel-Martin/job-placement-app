@@ -10,6 +10,7 @@ class Homepage extends Component {
     super(props);
 
     this.state = {
+      userType: "",
       jobs: []
     };
   }
@@ -17,17 +18,19 @@ class Homepage extends Component {
   componentDidMount() {
     apiJobs.getAll().then(jobs => {
       this.setState(state => ({
+        ...state,
+        userType: localStorage.getItem("userType"),
         jobs: jobs
       }));
     });
   }
 
   render() {
-    let { jobs } = this.state;
+    let { jobs, userType } = this.state;
 
     return (
       <div>
-        <NavBar />
+        <NavBar userType={userType} />
         <Head>Home page</Head>
         {jobs &&
           jobs.map(job => (

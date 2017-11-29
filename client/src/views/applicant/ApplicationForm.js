@@ -10,19 +10,31 @@ class ApplicationForm extends Component {
     super(props);
 
     this.state = {
-      firstName: "",
-      lastName: "",
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-      phone: "",
-      email: "",
-      date: "",
-      education: "highschool",
-      applicationStatus: "applied",
-      jobId: props.match.params.jobId
+      userType: "",
+      application: {
+        firstName: "",
+        lastName: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: "",
+        phone: "",
+        email: "",
+        date: "",
+        education: "highschool",
+        applicationStatus: "applied",
+        jobId: props.match.params.jobId
+      }
     };
+  }
+
+  componentDidMount() {
+    this.setState(state => {
+      return {
+        ...state,
+        userType: localStorage.getItem("userType")
+      };
+    });
   }
 
   onInputChange = changeEvent => {
@@ -31,7 +43,10 @@ class ApplicationForm extends Component {
     this.setState(state => {
       return {
         ...state,
-        [changeEvent.target.name]: changeEvent.target.value
+        application: {
+          ...state.application,
+          [changeEvent.target.name]: changeEvent.target.value
+        }
       };
     });
   };
@@ -45,8 +60,10 @@ class ApplicationForm extends Component {
   };
 
   render() {
+    let { userType, application } = this.state;
     return (
       <Container>
+        <NavBar userType={userType} />
         <Padding>
           <h1>ApplicationForm</h1>
           <Form onSubmit={this.onFormSubmit}>
@@ -140,8 +157,12 @@ const Container = styled.div`
   background-color: #ececec;
 `;
 
-const Padding = styled.div`padding: 10px;`;
+const Padding = styled.div`
+  padding: 10px;
+`;
 
-const InputWidth = styled.div`width: 400px;`;
+const InputWidth = styled.div`
+  width: 400px;
+`;
 
 export default ApplicationForm;

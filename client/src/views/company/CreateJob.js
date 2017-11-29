@@ -7,7 +7,18 @@ class CreateJob extends Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      userType: ""
+    };
+  }
+
+  componentDidMount() {
+    this.setState(state => {
+      return {
+        ...state,
+        userType: localStorage.getItem("userType")
+      };
+    });
   }
 
   formSubmit = submitE => {
@@ -31,9 +42,10 @@ class CreateJob extends Component {
   };
 
   render() {
+    let { userType } = this.state;
     return (
       <div>
-        <NavBar />
+        <NavBar userType={userType} />
         <h1>Create Job</h1>
         <form onSubmit={this.formSubmit}>
           <input

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import apiCompany from "../../api/companyCrud";
+import apiCheckUser from "../../api/checkUserCrud";
 
 import NavBar from "../../components/NavBar";
 
@@ -15,17 +16,18 @@ class CompanyProfile extends Component {
   componentDidMount() {
     apiCompany.getCurrentCompany().then(company => {
       this.setState(state => ({
-        ...company
+        ...company,
+        userType: localStorage.getItem("userType")
       }));
     });
   }
 
   render() {
-    let { id = "", jobs = [] } = this.state;
+    let { id = "", jobs = [], userType = "" } = this.state;
 
     return (
       <div>
-        <NavBar />
+        <NavBar userType={userType} />
         <Link to={`/company/profile/settings/${id}`}>Company Settings</Link>
         <h1>CompanyProfile</h1>
         {jobs.map(job => (

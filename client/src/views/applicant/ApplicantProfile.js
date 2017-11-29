@@ -11,6 +11,7 @@ class ApplicantProfile extends Component {
 
     this.state = {
       applications: [],
+      userType: "",
       jobs: []
     };
   }
@@ -19,16 +20,19 @@ class ApplicantProfile extends Component {
     apiApplicant.getCurrent().then(applicant => {
       this.setState(state => {
         return {
-          ...applicant
+          ...applicant,
+          userType: localStorage.getItem("userType")
         };
       });
     });
   }
 
   render() {
-    let { id, applications } = this.state;
+    let { id, applications, userType } = this.state;
     console.log(this.state);
 
+    // filtering all applications and assigning
+    // to array based on 'status' property
     let applied = applications.filter(
       app => app.applicationStatus === "applied"
     );
@@ -45,7 +49,7 @@ class ApplicantProfile extends Component {
 
     return (
       <div>
-        <NavBar />
+        <NavBar userType={userType} />
         <Link to={`/applicant/profile/settings/${id}`}>Applicant Settings</Link>
         <h1>Applicant Profile</h1>
         <div style={{ display: "flex", justifyContent: "space-around" }}>

@@ -4,13 +4,6 @@ import { Link, withRouter } from "react-router-dom";
 import apiCheckUser from "../api/checkUserCrud.js";
 
 class NavBar extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      userType: "none"
-    };
-  }
   signout = () => {
     localStorage.removeItem("token");
     localStorage.setItem("userType", "none");
@@ -18,36 +11,16 @@ class NavBar extends Component {
   };
 
   componentDidMount() {
-    apiCheckUser.checkUser().then(data => {
-      if (data.userType === "company") {
-        localStorage.setItem("userType", data.userType);
-      }
-      if (data.userType === "applicant") {
-        localStorage.setItem("userType", data.userType);
-      }
-      if (!data.userType) {
-        localStorage.setItem("userType", "none");
-      }
-    });
+    let userType = localStorage.getItem("userType");
+
+    if (!userType) {
+      localStorage.setItem("userType", "none");
+    }
   }
 
-  // componentWillReceiveProps(props) {
-  //   console.log(props, "navbar");
-  //   apiCheckUser.checkUser().then(data => {
-  //     if (data.userType === "company") {
-  //       localStorage.setItem("userType", data.userType);
-  //     }
-  //     if (data.userType === "applicant") {
-  //       localStorage.setItem("userType", data.userType);
-  //     }
-  //     if (!data.userType) {
-  //       localStorage.setItem("userType", "none");
-  //     }
-  //   });
-  // }
-
   render() {
-    let userType = localStorage.getItem("userType");
+    let { userType } = this.props;
+    console.log("nav render");
 
     return (
       <div>
@@ -77,7 +50,7 @@ class NavBar extends Component {
               </button>
             </div>
           )) ||
-            (!userType && (
+            (userType === undefined && (
               <div>
                 <button
                   onClick={() => {
