@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-
+import styled from "styled-components";
 import apiApplicant from "../../api/applicantCrud";
-
 import NavBar from "../../components/NavBar";
+import { Form, Input } from "semantic-ui-react";
 
 class ApplicantProfileSettings extends Component {
   constructor() {
@@ -56,36 +56,48 @@ class ApplicantProfileSettings extends Component {
     let { applicant, userType } = this.state;
 
     return (
-      <div>
+      <Container>
         <NavBar userType={userType} />
-        <h1>Applicant Profile Settings</h1>
-        <form onSubmit={this.onFormSubmit}>
-          <input
-            type="text"
-            name={"image"}
-            value={applicant.image}
-            onChange={this.onInputChange}
-            placeholder={"Image"}
-          />
-          <input
-            type="text"
-            name={"firstName"}
-            value={applicant.firstName}
-            onChange={this.onInputChange}
-            placeholder={"First Name"}
-          />
-          <input
-            type="text"
-            name={"lastName"}
-            value={applicant.lastName}
-            onChange={this.onInputChange}
-            placeholder={"Last Name"}
-          />
-          <input type="submit" />
-        </form>
-      </div>
+        <Body>
+          <h1>Applicant Profile Settings</h1>
+          <Form onSubmit={this.onFormSubmit}>
+            <Form.Input
+              type="text"
+              name={"image"}
+              value={applicant.image}
+              onChange={this.onInputChange}
+              placeholder={"Image"}
+            />
+            <Form.Input
+              type="text"
+              name={"firstName"}
+              value={applicant.firstName}
+              onChange={this.onInputChange}
+              placeholder={"First Name"}
+            />
+            <Form.Input
+              type="text"
+              name={"lastName"}
+              value={applicant.lastName}
+              onChange={this.onInputChange}
+              placeholder={"Last Name"}
+            />
+            <Form.Input type="submit" />
+          </Form>
+        </Body>
+      </Container>
     );
   }
 }
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
+
+const Container = styled.div`background-color: #ececec;`;
 
 export default ApplicantProfileSettings;
