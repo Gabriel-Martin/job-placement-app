@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import apiApplicant from "../api/applicantCrud";
 import apiJobs from "../api/jobCrud";
+import styled from "styled-components";
+import { Button } from "semantic-ui-react";
 
 import NavBar from "../components/NavBar";
 
@@ -38,30 +40,62 @@ class JobDescriptionPage extends Component {
     } = this.state;
 
     return (
-      <div>
+      <Container>
         <NavBar />
-        <h1>JobDescriptionPage</h1>
-        <h3>Company: {company.companyName} </h3>
-        <h4>Position: {position} </h4>
-        <p>
-          <b>Description:</b> {description}
-        </p>
-        <p>
-          <b>Payrate:</b> ${payRate}
-        </p>
-        <p>
-          <b>Experience:</b> {experience}
-        </p>
-        <button onClick={() => this.interested(jobId)}>Interested?</button>
-        <button
-          onClick={() =>
-            this.props.history.push(`/applicant/applicationform/${jobId}`)}
         >
-          Apply!
-        </button>
-      </div>
+        <Title>Job Description</Title>
+        <Card>
+          <h3>Company: {company.companyName} </h3>
+          <h4>Position: {position} </h4>
+          <p>
+            <b>Description:</b> {description}
+          </p>
+          <p>
+            <b>Payrate:</b> ${payRate}
+          </p>
+          <p>
+            <b>Experience:</b> {experience}
+          </p>
+          <Column>
+            <Button onClick={() => this.interested(jobId)}>Interested?</Button>
+
+            <Button
+              onClick={() =>
+                this.props.history.push(`/applicant/applicationform/${jobId}`)}
+            >
+              Apply!
+            </Button>
+          </Column>
+        </Card>
+      </Container>
     );
   }
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: #ececec;
+  min-height: 100vh;
+`;
+
+const Card = styled.div`
+  border: 200px solid #fff;
+  margin: 10px auto;
+  border-radius: 15px;
+  background-color: #fff;
+`;
+
+const Title = styled.h1`
+  font-size: 60px;
+  text-align: center;
+`;
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
 
 export default JobDescriptionPage;

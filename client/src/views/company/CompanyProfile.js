@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 import apiCompany from "../../api/companyCrud";
 
@@ -26,6 +27,7 @@ class CompanyProfile extends Component {
     return (
       <div>
         <NavBar />
+
         <Link to={`/company/profile/settings/${id}`}>Company Settings</Link>
         <h1>CompanyProfile</h1>
         {jobs.map(job => (
@@ -33,8 +35,7 @@ class CompanyProfile extends Component {
             style={{ border: "1px solid black", margin: "5px", padding: "5px" }}
             key={job.id}
             onClick={() =>
-              this.props.history.push(`/company/dashboard/${job.id}`)
-            }
+              this.props.history.push(`/company/dashboard/${job.id}`)}
           >
             <h3> {job.position} </h3>
             <p> {job.description} </p>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 import apiApplicant from "../../api/applicantCrud";
 
@@ -87,5 +88,11 @@ class ApplicantProfile extends Component {
     );
   }
 }
+
+// const Card = styled.div`
+//   border: 1px solid;
+//   border-radius: 5px;
+//   padding: 15px;
+// `;
 
 export default ApplicantProfile;

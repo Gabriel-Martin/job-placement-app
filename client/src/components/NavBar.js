@@ -50,7 +50,7 @@ class NavBar extends Component {
     let userType = localStorage.getItem("userType");
 
     return (
-      <div>
+      <Container>
         <div>
           {(userType === "none" && (
             <div>
@@ -167,41 +167,38 @@ class NavBar extends Component {
             </div>
           )}
         </div>
-      </div>
+      </Container>
     );
   }
 }
 
-// style for the nav-bar
-// not implemented yet because Caleb is still working on navbar
+const SLink = styled(Link)`
+  text-decoration: none;
+  padding: 10px;
+  font-size: 18px;
+  color: #fff;
 
-// const SLink = styled(Link)`
-//   text-decoration: none;
-//   padding: 10px;
-//   font-size: 18px;
-//   color: #fff;
-
-//   &:hover {
-//     color: #568ea3;
-//     text-decoration: underline;
-//   }
-// `;
+  &:hover {
+    color: #568ea3;
+    text-decoration: underline;
+  }
+`;
 
 const Container = styled.div`
   background-color: black;
-  padding: 15px;
+  padding: 20px;
 `;
 
-// const Span = styled.span`
-// padding: 15px 15px;
-// cursor: pointer;
-// font-size: 18px;
-// color: #fff;
+const Span = styled.span`
+  padding: 15px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
 
-// &:hover {
-//   color: #947cb0;
-//   text-decoration: underline;
-// }
-// `;
+  &:hover {
+    color: #947cb0;
+    text-decoration: underline;
+  }
+`;
 
 export default withRouter(NavBar);
