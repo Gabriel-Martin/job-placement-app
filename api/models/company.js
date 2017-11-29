@@ -8,6 +8,7 @@ module.exports = db => {
     password: db.type.string().required(),
     logo: db.type.string(),
     description: db.type.string(),
+    userType: db.type.string().default("company"),
     industry: db.type.string()
   });
 

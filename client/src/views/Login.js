@@ -4,6 +4,8 @@ import apiCompany from "../api/companyCrud";
 import apiApplicant from "../api/applicantCrud";
 import { Form, Input } from "semantic-ui-react";
 
+import NavBar from "../components/NavBar";
+
 class Login extends Component {
   constructor() {
     super();
@@ -88,7 +90,7 @@ class Login extends Component {
 
   render() {
     let { login } = this.state;
-    console.log(this.state.login);
+
     return (
       <Container>
         <Body>

@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import applicant from "../../api/applicantCrud";
+import { Link } from "react-router-dom";
+
+import apiApplicant from "../../api/applicantCrud";
+
+import NavBar from "../../components/NavBar";
 
 class ApplicantProfile extends Component {
   constructor() {
@@ -12,7 +16,7 @@ class ApplicantProfile extends Component {
   }
 
   componentDidMount() {
-    applicant.getCurrent().then(applicant => {
+    apiApplicant.getCurrent().then(applicant => {
       this.setState(state => {
         return {
           ...applicant
@@ -22,9 +26,12 @@ class ApplicantProfile extends Component {
   }
 
   render() {
-    console.log(this.state);
+    let { id } = this.state;
+
     return (
       <div>
+        <NavBar />
+        <Link to={`/applicant/profile/settings/${id}`}>Applicant Settings</Link>
         <h1>Applicant Profile</h1>
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           <div

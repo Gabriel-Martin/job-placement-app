@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import jobs from "../api/jobCrud";
+
+import apiJobs from "../api/jobCrud";
+
+import NavBar from "../components/NavBar";
 
 class Homepage extends Component {
   constructor(props) {
@@ -12,7 +15,7 @@ class Homepage extends Component {
   }
 
   componentDidMount() {
-    jobs.getAll().then(jobs => {
+    apiJobs.getAll().then(jobs => {
       this.setState(state => ({
         jobs: jobs
       }));
@@ -21,23 +24,26 @@ class Homepage extends Component {
 
   render() {
     let { jobs } = this.state;
-    console.log(jobs);
+
     return (
       <div>
-        <Head>Homepage</Head>
+        <NavBar />
+        <Head>Home page</Head>
         {jobs &&
           jobs.map(job => (
             <div
               style={{
                 border: "1px solid black",
-                margin: "5px",
-                padding: "5px"
+                margin: "2px",
+                padding: "2px"
               }}
               key={job.id}
               onClick={() => this.props.history.push(`/jobs/${job.id}`)}
             >
-              <h2> {job.company.companyName} </h2>
-              <h3> {job.position} </h3>
+              <p>
+                <strong> {job.company.companyName} </strong>
+              </p>
+              <p> {job.position} </p>
               <p> {job.description} </p>
             </div>
           ))}

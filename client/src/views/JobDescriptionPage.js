@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import applicant from "../api/applicantCrud";
-import jobs from "../api/jobCrud";
+import apiApplicant from "../api/applicantCrud";
+import apiJobs from "../api/jobCrud";
+
+import NavBar from "../components/NavBar";
 
 class JobDescriptionPage extends Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class JobDescriptionPage extends Component {
 
   componentDidMount() {
     let { jobId } = this.props.match.params;
-    jobs.getById(jobId).then(job => {
+    apiJobs.getById(jobId).then(job => {
       this.setState(state => ({
         ...job
       }));
@@ -19,14 +21,14 @@ class JobDescriptionPage extends Component {
   }
 
   interested = jobId => {
-    applicant.addJob(jobId).then(() => {
+    apiApplicant.addJob(jobId).then(() => {
       this.props.history.push("/applicant/profile");
     });
   };
 
   render() {
     let { jobId } = this.props.match.params;
-    console.log(this.state);
+
     let {
       company = {},
       description = "",
@@ -37,20 +39,18 @@ class JobDescriptionPage extends Component {
 
     return (
       <div>
+        <NavBar />
         <h1>JobDescriptionPage</h1>
         <h3>Company: {company.companyName} </h3>
         <h4>Position: {position} </h4>
         <p>
-          {" "}
-          <b>Description:</b> {description}{" "}
+          <b>Description:</b> {description}
         </p>
         <p>
-          {" "}
-          <b>Payrate:</b> ${payRate}{" "}
+          <b>Payrate:</b> ${payRate}
         </p>
         <p>
-          {" "}
-          <b>Experience:</b> {experience}{" "}
+          <b>Experience:</b> {experience}
         </p>
         <button onClick={() => this.interested(jobId)}>Interested?</button>
         <button

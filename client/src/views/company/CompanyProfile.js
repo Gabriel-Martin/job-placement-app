@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import api from "../../api/companyCrud";
+
+import apiCompany from "../../api/companyCrud";
+
+import NavBar from "../../components/NavBar";
 
 class CompanyProfile extends Component {
   constructor() {
@@ -10,7 +13,7 @@ class CompanyProfile extends Component {
   }
 
   componentDidMount() {
-    api.getCurrentCompany().then(company => {
+    apiCompany.getCurrentCompany().then(company => {
       this.setState(state => ({
         ...company
       }));
@@ -19,11 +22,11 @@ class CompanyProfile extends Component {
 
   render() {
     let { id = "", jobs = [] } = this.state;
-    console.log(this.state);
+
     return (
       <div>
-        <Link to={`/company/profile/settings/${id}`}>Edit Company</Link>{" "}
-        <Link to={`/job/new`}>Create Job</Link>
+        <NavBar />
+        <Link to={`/company/profile/settings/${id}`}>Company Settings</Link>
         <h1>CompanyProfile</h1>
         {jobs.map(job => (
           <div

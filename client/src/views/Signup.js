@@ -4,6 +4,8 @@ import apiCompany from "../api/companyCrud";
 import apiApplicant from "../api/applicantCrud";
 import styled from "styled-components";
 
+import NavBar from "../components/NavBar";
+
 class Signup extends Component {
   constructor() {
     super();
