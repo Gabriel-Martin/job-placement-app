@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
+import { Card, Table } from "semantic-ui-react";
 import apiJobs from "../api/jobCrud";
 
 import NavBar from "../components/NavBar";
@@ -29,28 +29,45 @@ class Homepage extends Component {
     let { jobs, userType } = this.state;
 
     return (
-      <div>
+      <Container>
         <NavBar userType={userType} />
-        <Head>Home page</Head>
-        {jobs &&
-          jobs.map(job => (
-            <div
-              style={{
-                border: "1px solid black",
-                margin: "2px",
-                padding: "2px"
-              }}
-              key={job.id}
-              onClick={() => this.props.history.push(`/jobs/${job.id}`)}
-            >
-              <p>
-                <strong> {job.company.companyName} </strong>
-              </p>
-              <p> {job.position} </p>
-              <p> {job.description} </p>
-            </div>
-          ))}
-      </div>
+        <Head>!Employed</Head>
+        <div
+          style={{
+            display: "flex",
+            flexFlow: "row wrap",
+            justifyContent: "space-evenly"
+          }}
+        >
+          {jobs &&
+            jobs.map(job => (
+              <div
+                key={job.id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flexWrap: "wrap",
+                  width: "400px",
+                  padding: "10px",
+                  justifyContent: "space-evenly"
+                }}
+              >
+                <Card
+                  style={{
+                    height: "200px",
+                    overflow: "auto"
+                  }}
+                  fluid
+                  link
+                  href={`/jobs/${job.id}`}
+                  header={job.company.companyName}
+                  meta={job.position}
+                  description={job.description}
+                />
+              </div>
+            ))}
+        </div>
+      </Container>
     );
   }
 }
@@ -60,4 +77,9 @@ export default Homepage;
 const Head = styled.h1`
   text-align: center;
   font-size: 75px;
+`;
+
+const Container = styled.div`
+  background-color: #ececec;
+  min-height: 100vh;
 `;

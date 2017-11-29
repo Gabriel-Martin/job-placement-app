@@ -140,17 +140,14 @@ const Container = styled.div`
   background-color: #ececec;
 `;
 
-<<<<<<< HEAD
 // const Card = styled.div`
 //   border: 1px solid;
 //   border-radius: 5px;
 //   padding: 15px;
 // `;
 
-=======
 const Head3 = styled.h3`
   text-align: center;
   font-size: 30px;
 `;
->>>>>>> c0e42a585302366ce36daec0a7faf564789fca21
 export default ApplicantProfile;
