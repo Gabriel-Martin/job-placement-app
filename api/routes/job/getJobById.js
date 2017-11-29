@@ -6,9 +6,8 @@ module.exports = {
     handler: function(request, reply) {
       let jobId = request.params.jobId;
 
-      this.models.Job
-        .get(jobId)
-        .getJoin({ applications: true, company: true })
+      this.models.Job.get(jobId)
+        .getJoin({ applications: true, applicants: true, company: true })
         .then(result => reply(result))
         .catch(err => {
           console.log(err);

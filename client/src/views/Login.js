@@ -68,6 +68,7 @@ class Login extends Component {
     apiApplicant
       .login(loginData)
       .then(data => {
+        console.log(data);
         if (data.err) {
           return alert(data.err);
         }

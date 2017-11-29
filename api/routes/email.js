@@ -26,22 +26,29 @@ const email = (to, subject, html, text) => {
   });
 };
 
-const welcome = data => {
+module.exports.newApplication = data => {
   let html = `
         <div>
-            <p>Hello, ${data.name}!</p>
-            <p>Welcome to !unemployed.</p>
-            <p>Congrats on your new job at ${data.company}!</p>
+            <p>Hello, ${data.company} team!</p>
+            <p>A new application has been submitted!</p>
+            <p> ${
+              data.name
+            } is interested in joining your team, please review and respond promptly.</p>
+            <p>Thanks!</p>
+            <p>- Job Placement Team</p>
         </div>
     `;
 
   let text = `
-        Hello, ${data.name}!
-        Welcome to !unemployed.
-        Congrats on your new job at ${data.company}!
+    Hello, ${data.company} team!
+    A new application has been submitted!
+    ${data.name} is interested in joining your team.
+    Please review their application and respond promptly.
+
+    Thanks!
+
+    - Job Placement Team
 `;
 
-  email("isaiahgrey@devtree.io", "Welcome!", html, text);
+  email(data.email, "Welcome!", html, text);
 };
-
-welcome({ name: "Isaiah Grey", company: "G2i Inc" });
