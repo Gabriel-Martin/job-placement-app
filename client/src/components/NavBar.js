@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 import apiCheckUser from "../api/checkUserCrud.js";
 
@@ -186,9 +187,21 @@ class NavBar extends Component {
 //   }
 // `;
 
-// const Container = styled.div`
-//   background-color: black;
-//   padding: 15px;
+const Container = styled.div`
+  background-color: black;
+  padding: 15px;
+`;
+
+// const Span = styled.span`
+// padding: 15px 15px;
+// cursor: pointer;
+// font-size: 18px;
+// color: #fff;
+
+// &:hover {
+//   color: #947cb0;
+//   text-decoration: underline;
+// }
 // `;
 
 export default withRouter(NavBar);

@@ -1,4 +1,3 @@
-"use strict";
 const nodemailer = require("nodemailer");
 
 const email = (to, subject, html, text) => {
@@ -7,17 +6,17 @@ const email = (to, subject, html, text) => {
     port: 465,
     secure: true,
     auth: {
-      user: "isaiahgrey@gmail.com",
-      pass: "123123"
+      user: "gabriel.martin91@gmail.com",
+      pass: "DigitalImm0rtal"
     }
   });
 
   let mailOptions = {
-    from: "isaiahgrey@gmail.com",
+    from: "gabriel.martin91@gmail.com",
     to: to,
     subject: subject,
-    text: text,
-    html: html
+    html: html,
+    text: text
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

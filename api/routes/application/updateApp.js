@@ -6,13 +6,15 @@ module.exports = {
       let appId = request.params.appId;
       let updatedApp = request.payload;
 
-      this.models.Application.get(appId).then(doc =>
-        doc
-          .merge(updatedApp)
-          .save()
-          .then(result => reply(result))
-          .catch(error => reply(error))
-      );
+      this.models.Application.get(appId)
+        .then(doc =>
+          doc
+            .merge(updatedApp)
+            .save()
+            .then(result => reply(result))
+            .catch(error => reply(error))
+        )
+        .catch(error => reply(error));
     }
   }
 };

@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "jsonwebtoken": "^8.1.0",
+    "nodemailer": "^4.4.0",
     "react": "^16.1.1",
+    "react-dnd": "^2.5.4",
+    "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^16.1.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",

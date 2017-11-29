@@ -8,8 +8,7 @@ module.exports = {
     handler: function(request, reply) {
       let { email, password } = request.payload;
 
-      this.models.Applicant
-        .filter({ email: email })
+      this.models.Applicant.filter({ email: email })
         .then(applicants => {
           if (applicants.length === 0) {
             throw "email/password combo invalid";
@@ -26,7 +25,7 @@ module.exports = {
             return applicant.generateJWT();
           }
         })
-        .then(token => reply({ token }))
+        .then(token => reply({ token, userType: "applicant" }))
         .catch(err => {
           console.log(err);
           reply({ err });
