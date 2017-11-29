@@ -136,9 +136,7 @@ const Img = styled.img`
   height: 75px;
 `;
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 // const Card = styled.div`
 //   border: 1px solid;
