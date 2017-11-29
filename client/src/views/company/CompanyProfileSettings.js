@@ -45,7 +45,7 @@ class CompanyProfileSettings extends Component {
     apiCompany.getCurrentCompany().then(company => {
       this.setState(state => ({
         userType: localStorage.getItem("userType"),
-        ...company
+        company: company
       }));
     });
   }
@@ -96,6 +96,8 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 export default CompanyProfileSettings;
