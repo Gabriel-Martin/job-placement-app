@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import styled from "styled-components";
 import apiApplicant from "../../api/applicantCrud";
-
+import apiJob from "../../api/jobCrud";
 import NavBar from "../../components/NavBar";
 
 class ApplicantProfile extends Component {
@@ -10,8 +10,7 @@ class ApplicantProfile extends Component {
     super();
 
     this.state = {
-      applications: [],
-      jobs: []
+      applicant: {}
     };
   }
 
@@ -19,20 +18,31 @@ class ApplicantProfile extends Component {
     apiApplicant.getCurrent().then(applicant => {
       this.setState(state => {
         return {
-          ...applicant
+          applicant: applicant
         };
       });
     });
   }
 
   render() {
-    let { id } = this.state;
-
+    let { applicant } = this.state;
+    console.log(applicant);
     return (
-      <div>
+      <Container>
         <NavBar />
-        <Link to={`/applicant/profile/settings/${id}`}>Applicant Settings</Link>
-        <h1>Applicant Profile</h1>
+        <Link to={`/applicant/profile/settings/${applicant.id}`}>
+          Applicant Settings
+        </Link>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center"
+          }}
+        >
+          <h1 style={{ fontSize: "50px" }}>{applicant.firstName}'s Profile</h1>
+          <Img src={applicant.image} />
+        </div>
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           <div
             style={{
@@ -43,9 +53,11 @@ class ApplicantProfile extends Component {
               height: "100vh"
             }}
           >
-            <h3>Interested</h3>
+            <Head3>Interested</Head3>
             <div>
-              {this.state.jobs.map(j => <div key={j.id}>{j.position}</div>)}
+              <hr />
+              {applicant.jobs &&
+                applicant.jobs.map(j => <div key={j.id}>{j.position}</div>)}
             </div>
           </div>
           <div
@@ -57,11 +69,12 @@ class ApplicantProfile extends Component {
               height: "100vh"
             }}
           >
-            <h3>Applied</h3>
+            <Head3>Applied</Head3>
             <div>
-              {this.state.applications.map(app => (
-                <div key={app.id}>{app.job.position}</div>
-              ))}
+              {applicant.applications &&
+                applicant.applications.map(app => (
+                  <div key={app.id}>{app.job.position}</div>
+                ))}
             </div>
           </div>
           <div
@@ -73,7 +86,7 @@ class ApplicantProfile extends Component {
               height: "100vh"
             }}
           >
-            <h3>Processing</h3>
+            <Head3>Processing</Head3>
           </div>
           <div
             style={{
@@ -84,12 +97,24 @@ class ApplicantProfile extends Component {
               height: "100vh"
             }}
           >
-            <h3>Status</h3>
+            <Head3>Status</Head3>
           </div>
         </div>
-      </div>
+      </Container>
     );
   }
 }
+const Img = styled.img`
+  border-radius: 50%;
+  height: 75px;
+`;
 
+const Container = styled.div`
+  background-color: #ececec;
+`;
+
+const Head3 = styled.h3`
+  text-align: center;
+  font-size: 30px;
+`;
 export default ApplicantProfile;
