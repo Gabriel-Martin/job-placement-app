@@ -74,54 +74,63 @@ class ApplicationForm extends Component {
                 name={"firstName"}
                 placeholder={"First Name"}
                 onChange={this.onInputChange}
+                required
               />
               <Form.Input
                 type="text"
                 name={"lastName"}
                 placeholder={"Last Name"}
                 onChange={this.onInputChange}
+                required
               />
               <Form.Input
                 type="text"
                 name={"address"}
                 placeholder={"Address"}
                 onChange={this.onInputChange}
+                required
               />
               <Form.Input
                 type="text"
                 name={"city"}
                 placeholder={"City"}
                 onChange={this.onInputChange}
+                required
               />
               <Form.Input
                 type="text"
                 name={"state"}
                 placeholder={"state"}
                 onChange={this.onInputChange}
+                required
               />
               <Form.Input
                 type="text"
                 name={"zip"}
                 placeholder={"zip"}
                 onChange={this.onInputChange}
+                required
               />
               <Form.Input
                 type="text"
                 name={"phone"}
                 placeholder={"phone"}
                 onChange={this.onInputChange}
+                required
               />
               <Form.Input
                 type="text"
                 name={"email"}
                 placeholder={"email"}
                 onChange={this.onInputChange}
+                required
               />
               <Form.Input
                 type="text"
                 name={"date"}
                 placeholder={"date"}
                 onChange={this.onInputChange}
+                required
               />
               <Input
                 type="text"
@@ -129,6 +138,7 @@ class ApplicationForm extends Component {
                 placeholder={"education"}
                 value={this.state.education}
                 onChange={this.onInputChange}
+                required
                 label={
                   <Dropdown
                     defaultValue=""

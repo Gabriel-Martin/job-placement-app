@@ -85,6 +85,6 @@ class Router extends Component {
   }
 }
 
-const Container = styled.body.attrs({ className: "avenir" })``;
+const Container = styled.div.attrs({ className: "avenir" })``;
 
 export default Router;

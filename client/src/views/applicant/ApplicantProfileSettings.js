@@ -68,6 +68,7 @@ class ApplicantProfileSettings extends Component {
               value={applicant.email}
               onChange={this.onInputChange}
               placeholder={"Email"}
+              required
             />
             <Form.Input
               type="text"
@@ -82,6 +83,7 @@ class ApplicantProfileSettings extends Component {
               value={applicant.firstName}
               onChange={this.onInputChange}
               placeholder={"First Name"}
+              required
             />
             <Form.Input
               type="text"
@@ -89,6 +91,7 @@ class ApplicantProfileSettings extends Component {
               value={applicant.lastName}
               onChange={this.onInputChange}
               placeholder={"Last Name"}
+              required
             />
             <Form.Input type="submit" />
           </Form>
