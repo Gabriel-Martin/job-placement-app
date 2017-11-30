@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { DragSource } from "react-dnd";
+import { Link } from "react-router-dom";
 
 const style = {
   border: "1px dashed gray",
@@ -23,10 +24,12 @@ const boxSource = {
 class Application extends Component {
   render() {
     const { data, isDragging, connectDragSource } = this.props;
-
+    console.log(data);
     return connectDragSource(
       <div style={{ ...style, color: "black" }}>
-        {data.firstName} {data.lastName}
+        <Link to={`/company/application/${data.id}`}>
+          {data.firstName} {data.lastName}
+        </Link>
       </div>
     );
   }
