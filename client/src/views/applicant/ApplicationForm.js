@@ -119,7 +119,7 @@ class ApplicationForm extends Component {
               />
               <Form.Input
                 label={"Phone"}
-                type="text"
+                type="tel"
                 name={"phone"}
                 placeholder={"###-###-####"}
                 onChange={this.onInputChange}
@@ -127,15 +127,15 @@ class ApplicationForm extends Component {
               />
               <Form.Input
                 label={"Email"}
-                type="text"
+                type="email"
                 name={"email"}
                 placeholder={"Email"}
                 onChange={this.onInputChange}
                 required
               />
               <Form.Input
-                label={"Data"}
-                type="text"
+                label={"Date"}
+                type="date"
                 name={"date"}
                 placeholder={"date"}
                 onChange={this.onInputChange}
