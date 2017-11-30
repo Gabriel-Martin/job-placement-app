@@ -55,7 +55,8 @@ class Homepage extends Component {
                 <Card
                   style={{
                     height: "200px",
-                    overflow: "auto"
+                    overflow: "auto",
+                    wordWrap: "break-word"
                   }}
                   fluid
                   link
