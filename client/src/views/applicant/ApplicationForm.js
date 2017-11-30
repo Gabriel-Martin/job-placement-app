@@ -132,24 +132,15 @@ class ApplicationForm extends Component {
                 onChange={this.onInputChange}
                 required
               />
-              <Input
-                type="text"
-                name={"education"}
-                placeholder={"education"}
-                value={this.state.education}
-                onChange={this.onInputChange}
-                required
-                label={
-                  <Dropdown
-                    defaultValue=""
-                    labelPosition="right"
-                    options={[
-                      { text: "highschool", value: "highschool" },
-                      { text: "GED", value: "GED" },
-                      { text: "college", value: "college" }
-                    ]}
-                  />
-                }
+              <Dropdown
+                defaultValue=""
+                labelPosition="right"
+                placeholder={"Education"}
+                options={[
+                  { text: "highschool", value: "highschool" },
+                  { text: "GED", value: "GED" },
+                  { text: "college", value: "college" }
+                ]}
               />
               <Padding>
                 <Button color={"instagram"} type="submit">
