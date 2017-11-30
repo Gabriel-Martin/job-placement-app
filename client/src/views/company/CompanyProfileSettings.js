@@ -68,6 +68,7 @@ class CompanyProfileSettings extends Component {
               placeholder={"email"}
               value={company.email}
               onChange={this.onInputChange}
+              required
             />
             <Form.Input
               type="text"
@@ -82,6 +83,7 @@ class CompanyProfileSettings extends Component {
               placeholder={"Description"}
               value={company.description}
               onChange={this.onInputChange}
+              required
             />
             <Form.Input
               type="text"
@@ -89,6 +91,7 @@ class CompanyProfileSettings extends Component {
               placeholder={"Industry"}
               value={company.industry}
               onChange={this.onInputChange}
+              required
             />
             <Form.Input type="submit" />
           </Form>

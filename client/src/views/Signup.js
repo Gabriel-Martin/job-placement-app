@@ -120,24 +120,28 @@ class Signup extends Component {
                 name={"firstName"}
                 placeholder={"First Name"}
                 onChange={this.onInputChangeApplicant}
+                required
               />
               <Form.Input
                 type="text"
                 name={"lastName"}
                 placeholder={"Last Name"}
                 onChange={this.onInputChangeApplicant}
+                required
               />
               <Form.Input
                 type="text"
                 name={"email"}
                 placeholder={"Email"}
                 onChange={this.onInputChangeApplicant}
+                required
               />
               <Form.Input
                 type="text"
                 name={"password"}
                 placeholder={"Password"}
                 onChange={this.onInputChangeApplicant}
+                required
               />
               <Button color={"instagram"} type="submit">
                 Submit
@@ -158,18 +162,21 @@ class Signup extends Component {
                 name={"companyName"}
                 placeholder={"Company Name"}
                 onChange={this.onInputChangeCompany}
+                required
               />
               <Form.Input
                 type="text"
                 name={"email"}
                 placeholder={"Email"}
                 onChange={this.onInputChangeCompany}
+                required
               />
               <Form.Input
                 type="text"
                 name={"password"}
                 placeholder={"Password"}
                 onChange={this.onInputChangeCompany}
+                required
               />
               <Button color={"instagram"} type="submit">
                 Submit

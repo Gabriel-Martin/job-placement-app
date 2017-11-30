@@ -28,13 +28,9 @@ class ApplicantProfile extends Component {
 
   render() {
     let { applicant, userType } = this.state;
-<<<<<<< HEAD
-    console.log(this.state);
-=======
     let applied = [];
     let processing = [];
     let status = [];
->>>>>>> 1c2ec0d80260af076cfc3477ff29c113f1e8a15e
 
     // filtering all applications and assigning
     // to array based on 'status' property
