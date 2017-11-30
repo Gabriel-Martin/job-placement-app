@@ -7,7 +7,7 @@ module.exports = {
 
       this.models.Job
         .get(jobId)
-        .then(doc => doc.delete())
+        .then(doc => doc.deleteAll({ applications: true }))
         .then(result => reply(true))
         .catch(err => {
           console.log(err);

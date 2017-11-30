@@ -75,6 +75,7 @@ class CompanyDashboard extends Component {
   };
 
   render() {
+    console.log(this.state);
     let {
       userType,
       position = "",
@@ -119,9 +120,7 @@ const Container = styled.div`
   min-height: 100vh;
 `;
 
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
-  padding: 20px;
-`;
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
 
 export default CompanyDashboard;
 

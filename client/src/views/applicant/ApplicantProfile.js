@@ -54,13 +54,16 @@ class ApplicantProfile extends Component {
       );
     }
 
+    console.log(status);
+    console.log(applied);
+
     return (
       <Container>
         <NavBar userType={userType} />
         <Column>
           <div>
             <SLink to={`/applicant/profile/settings/${applicant.id}`}>
-              Applicant Settings &nbsp;&nbsp;
+              Settings &nbsp;&nbsp;
               <Icon size={"large"} name={"settings"} />
             </SLink>
           </div>

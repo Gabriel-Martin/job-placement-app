@@ -48,7 +48,7 @@ class CompanyProfile extends Component {
         <Column>
           <div>
             <SLink to={`/company/profile/settings/${company.id}`}>
-              Company Settings &nbsp;&nbsp;
+              Settings &nbsp;&nbsp;
               <Icon size={"large"} name={"settings"} />
             </SLink>
           </div>
