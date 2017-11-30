@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import apiCompany from "../../api/companyCrud";
-import { Form, Input } from "semantic-ui-react";
+import { Form, Input, Button, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 import NavBar from "../../components/NavBar";
 
@@ -59,7 +59,9 @@ class CompanyProfileSettings extends Component {
         <NavBar userType={userType} />
         <Body>
           <div>
-            <Title>Company Profile Settings</Title>
+            <Title>
+              Settings <Icon name={"settings"} />
+            </Title>
           </div>
           <Form onSubmit={this.onFormSubmit}>
             <Form.Input
@@ -93,7 +95,9 @@ class CompanyProfileSettings extends Component {
               onChange={this.onInputChange}
               required
             />
-            <Form.Input type="submit" />
+            <Button color={"instagram"} type="submit">
+              Submit
+            </Button>
           </Form>
         </Body>
       </Container>

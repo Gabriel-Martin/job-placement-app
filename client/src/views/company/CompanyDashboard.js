@@ -82,9 +82,11 @@ class CompanyDashboard extends Component {
       <div>
         <NavBar userType={userType} />
         <Container>
-          <Title>Company Dashboard</Title>
-          <h3>Position: {position} </h3>
-          <p>Description: {description} </p>
+          <Center>
+            <Title> Dashboard</Title>
+            <h3>Position: {position} </h3>
+            <Width>Description: {description} </Width>
+          </Center>
           <div>
             <ApplicationKanban
               applications={applications}
@@ -96,6 +98,19 @@ class CompanyDashboard extends Component {
     );
   }
 }
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+`;
+
+const Width = styled.p`
+  width: 1000px;
+  text-align: center;
+`;
 
 const Container = styled.div`
   background-color: #ececec;

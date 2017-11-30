@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import { Icon } from "semantic-ui-react";
 import apiApplicant from "../../api/applicantCrud";
 import apiJob from "../../api/jobCrud";
 import NavBar from "../../components/NavBar";
@@ -57,15 +57,18 @@ class ApplicantProfile extends Component {
     return (
       <Container>
         <NavBar userType={userType} />
-        <div>
-          <SLink to={`/applicant/profile/settings/${applicant.id}`}>
-            Applicant Settings
-          </SLink>
-        </div>
-        <Center>
-          <Title>{applicant.firstName}'s Profile</Title>
-          <Img src={applicant.image} />
-        </Center>
+        <Column>
+          <div>
+            <SLink to={`/applicant/profile/settings/${applicant.id}`}>
+              Applicant Settings &nbsp;&nbsp;
+              <Icon size={"large"} name={"settings"} />
+            </SLink>
+          </div>
+          <Center>
+            <Title>{applicant.firstName}'s Profile</Title>
+            <Img src={applicant.image} />
+          </Center>
+        </Column>
         <AllCards>
           <Card>
             <Head3>Interested</Head3>
@@ -99,21 +102,27 @@ class ApplicantProfile extends Component {
   }
 }
 
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const SLink = styled(Link)`
   float: right;
-  padding: 15px;
+  margin: 15px;
 `;
 
 const Center = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 15px;
+  margin-bottom: 10px;
 `;
 
 const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
   font-size: 50px;
   padding: 20px;
+  text-align: center;
 `;
 
 const Img = styled.img`
@@ -128,6 +137,8 @@ const MiniCard = styled.div`
   border-radius: 5px;
   padding: 15px;
   margin: 10px;
+  font-size: 18px;
+  text-align: center;
 `;
 
 const Card = styled.div`
@@ -135,8 +146,8 @@ const Card = styled.div`
   flex-direction: column;
   width: 20%;
   height: 100vh;
-  border: 15px solid #bdc3c7;
-  border-radius: 15px;
+  border: 5px solid #bdc3c7;
+  border-radius: 10px;
   background-color: #bdc3c7;
 `;
 
