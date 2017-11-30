@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { DragSource } from "react-dnd";
 import { Link } from "react-router-dom";
+import { Icon } from "semantic-ui-react";
 
 const style = {
   border: "1px dashed gray",
@@ -24,11 +25,12 @@ const boxSource = {
 class Application extends Component {
   render() {
     const { data, isDragging, connectDragSource } = this.props;
-    console.log(data);
     return connectDragSource(
       <div style={{ ...style, color: "black" }}>
         <Link to={`/company/application/${data.id}`}>
           {data.firstName} {data.lastName}
+          {data.status === "hired" && <Icon name={"check"} color={"green"} />}
+          {data.status === "declined" && <Icon name={"delete"} color={"red"} />}
         </Link>
       </div>
     );
