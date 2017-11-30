@@ -53,6 +53,7 @@ class CreateJob extends Component {
               <Title>Post A Job</Title>
               <InputWidth>
                 <Form.TextArea
+                  label={"Description"}
                   type="text"
                   name={"description"}
                   placeholder={"description"}
@@ -60,6 +61,7 @@ class CreateJob extends Component {
                   required
                 />
                 <Form.Input
+                  label={"Experience"}
                   type="text"
                   name={"experience"}
                   placeholder={"experience"}
@@ -67,6 +69,7 @@ class CreateJob extends Component {
                   required
                 />
                 <Form.Input
+                  label={"Position"}
                   type="text"
                   name={"position"}
                   placeholder={"position"}
@@ -74,6 +77,7 @@ class CreateJob extends Component {
                   required
                 />
                 <Form.Input
+                  label={"Pay Rate"}
                   type="text"
                   name={"payRate"}
                   placeholder={"pay rate"}
@@ -97,7 +101,10 @@ const Container = styled.div`
   padding: 10px;
 `;
 
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 15px;`;
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
+  padding: 15px;
+  margin-bottom: 10px;
+`;
 
 const Center = styled.div`
   display: flex;
