@@ -34,12 +34,10 @@ class JobDescriptionPage extends Component {
 
     let { job = {}, userType = "" } = this.state;
 
-    console.log(this.state);
-
     return (
       <Container>
         <NavBar userType={userType} />
-        >
+
         <Title>Job Description</Title>
         <Card>
           <h3>Company: {job.company && job.company.companyName} </h3>

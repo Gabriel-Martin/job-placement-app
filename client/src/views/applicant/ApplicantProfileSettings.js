@@ -13,7 +13,8 @@ class ApplicantProfileSettings extends Component {
       applicant: {
         image: "",
         firstName: "",
-        lastName: ""
+        lastName: "",
+        email: ""
       }
     };
   }
@@ -61,6 +62,13 @@ class ApplicantProfileSettings extends Component {
         <Body>
           <Title>Applicant Profile Settings</Title>
           <Form onSubmit={this.onFormSubmit}>
+            <Form.Input
+              type="text"
+              name={"email"}
+              value={applicant.email}
+              onChange={this.onInputChange}
+              placeholder={"Email"}
+            />
             <Form.Input
               type="text"
               name={"image"}

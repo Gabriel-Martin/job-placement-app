@@ -13,7 +13,8 @@ class CompanyProfileSettings extends Component {
       company: {
         logo: "",
         description: "",
-        industry: ""
+        industry: "",
+        email: ""
       }
     };
   }
@@ -61,6 +62,13 @@ class CompanyProfileSettings extends Component {
             <Title>Company Profile Settings</Title>
           </div>
           <Form onSubmit={this.onFormSubmit}>
+            <Form.Input
+              type="text"
+              name={"email"}
+              placeholder={"email"}
+              value={company.email}
+              onChange={this.onInputChange}
+            />
             <Form.Input
               type="text"
               name={"logo"}

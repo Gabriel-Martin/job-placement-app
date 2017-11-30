@@ -75,7 +75,6 @@ class Login extends Component {
     apiApplicant
       .login(loginData)
       .then(data => {
-        console.log(data);
         if (data.err) {
           return alert(data.err);
         }
@@ -86,7 +85,7 @@ class Login extends Component {
       .then(() => {
         apiCheckUser.checkUser().then(data => {
           if (!data.userType) {
-            localStorage.setItem("userType", "none");
+            return localStorage.setItem("userType", "none");
           }
           localStorage.setItem("userType", data.userType);
           return this.props.history.push("/applicant/profile");
@@ -110,7 +109,7 @@ class Login extends Component {
       .then(() => {
         apiCheckUser.checkUser().then(data => {
           if (!data.userType) {
-            localStorage.setItem("userType", "none");
+            return localStorage.setItem("userType", "none");
           }
           localStorage.setItem("userType", data.userType);
           return this.props.history.push("/company/profile");
@@ -178,6 +177,8 @@ const Body = styled.div`
 
 const Padding = styled.div`padding: 10px;`;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 export default Login;

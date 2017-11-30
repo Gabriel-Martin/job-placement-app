@@ -60,7 +60,7 @@ class Homepage extends Component {
                   fluid
                   link
                   href={`/jobs/${job.id}`}
-                  header={job.company.companyName}
+                  header={job.company && job.company.companyName}
                   meta={job.position}
                   description={job.description}
                 />

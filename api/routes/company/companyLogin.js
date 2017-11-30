@@ -28,7 +28,7 @@ module.exports = {
         .then(token => reply({ token }))
         .catch(err => {
           console.log(err);
-          reply(err);
+          reply({ err });
         });
     }
   }

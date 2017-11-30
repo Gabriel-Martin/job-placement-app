@@ -13,7 +13,10 @@ module.exports = {
           }
         })
         .then(company => reply(company))
-        .catch(err => reply(err));
+        .catch(err => {
+          console.log(err);
+          reply({ err });
+        });
     }
   }
 };
