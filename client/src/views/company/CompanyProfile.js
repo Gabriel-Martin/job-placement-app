@@ -72,22 +72,22 @@ class CompanyProfile extends Component {
                   <Icon
                     onClick={() => this.deleteJob(job.id)}
                     style={{ margin: "0px 4px" }}
+                    title={"Delete"}
                     size={"large"}
                     name={"trash"}
                   />
                   <Icon
                     onClick={() =>
-                      this.props.history.push(`/job/edit/${job.id}`)
-                    }
+                      this.props.history.push(`/job/edit/${job.id}`)}
                     style={{ margin: "0px 4px" }}
+                    title={"Edit"}
                     size={"large"}
                     name={"edit"}
                   />
                 </div>
                 <div
                   onClick={() =>
-                    this.props.history.push(`/company/dashboard/${job.id}`)
-                  }
+                    this.props.history.push(`/company/dashboard/${job.id}`)}
                   style={{ overflow: "auto", padding: "5px" }}
                 >
                   <h3> {job.position} </h3>
