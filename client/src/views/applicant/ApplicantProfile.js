@@ -121,15 +121,13 @@ const Img = styled.img`
   height: 75px;
 `;
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 const MiniCard = styled.div`
-  border: 1px solid #fff;
   background-color: #f8f8ff;
   border-radius: 5px;
   padding: 15px;
+  margin: 10px;
 `;
 
 const Card = styled.div`
@@ -147,7 +145,7 @@ const AllCards = styled.div`
   justify-content: space-around;
 `;
 
-const Head3 = styled.h3`
+const Head3 = styled.h3.attrs({ className: "avenir fw1 f4 " })`
   text-align: center;
   font-size: 30px;
 `;

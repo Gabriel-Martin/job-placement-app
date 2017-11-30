@@ -81,19 +81,26 @@ class CompanyDashboard extends Component {
     return (
       <div>
         <NavBar userType={userType} />
-        <Title>Company Dashboard</Title>
-        <h3>Position: {position} </h3>
-        <p>Description: {description} </p>
-        <div>
-          <ApplicationKanban
-            applications={applications}
-            onStatusChange={this.handleStatusChange}
-          />
-        </div>
+        <Container>
+          <Title>Company Dashboard</Title>
+          <h3>Position: {position} </h3>
+          <p>Description: {description} </p>
+          <div>
+            <ApplicationKanban
+              applications={applications}
+              onStatusChange={this.handleStatusChange}
+            />
+          </div>
+        </Container>
       </div>
     );
   }
 }
+
+const Container = styled.div`
+  background-color: #ececec;
+  min-height: 100vh;
+`;
 
 const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
 
