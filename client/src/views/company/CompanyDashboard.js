@@ -15,6 +15,10 @@ class CompanyDashboard extends Component {
     this.state = {};
   }
 
+  editJob = () => {
+    this.props.history.push(`/job/edit/${this.state.id}`);
+  };
+
   fetchJob = () => {
     let { jobId } = this.props.match.params;
     apiJobs.getById(jobId).then(job => {
@@ -82,6 +86,13 @@ class CompanyDashboard extends Component {
       <div>
         <NavBar userType={userType} />
         <Title>Company Dashboard</Title>
+        <button
+          onClick={() => {
+            this.editJob();
+          }}
+        >
+          Edit Job
+        </button>
         <h3>Position: {position} </h3>
         <p>Description: {description} </p>
         <div>
