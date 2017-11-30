@@ -104,7 +104,7 @@ const Center = styled.div`
   padding: 15px;
 `;
 
-const Title = styled.div`
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
   font-size: 50px;
   padding: 20px;
 `;

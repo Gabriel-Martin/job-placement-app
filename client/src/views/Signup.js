@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Input } from "semantic-ui-react";
+import { Form, Input, Button } from "semantic-ui-react";
 import apiCompany from "../api/companyCrud";
 import apiApplicant from "../api/applicantCrud";
 import styled from "styled-components";
@@ -109,7 +109,11 @@ class Signup extends Component {
         {signup ? (
           <Body>
             <Head3>Applicant Signup</Head3>
-            <Button onClick={() => this.showSignup()}>Company Signup</Button>
+            <Padding>
+              <Button color={"instagram"} onClick={() => this.showSignup()}>
+                Company Signup
+              </Button>
+            </Padding>
             <Form size={"huge"} onSubmit={this.onFormSubmitApplicant}>
               <Form.Input
                 type="text"
@@ -135,13 +139,19 @@ class Signup extends Component {
                 placeholder={"Password"}
                 onChange={this.onInputChangeApplicant}
               />
-              <Button type="submit">Submit</Button>
+              <Button color={"instagram"} type="submit">
+                Submit
+              </Button>
             </Form>
           </Body>
         ) : (
           <Body>
             <Head3>Company Signup</Head3>
-            <Button onClick={() => this.showSignup()}>Applicant Signup</Button>
+            <Padding>
+              <Button color={"instagram"} onClick={() => this.showSignup()}>
+                Applicant Signup
+              </Button>
+            </Padding>
             <Form size={"huge"} onSubmit={this.onFormSubmitCompany}>
               <Form.Input
                 type="text"
@@ -161,7 +171,9 @@ class Signup extends Component {
                 placeholder={"Password"}
                 onChange={this.onInputChangeCompany}
               />
-              <Button type="submit">Submit</Button>
+              <Button color={"instagram"} type="submit">
+                Submit
+              </Button>
             </Form>
           </Body>
         )}
@@ -172,7 +184,7 @@ class Signup extends Component {
 
 const Container = styled.div`background-color: #ececec;`;
 
-const Head3 = styled.h3`
+const Head3 = styled.h3.attrs({ className: "avenir fw1 f1 " })`
   text-align: center;
   font-size: 50px;
 `;
@@ -185,11 +197,13 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const Button = styled.button`
-  font-size: 20px;
-  border-radius: 8px;
-  background-color: #526760;
-  color: #f9eed6;
-`;
+// const Button = styled.button`
+//   font-size: 20px;
+//   border-radius: 8px;
+//   background-color: #526760;
+//   color: #f9eed6;
+// `;
+
+const Padding = styled.div`padding: 10px;`;
 
 export default Signup;

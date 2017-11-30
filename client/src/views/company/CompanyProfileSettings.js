@@ -57,7 +57,9 @@ class CompanyProfileSettings extends Component {
       <Container>
         <NavBar userType={userType} />
         <Body>
-          <h1>Company Profile Settings</h1>
+          <div>
+            <Title>Company Profile Settings</Title>
+          </div>
           <Form onSubmit={this.onFormSubmit}>
             <Form.Input
               type="text"
@@ -88,6 +90,8 @@ class CompanyProfileSettings extends Component {
   }
 }
 
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
+
 const Body = styled.div`
   display: flex;
   flex-direction: column;
@@ -96,8 +100,6 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 export default CompanyProfileSettings;

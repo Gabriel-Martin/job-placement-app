@@ -62,8 +62,9 @@ class JobDescriptionPage extends Component {
 
               <Button
                 onClick={() =>
-                  this.props.history.push(`/applicant/applicationform/${jobId}`)
-                }
+                  this.props.history.push(
+                    `/applicant/applicationform/${jobId}`
+                  )}
               >
                 Apply!
               </Button>
@@ -90,7 +91,7 @@ const Card = styled.div`
   background-color: #fff;
 `;
 
-const Title = styled.h1`
+const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })`
   font-size: 60px;
   text-align: center;
 `;

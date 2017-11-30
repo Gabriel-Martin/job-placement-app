@@ -66,7 +66,7 @@ class ApplicationForm extends Component {
       <Container>
         <NavBar userType={userType} />
         <Padding>
-          <h1>ApplicationForm</h1>
+          <Title>ApplicationForm</Title>
           <Form onSubmit={this.onFormSubmit}>
             <InputWidth>
               <Form.Input
@@ -158,12 +158,10 @@ const Container = styled.div`
   background-color: #ececec;
 `;
 
-const Padding = styled.div`
-  padding: 10px;
-`;
+const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })``;
 
-const InputWidth = styled.div`
-  width: 400px;
-`;
+const Padding = styled.div`padding: 10px;`;
+
+const InputWidth = styled.div`width: 400px;`;
 
 export default ApplicationForm;

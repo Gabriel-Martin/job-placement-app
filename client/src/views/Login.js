@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import apiCompany from "../api/companyCrud";
 import apiApplicant from "../api/applicantCrud";
-import { Form, Input } from "semantic-ui-react";
+import { Form, Input, Button } from "semantic-ui-react";
 
 import NavBar from "../components/NavBar";
 
@@ -126,9 +126,11 @@ class Login extends Component {
         <NavBar />
         <Body>
           <Head3>{login} Login</Head3>
-          <div>
-            <Button onClick={() => this.changeLoginState()}>{loginNext}</Button>
-          </div>
+          <Padding>
+            <Button color={"instagram"} onClick={() => this.changeLoginState()}>
+              {loginNext}
+            </Button>
+          </Padding>
 
           <Form size={"huge"} onSubmit={this.onFormSubmit}>
             <Form.Input
@@ -145,14 +147,16 @@ class Login extends Component {
               value={this.state.password}
               onChange={this.onInputChange}
             />
-            <Button type="submit">Submit</Button>
+            <Button color={"instagram"} type="submit">
+              Submit
+            </Button>
           </Form>
         </Body>
       </Container>
     );
   }
 }
-const Head3 = styled.h3`
+const Head3 = styled.h3.attrs({ className: "avenir fw1 f1 " })`
   text-align: center;
   font-size: 50px;
 `;
@@ -165,12 +169,14 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const Button = styled.button`
-  font-size: 20px;
-  border-radius: 8px;
-  background-color: #526760;
-  color: #f9eed6;
-`;
+// const Button = styled.button`
+//   font-size: 20px;
+//   border-radius: 8px;
+//   background-color: #526760;
+//   color: #f9eed6;
+// `;
+
+const Padding = styled.div`padding: 10px;`;
 
 const Container = styled.div`background-color: #ececec;`;
 

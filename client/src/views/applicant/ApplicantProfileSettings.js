@@ -59,7 +59,7 @@ class ApplicantProfileSettings extends Component {
       <Container>
         <NavBar userType={userType} />
         <Body>
-          <h1>Applicant Profile Settings</h1>
+          <Title>Applicant Profile Settings</Title>
           <Form onSubmit={this.onFormSubmit}>
             <Form.Input
               type="text"
@@ -97,6 +97,8 @@ const Body = styled.div`
   justify-content: center;
   height: 100vh;
 `;
+
+const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })``;
 
 const Container = styled.div`background-color: #ececec;`;
 

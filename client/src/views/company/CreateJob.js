@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import apiJobs from "../../api/jobCrud";
-
+import styled from "styled-components";
+import { Form, Input, Button, TextArea } from "semantic-ui-react";
 import NavBar from "../../components/NavBar";
 
 class CreateJob extends Component {
@@ -46,37 +47,62 @@ class CreateJob extends Component {
     return (
       <div>
         <NavBar userType={userType} />
-        <h1>Create Job</h1>
-        <form onSubmit={this.formSubmit}>
-          <input
-            type="text"
-            name={"description"}
-            placeholder={"description"}
-            onChange={this.inputChange}
-          />
-          <input
-            type="text"
-            name={"experience"}
-            placeholder={"experience"}
-            onChange={this.inputChange}
-          />
-          <input
-            type="text"
-            name={"position"}
-            placeholder={"position"}
-            onChange={this.inputChange}
-          />
-          <input
-            type="text"
-            name={"payRate"}
-            placeholder={"pay rate"}
-            onChange={this.inputChange}
-          />
-          <input type="submit" />
-        </form>
+        <Container>
+          <Center>
+            <Form onSubmit={this.formSubmit}>
+              <Title>Post A Job</Title>
+              <InputWidth>
+                <Form.TextArea
+                  type="text"
+                  name={"description"}
+                  placeholder={"description"}
+                  onChange={this.inputChange}
+                />
+                <Form.Input
+                  type="text"
+                  name={"experience"}
+                  placeholder={"experience"}
+                  onChange={this.inputChange}
+                />
+                <Form.Input
+                  type="text"
+                  name={"position"}
+                  placeholder={"position"}
+                  onChange={this.inputChange}
+                />
+                <Form.Input
+                  type="text"
+                  name={"payRate"}
+                  placeholder={"pay rate"}
+                  onChange={this.inputChange}
+                />
+                <Button color={"instagram"} type="submit">
+                  Submit
+                </Button>
+              </InputWidth>
+            </Form>
+          </Center>
+        </Container>
       </div>
     );
   }
 }
+const Container = styled.div`
+  min-height: 100vh;
+  background-color: #ececec;
+  padding: 10px;
+`;
+
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 15px;`;
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+`;
+
+const InputWidth = styled.div`width: 400px;`;
 
 export default CreateJob;

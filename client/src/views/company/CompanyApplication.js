@@ -82,13 +82,11 @@ const Containter = styled.div`
   min-height: 100vh;
 `;
 
-const Title = styled.h1`
+const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })`
   font-size: 60px;
   text-align: center;
 `;
 
-const TextStyle = styled.div`
-  padding: 5px;
-`;
+const TextStyle = styled.div`padding: 5px;`;
 
 export default CompanyApplication;
