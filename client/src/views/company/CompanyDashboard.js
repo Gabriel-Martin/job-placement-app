@@ -15,6 +15,10 @@ class CompanyDashboard extends Component {
     this.state = {};
   }
 
+  editJob = () => {
+    this.props.history.push(`/job/edit/${this.state.id}`);
+  };
+
   fetchJob = () => {
     let { jobId } = this.props.match.params;
     apiJobs.getById(jobId).then(job => {
@@ -81,19 +85,22 @@ class CompanyDashboard extends Component {
     return (
       <div>
         <NavBar userType={userType} />
-        <Container>
-          <Center>
-            <Title> Dashboard</Title>
-            <h3>Position: {position} </h3>
-            <Width>Description: {description} </Width>
-          </Center>
-          <div>
-            <ApplicationKanban
-              applications={applications}
-              onStatusChange={this.handleStatusChange}
-            />
-          </div>
-        </Container>
+        <Title>Company Dashboard</Title>
+        <button
+          onClick={() => {
+            this.editJob();
+          }}
+        >
+          Edit Job
+        </button>
+        <h3>Position: {position} </h3>
+        <p>Description: {description} </p>
+        <div>
+          <ApplicationKanban
+            applications={applications}
+            onStatusChange={this.handleStatusChange}
+          />
+        </div>
       </div>
     );
   }
