@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Input, Form, Button, Dropdown } from "semantic-ui-react";
+import { Input, Form, Button, Select } from "semantic-ui-react";
 import apiApplication from "../../api/applicationCrud.js";
 import apiJob from "../../api/applicantCrud";
 
@@ -70,6 +70,7 @@ class ApplicationForm extends Component {
           <Form onSubmit={this.onFormSubmit}>
             <InputWidth>
               <Form.Input
+                label={"First Name"}
                 type="text"
                 name={"firstName"}
                 placeholder={"First Name"}
@@ -77,6 +78,7 @@ class ApplicationForm extends Component {
                 required
               />
               <Form.Input
+                label={"Last Name"}
                 type="text"
                 name={"lastName"}
                 placeholder={"Last Name"}
@@ -84,6 +86,7 @@ class ApplicationForm extends Component {
                 required
               />
               <Form.Input
+                label={"Address"}
                 type="text"
                 name={"address"}
                 placeholder={"Address"}
@@ -91,6 +94,7 @@ class ApplicationForm extends Component {
                 required
               />
               <Form.Input
+                label={"City"}
                 type="text"
                 name={"city"}
                 placeholder={"City"}
@@ -98,41 +102,47 @@ class ApplicationForm extends Component {
                 required
               />
               <Form.Input
+                label={"State"}
                 type="text"
                 name={"state"}
-                placeholder={"state"}
+                placeholder={"State"}
                 onChange={this.onInputChange}
                 required
               />
               <Form.Input
+                label={"Zip Code"}
                 type="text"
                 name={"zip"}
-                placeholder={"zip"}
+                placeholder={"Zip Code"}
                 onChange={this.onInputChange}
                 required
               />
               <Form.Input
+                label={"Phone"}
                 type="text"
                 name={"phone"}
-                placeholder={"phone"}
+                placeholder={"###-###-####"}
                 onChange={this.onInputChange}
                 required
               />
               <Form.Input
+                label={"Email"}
                 type="text"
                 name={"email"}
-                placeholder={"email"}
+                placeholder={"Email"}
                 onChange={this.onInputChange}
                 required
               />
               <Form.Input
+                label={"Data"}
                 type="text"
                 name={"date"}
                 placeholder={"date"}
                 onChange={this.onInputChange}
                 required
               />
-              <Dropdown
+              <Form.Field
+                control={Select}
                 defaultValue=""
                 labelPosition="right"
                 placeholder={"Education"}
@@ -161,8 +171,12 @@ const Container = styled.div`
 
 const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })``;
 
-const Padding = styled.div`padding: 10px;`;
+const Padding = styled.div`
+  padding: 10px;
+`;
 
-const InputWidth = styled.div`width: 400px;`;
+const InputWidth = styled.div`
+  width: 400px;
+`;
 
 export default ApplicationForm;

@@ -104,7 +104,9 @@ class EditJob extends Component {
   }
 }
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 const Body = styled.div`
   display: flex;

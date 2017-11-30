@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 import apiCompany from "../../api/companyCrud";
 import apiCheckUser from "../../api/checkUserCrud";
+import apiJob from "../../api/jobCrud";
+import { Button, Icon } from "semantic-ui-react";
 
 import NavBar from "../../components/NavBar";
 
@@ -12,48 +14,77 @@ class CompanyProfile extends Component {
     super();
 
     this.state = {
-      company: {}
+      company: {},
+      userType: ""
     };
   }
 
   componentDidMount() {
     apiCompany.getCurrentCompany().then(company => {
       this.setState(state => ({
-        ...company,
+        company: company,
         userType: localStorage.getItem("userType")
       }));
     });
   }
 
+  deleteJob = jobId => {
+    apiJob.remove(jobId).then(() => {
+      apiCompany.getCurrentCompany().then(company => {
+        this.setState(state => ({
+          company: company,
+          userType: localStorage.getItem("userType")
+        }));
+      });
+    });
+  };
+
   render() {
-    let { id = "", jobs = [], userType = "" } = this.state;
+    let { company, userType } = this.state;
 
     return (
       <Container>
         <NavBar userType={userType} />
-        <Link to={`/company/profile/settings/${id}`}>Company Settings</Link>
+
         <Center>
-          <Title>{this.state.companyName}'s Profile</Title>
-          <Img src={this.state.company.logo} />
+          <Title>{company.companyName}'s Profile</Title>
+          <Img src={company.logo} />
         </Center>
         <Center>
-          <div>{this.state.company.description}</div>
+          <div>{company.description}</div>
         </Center>
         <Center>
-          <div>{this.state.company.industry}</div>
+          <div>{company.industry}</div>
         </Center>
         <AllCards>
-          {jobs.map(job => (
-            <Card
-              key={job.id}
-              onClick={() =>
-                this.props.history.push(`/company/dashboard/${job.id}`)
-              }
-            >
-              <h3> {job.position} </h3>
-              <p> {job.description} </p>
-            </Card>
-          ))}
+          {company.jobs &&
+            company.jobs.map(job => (
+              <Card key={job.id}>
+                <div style={{ backgroundColor: "#568EA3", padding: "5px 0px" }}>
+                  <Icon
+                    onClick={() => this.deleteJob(job.id)}
+                    style={{ margin: "0px 4px" }}
+                    size={"large"}
+                    name={"trash"}
+                  />
+                  <Icon
+                    onClick={this.props.history.push(`/job/edit/${job.id}`)}
+                    style={{ margin: "0px 4px" }}
+                    size={"large"}
+                    name={"edit"}
+                  />
+                </div>
+                <div
+                  onClick={() =>
+                    this.props.history.push(`/company/dashboard/${job.id}`)
+                  }
+                  style={{ overflow: "auto", padding: "5px" }}
+                >
+                  <h3> {job.position} </h3>
+                  <p> {job.description} </p>
+                </div>
+              </Card>
+            ))}
         </AllCards>
       </Container>
     );
@@ -71,13 +102,11 @@ const Card = styled.div`
   display: flex;
   margin: 10px;
   flex-direction: column;
-  border: 15px solid #fff;
   border-radius: 8px;
   background-color: #fff;
   cursor: pointer;
   width: 300px;
   height: 200px;
-  overflow: auto;
 `;
 
 const AllCards = styled.div`
