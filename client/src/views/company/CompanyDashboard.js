@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 import NavBar from "../../components/NavBar";
 import ApplicationKanban from "../../components/ApplicationKanban";
@@ -80,7 +81,7 @@ class CompanyDashboard extends Component {
     return (
       <div>
         <NavBar userType={userType} />
-        <h1>Company Dashboard</h1>
+        <Title>Company Dashboard</Title>
         <h3>Position: {position} </h3>
         <p>Description: {description} </p>
         <div>
@@ -93,6 +94,8 @@ class CompanyDashboard extends Component {
     );
   }
 }
+
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
 
 export default CompanyDashboard;
 

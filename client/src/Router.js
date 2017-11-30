@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
+import styled from "styled-components";
 import AuthenticatedRoute from "./containers/AuthenticatedRoute";
 
 import Homepage from "./views/Homepage";
@@ -20,59 +20,71 @@ import EditJob from "./views/company/EditJob";
 class Router extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          <Switch>
-            <Route exact path={"/"} component={Homepage} />
-            <Route exact path={"/login"} component={Login} />
-            <Route exact path={"/signup"} component={Signup} />
-            <Route exact path={"/jobs/:jobId"} component={JobDescriptionPage} />
-            <AuthenticatedRoute
-              exact
-              path={"/applicant/profile"}
-              component={ApplicantProfile}
-            />
-            <AuthenticatedRoute
-              exact
-              path={"/applicant/profile/settings/:applicantId"}
-              component={ApplicantProfileSettings}
-            />
-            <AuthenticatedRoute
-              exact
-              path={"/applicant/applicationform/:jobId"}
-              component={ApplicationForm}
-            />
-            <AuthenticatedRoute
-              exact
-              path={"/company/dashboard/:jobId"}
-              component={CompanyDashboard}
-            />
-            <AuthenticatedRoute
-              exact
-              path={"/company/profile"}
-              component={CompanyProfile}
-            />
-            <AuthenticatedRoute
-              exact
-              path={"/company/profile/settings/:companyId"}
-              component={CompanyProfileSettings}
-            />
-            <AuthenticatedRoute
-              exact
-              path={"/company/application/:applicationId"}
-              component={CompanyApplication}
-            />
-            <AuthenticatedRoute exact path={"/job/new"} component={CreateJob} />
-            <AuthenticatedRoute
-              exact
-              path={"/job/edit/:jobId"}
-              component={EditJob}
-            />
-          </Switch>
-        </div>
-      </BrowserRouter>
+      <Container>
+        <BrowserRouter>
+          <div>
+            <Switch>
+              <Route exact path={"/"} component={Homepage} />
+              <Route exact path={"/login"} component={Login} />
+              <Route exact path={"/signup"} component={Signup} />
+              <Route
+                exact
+                path={"/jobs/:jobId"}
+                component={JobDescriptionPage}
+              />
+              <AuthenticatedRoute
+                exact
+                path={"/applicant/profile"}
+                component={ApplicantProfile}
+              />
+              <AuthenticatedRoute
+                exact
+                path={"/applicant/profile/settings/:applicantId"}
+                component={ApplicantProfileSettings}
+              />
+              <AuthenticatedRoute
+                exact
+                path={"/applicant/applicationform/:jobId"}
+                component={ApplicationForm}
+              />
+              <AuthenticatedRoute
+                exact
+                path={"/company/dashboard/:jobId"}
+                component={CompanyDashboard}
+              />
+              <AuthenticatedRoute
+                exact
+                path={"/company/profile"}
+                component={CompanyProfile}
+              />
+              <AuthenticatedRoute
+                exact
+                path={"/company/profile/settings/:companyId"}
+                component={CompanyProfileSettings}
+              />
+              <AuthenticatedRoute
+                exact
+                path={"/company/application/:applicationId"}
+                component={CompanyApplication}
+              />
+              <AuthenticatedRoute
+                exact
+                path={"/job/new"}
+                component={CreateJob}
+              />
+              <AuthenticatedRoute
+                exact
+                path={"/job/edit/:jobId"}
+                component={EditJob}
+              />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </Container>
     );
   }
 }
+
+const Container = styled.body.attrs({ className: "avenir" })``;
 
 export default Router;

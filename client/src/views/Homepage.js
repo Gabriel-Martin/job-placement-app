@@ -74,7 +74,7 @@ class Homepage extends Component {
 
 export default Homepage;
 
-const Head = styled.h1`
+const Head = styled.h1.attrs({ className: "avenir fw1 f1 " })`
   text-align: center;
   font-size: 75px;
 `;
