@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 import styled from "styled-components";
 
 import NavBar from "../../components/NavBar";
@@ -60,43 +60,47 @@ class EditJob extends Component {
         <Body>
           <h1>EditJob</h1>
           <Form onSubmit={this.onFormSubmit}>
-            <Form.TextArea
-              label={"Description"}
-              type={"text"}
-              name={"description"}
-              placeholder={"Description"}
-              onChange={this.onInputChange}
-              value={job.description}
-              required
-            />
-            <Form.Input
-              label={"Experience"}
-              type={"text"}
-              placeholder={"Experience"}
-              onChange={this.onInputChange}
-              name={"experience"}
-              value={job.experience}
-              required
-            />
-            <Form.Input
-              label={"Pay Rate"}
-              type={"text"}
-              placeholder={"Pay Rate"}
-              onChange={this.onInputChange}
-              name={"payRate"}
-              value={job.payRate}
-              required
-            />
-            <Form.Input
-              label={"Position"}
-              type={"text"}
-              placeholder={"Position"}
-              onChange={this.onInputChange}
-              name={"position"}
-              value={job.position}
-              required
-            />
-            <Form.Input type={"submit"} />
+            <InputWidth>
+              <Form.TextArea
+                label={"Description"}
+                type={"text"}
+                name={"description"}
+                placeholder={"Description"}
+                onChange={this.onInputChange}
+                value={job.description}
+                required
+              />
+              <Form.Input
+                label={"Experience"}
+                type={"text"}
+                placeholder={"Experience"}
+                onChange={this.onInputChange}
+                name={"experience"}
+                value={job.experience}
+                required
+              />
+              <Form.Input
+                label={"Pay Rate"}
+                type={"text"}
+                placeholder={"Pay Rate"}
+                onChange={this.onInputChange}
+                name={"payRate"}
+                value={job.payRate}
+                required
+              />
+              <Form.Input
+                label={"Position"}
+                type={"text"}
+                placeholder={"Position"}
+                onChange={this.onInputChange}
+                name={"position"}
+                value={job.position}
+                required
+              />
+              <Button color={"instagram"} type={"submit"}>
+                Submit
+              </Button>
+            </InputWidth>
           </Form>
         </Body>
       </Container>
@@ -113,5 +117,7 @@ const Body = styled.div`
   justify-content: center;
   height: 100vh;
 `;
+
+const InputWidth = styled.div`width: 400px;`;
 
 export default EditJob;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import { Button } from "semantic-ui-react";
 import NavBar from "../../components/NavBar";
 import ApplicationKanban from "../../components/ApplicationKanban";
 
@@ -85,16 +85,21 @@ class CompanyDashboard extends Component {
     return (
       <div>
         <NavBar userType={userType} />
-        <Title>Company Dashboard</Title>
-        <button
-          onClick={() => {
-            this.editJob();
-          }}
-        >
-          Edit Job
-        </button>
-        <h3>Position: {position} </h3>
-        <p>Description: {description} </p>
+        <Center>
+          <Title>Company Dashboard</Title>
+          <h3>Position: {position} </h3>
+          <Button
+            style={{ marginBottom: "10px" }}
+            color={"instagram"}
+            size={"small"}
+            onClick={() => {
+              this.editJob();
+            }}
+          >
+            Edit Job
+          </Button>
+          <Width>Description: {description} </Width>
+        </Center>
         <div>
           <ApplicationKanban
             applications={applications}
