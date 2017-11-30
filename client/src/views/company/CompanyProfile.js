@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 import apiCompany from "../../api/companyCrud";
 import apiCheckUser from "../../api/checkUserCrud";
+import apiJob from "../../api/jobCrud";
+import { Button, Icon } from "semantic-ui-react";
 
 import NavBar from "../../components/NavBar";
 
@@ -26,36 +27,72 @@ class CompanyProfile extends Component {
     });
   }
 
+  deleteJob = jobId => {
+    apiJob.remove(jobId).then(() => {
+      apiCompany.getCurrentCompany().then(company => {
+        this.setState(state => ({
+          company: company,
+          userType: localStorage.getItem("userType")
+        }));
+      });
+    });
+  };
+
   render() {
     let { company, userType } = this.state;
-    console.log(company);
+
     return (
       <Container>
         <NavBar userType={userType} />
-        <Link to={`/company/profile/settings/${company.id}`}>
-          Company Settings
-        </Link>
-        <Center>
-          <Title>{company.companyName}'s Profile</Title>
-          <Img src={company.logo} />
-        </Center>
-        <Center>
-          <div>{company.description}</div>
-        </Center>
-        <Center>
-          <div>{company.industry}</div>
-        </Center>
+
+        <Column>
+          <div>
+            <SLink to={`/company/profile/settings/${company.id}`}>
+              Company Settings &nbsp;&nbsp;
+              <Icon size={"large"} name={"settings"} />
+            </SLink>
+          </div>
+          <Center>
+            <Title>{company.companyName}'s Profile</Title>
+            <Img src={company.logo} />
+          </Center>
+          <Center>
+            <div>{company.description}</div>
+          </Center>
+          <Center>
+            <div>{company.industry}</div>
+          </Center>
+        </Column>
+
         <AllCards>
           {company.jobs &&
             company.jobs.map(job => (
-              <Card
-                key={job.id}
-                onClick={() =>
-                  this.props.history.push(`/company/dashboard/${job.id}`)
-                }
-              >
-                <h3> {job.position} </h3>
-                <p> {job.description} </p>
+              <Card key={job.id}>
+                <div style={{ backgroundColor: "#568EA3", padding: "5px 0px" }}>
+                  <Icon
+                    onClick={() => this.deleteJob(job.id)}
+                    style={{ margin: "0px 4px" }}
+                    size={"large"}
+                    name={"trash"}
+                  />
+                  <Icon
+                    onClick={() =>
+                      this.props.history.push(`/job/edit/${job.id}`)
+                    }
+                    style={{ margin: "0px 4px" }}
+                    size={"large"}
+                    name={"edit"}
+                  />
+                </div>
+                <div
+                  onClick={() =>
+                    this.props.history.push(`/company/dashboard/${job.id}`)
+                  }
+                  style={{ overflow: "auto", padding: "5px" }}
+                >
+                  <h3> {job.position} </h3>
+                  <p> {job.description} </p>
+                </div>
               </Card>
             ))}
         </AllCards>
@@ -63,6 +100,27 @@ class CompanyProfile extends Component {
     );
   }
 }
+
+// <AllCards>
+// {company.jobs &&
+//   company.jobs.map(job => (
+//     <Card
+//       key={job.id}
+//       onClick={() =>
+//         this.props.history.push(`/company/dashboard/${job.id}`)}
+//     >
+//       <h3> {job.position} </h3>
+//       <p> {job.description} </p>
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SLink = styled(Link)`
+  float: right;
+  margin: 15px;
+`;
 
 const Container = styled.div`
   background-color: #ececec;
@@ -75,13 +133,11 @@ const Card = styled.div`
   display: flex;
   margin: 10px;
   flex-direction: column;
-  border: 15px solid #fff;
   border-radius: 8px;
   background-color: #fff;
   cursor: pointer;
   width: 300px;
   height: 200px;
-  overflow: auto;
 `;
 
 const AllCards = styled.div`

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import { Button } from "semantic-ui-react";
 import NavBar from "../../components/NavBar";
 import ApplicationKanban from "../../components/ApplicationKanban";
 
@@ -14,6 +14,10 @@ class CompanyDashboard extends Component {
 
     this.state = {};
   }
+
+  editJob = () => {
+    this.props.history.push(`/job/edit/${this.state.id}`);
+  };
 
   fetchJob = () => {
     let { jobId } = this.props.match.params;
@@ -81,9 +85,21 @@ class CompanyDashboard extends Component {
     return (
       <div>
         <NavBar userType={userType} />
-        <Title>Company Dashboard</Title>
-        <h3>Position: {position} </h3>
-        <p>Description: {description} </p>
+        <Center>
+          <Title>Company Dashboard</Title>
+          <h3>Position: {position} </h3>
+          <Button
+            style={{ marginBottom: "10px" }}
+            color={"instagram"}
+            size={"small"}
+            onClick={() => {
+              this.editJob();
+            }}
+          >
+            Edit Job
+          </Button>
+          <Width>Description: {description} </Width>
+        </Center>
         <div>
           <ApplicationKanban
             applications={applications}
@@ -94,6 +110,24 @@ class CompanyDashboard extends Component {
     );
   }
 }
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+`;
+
+const Width = styled.p`
+  width: 1000px;
+  text-align: center;
+`;
+
+const Container = styled.div`
+  background-color: #ececec;
+  min-height: 100vh;
+`;
 
 const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
 

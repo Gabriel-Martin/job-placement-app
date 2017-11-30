@@ -57,24 +57,28 @@ class CreateJob extends Component {
                   name={"description"}
                   placeholder={"description"}
                   onChange={this.inputChange}
+                  required
                 />
                 <Form.Input
                   type="text"
                   name={"experience"}
                   placeholder={"experience"}
                   onChange={this.inputChange}
+                  required
                 />
                 <Form.Input
                   type="text"
                   name={"position"}
                   placeholder={"position"}
                   onChange={this.inputChange}
+                  required
                 />
                 <Form.Input
                   type="text"
                   name={"payRate"}
                   placeholder={"pay rate"}
                   onChange={this.inputChange}
+                  required
                 />
                 <Button color={"instagram"} type="submit">
                   Submit

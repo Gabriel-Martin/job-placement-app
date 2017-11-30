@@ -4,14 +4,15 @@ import { DragSource } from "react-dnd";
 import { Link } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
 
+// little box in kanban
 const style = {
-  border: "1px dashed gray",
-  backgroundColor: "white",
-  padding: "0.5rem 1rem",
-  marginRight: "1.5rem",
+  padding: "1.5rem 2.5rem",
+
   marginBottom: "1.5rem",
   cursor: "move",
-  float: "left"
+  float: "left",
+  backgroundColor: "#f8f8ff",
+  borderRadius: "5px"
 };
 
 const boxSource = {
@@ -26,7 +27,7 @@ class Application extends Component {
   render() {
     const { data, isDragging, connectDragSource } = this.props;
     return connectDragSource(
-      <div style={{ ...style, color: "black" }}>
+      <div style={{ ...style, color: "black", fontSize: "18px" }}>
         <Link to={`/company/application/${data.id}`}>
           {data.firstName} {data.lastName}
           {data.status === "hired" && <Icon name={"check"} color={"green"} />}
