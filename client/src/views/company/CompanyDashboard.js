@@ -88,16 +88,6 @@ class CompanyDashboard extends Component {
         <Center>
           <Title>Company Dashboard</Title>
           <h3>Position: {position} </h3>
-          <Button
-            style={{ marginBottom: "10px" }}
-            color={"instagram"}
-            size={"small"}
-            onClick={() => {
-              this.editJob();
-            }}
-          >
-            Edit Job
-          </Button>
           <Width>Description: {description} </Width>
         </Center>
         <div>
@@ -129,7 +119,9 @@ const Container = styled.div`
   min-height: 100vh;
 `;
 
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
+  padding: 20px;
+`;
 
 export default CompanyDashboard;
 
