@@ -28,30 +28,30 @@ class ApplicantProfile extends Component {
 
   render() {
     let { applicant, userType } = this.state;
-<<<<<<< HEAD
-    console.log(this.state);
-=======
     let applied = [];
     let processing = [];
     let status = [];
->>>>>>> 1c2ec0d80260af076cfc3477ff29c113f1e8a15e
+
+    console.log(applied);
+    console.log(processing);
+    console.log(status);
 
     // filtering all applications and assigning
     // to array based on 'status' property
     if (applicant.applications) {
-      let applied = applicant.applications.filter(
+      applied = applicant.applications.filter(
         app => app.applicationStatus === "applied"
       );
     }
 
     if (applicant.applications) {
-      let processing = applicant.applications.filter(
+      processing = applicant.applications.filter(
         app => app.applicationStatus === "pending"
       );
     }
 
     if (applicant.applications) {
-      let status = applicant.applications.filter(
+      status = applicant.applications.filter(
         app =>
           app.applicationStatus === "hired" ||
           app.applicationStatus === "declined"
@@ -74,10 +74,10 @@ class ApplicantProfile extends Component {
           <Card>
             <Head3>Interested</Head3>
 
-            <MiniCard>
-              {applicant.jobs &&
-                applicant.jobs.map(j => <div key={j.id}>{j.position}</div>)}
-            </MiniCard>
+            {applicant.jobs &&
+              applicant.jobs.map(j => (
+                <MiniCard key={j.id}>{j.position}</MiniCard>
+              ))}
           </Card>
           <Card>
             <Head3>Applied</Head3>
@@ -125,7 +125,9 @@ const Img = styled.img`
   height: 75px;
 `;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 const MiniCard = styled.div`
   border: 1px solid #fff;
