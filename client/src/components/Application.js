@@ -26,12 +26,17 @@ const boxSource = {
 class Application extends Component {
   render() {
     const { data, isDragging, connectDragSource } = this.props;
+    console.log(data);
     return connectDragSource(
       <div style={{ ...style, color: "black", fontSize: "18px" }}>
         <Link to={`/company/application/${data.id}`}>
           {data.firstName} {data.lastName}
-          {data.status === "hired" && <Icon name={"check"} color={"green"} />}
-          {data.status === "declined" && <Icon name={"delete"} color={"red"} />}
+          {data.applicationStatus === "hired" && (
+            <Icon name={"check"} color={"green"} />
+          )}
+          {data.applicationStatus === "declined" && (
+            <Icon name={"delete"} color={"red"} />
+          )}
         </Link>
       </div>
     );

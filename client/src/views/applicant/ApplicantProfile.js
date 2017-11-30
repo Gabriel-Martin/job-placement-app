@@ -93,7 +93,15 @@ class ApplicantProfile extends Component {
           <Card>
             <Head3>Status</Head3>
             {status.map(j => (
-              <MiniCard key={j.id}>{j.job && j.job.position}</MiniCard>
+              <MiniCard key={j.id}>
+                {j.job && j.job.position}
+                {j.applicationStatus === "hired" && (
+                  <Icon name={"check"} color={"green"} />
+                )}
+                {j.applicationStatus === "declined" && (
+                  <Icon name={"delete"} color={"red"} />
+                )}
+              </MiniCard>
             ))}
           </Card>
         </AllCards>
@@ -130,9 +138,7 @@ const Img = styled.img`
   height: 75px;
 `;
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 const MiniCard = styled.div`
   background-color: #f8f8ff;
