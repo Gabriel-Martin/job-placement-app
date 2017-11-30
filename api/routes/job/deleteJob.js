@@ -7,7 +7,8 @@ module.exports = {
 
       this.models.Job
         .get(jobId)
-        .then(doc => doc.deleteAll({ applications: true }))
+        .getJoin({ applications: true })
+        .then(doc => doc.deleteAll())
         .then(result => reply(true))
         .catch(err => {
           console.log(err);

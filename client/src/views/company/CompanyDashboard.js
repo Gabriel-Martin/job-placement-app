@@ -83,6 +83,8 @@ class CompanyDashboard extends Component {
       applications = []
     } = this.state;
 
+    console.log(this.state);
+
     return (
       <div>
         <NavBar userType={userType} />
