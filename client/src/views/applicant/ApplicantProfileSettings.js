@@ -64,40 +64,46 @@ class ApplicantProfileSettings extends Component {
             Settings <Icon name={"settings"} />
           </Title>
           <Form onSubmit={this.onFormSubmit}>
-            <Form.Input
-              type="text"
-              name={"email"}
-              value={applicant.email}
-              onChange={this.onInputChange}
-              placeholder={"Email"}
-              required
-            />
-            <Form.Input
-              type="text"
-              name={"image"}
-              value={applicant.image}
-              onChange={this.onInputChange}
-              placeholder={"Image"}
-            />
-            <Form.Input
-              type="text"
-              name={"firstName"}
-              value={applicant.firstName}
-              onChange={this.onInputChange}
-              placeholder={"First Name"}
-              required
-            />
-            <Form.Input
-              type="text"
-              name={"lastName"}
-              value={applicant.lastName}
-              onChange={this.onInputChange}
-              placeholder={"Last Name"}
-              required
-            />
-            <Button color={"instagram"} type="submit">
-              Submit
-            </Button>
+            <InputWidth>
+              <Form.Input
+                type="text"
+                label={"Email"}
+                name={"email"}
+                value={applicant.email}
+                onChange={this.onInputChange}
+                placeholder={"Email"}
+                required
+              />
+              <Form.Input
+                type="text"
+                label={"Profile Picture"}
+                name={"image"}
+                value={applicant.image}
+                onChange={this.onInputChange}
+                placeholder={"Image"}
+              />
+              <Form.Input
+                type="text"
+                label={"First Name"}
+                name={"firstName"}
+                value={applicant.firstName}
+                onChange={this.onInputChange}
+                placeholder={"First Name"}
+                required
+              />
+              <Form.Input
+                type="text"
+                label={"last Name"}
+                name={"lastName"}
+                value={applicant.lastName}
+                onChange={this.onInputChange}
+                placeholder={"Last Name"}
+                required
+              />
+              <Button color={"instagram"} type="submit">
+                Submit
+              </Button>
+            </InputWidth>
           </Form>
         </Body>
       </Container>
@@ -112,6 +118,8 @@ const Body = styled.div`
   justify-content: center;
   height: 100vh;
 `;
+
+const InputWidth = styled.div`width: 400px;`;
 
 const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })``;
 
