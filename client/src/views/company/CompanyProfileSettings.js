@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import apiCompany from "../../api/companyCrud";
-import { Form, Input, Button, Icon } from "semantic-ui-react";
+import { Form, Input, Button, Icon, TextArea } from "semantic-ui-react";
 import styled from "styled-components";
 import NavBar from "../../components/NavBar";
 
@@ -64,40 +64,46 @@ class CompanyProfileSettings extends Component {
             </Title>
           </div>
           <Form onSubmit={this.onFormSubmit}>
-            <Form.Input
-              type="text"
-              name={"email"}
-              placeholder={"email"}
-              value={company.email}
-              onChange={this.onInputChange}
-              required
-            />
-            <Form.Input
-              type="text"
-              name={"logo"}
-              placeholder={"Logo"}
-              value={company.logo}
-              onChange={this.onInputChange}
-            />
-            <Form.Input
-              type="text"
-              name={"description"}
-              placeholder={"Description"}
-              value={company.description}
-              onChange={this.onInputChange}
-              required
-            />
-            <Form.Input
-              type="text"
-              name={"industry"}
-              placeholder={"Industry"}
-              value={company.industry}
-              onChange={this.onInputChange}
-              required
-            />
-            <Button color={"instagram"} type="submit">
-              Submit
-            </Button>
+            <InputWidth>
+              <Form.Input
+                type="text"
+                label={"Email"}
+                name={"email"}
+                placeholder={"email"}
+                value={company.email}
+                onChange={this.onInputChange}
+                required
+              />
+              <Form.Input
+                type="text"
+                label={"Logo"}
+                name={"logo"}
+                placeholder={"Logo"}
+                value={company.logo}
+                onChange={this.onInputChange}
+              />
+              <Form.TextArea
+                type="text"
+                label={"Description of your Company"}
+                name={"description"}
+                placeholder={"Description"}
+                value={company.description}
+                onChange={this.onInputChange}
+                required
+              />
+              <Form.Input
+                type="text"
+                label={"Industry"}
+                name={"industry"}
+                placeholder={"Industry"}
+                value={company.industry}
+                onChange={this.onInputChange}
+                required
+              />
+              <Button color={"instagram"} type="submit">
+                Submit
+              </Button>
+            </InputWidth>
           </Form>
         </Body>
       </Container>
@@ -114,6 +120,8 @@ const Body = styled.div`
   justify-content: center;
   height: 100vh;
 `;
+
+const InputWidth = styled.div`width: 400px;`;
 
 const Container = styled.div`background-color: #ececec;`;
 

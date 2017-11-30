@@ -5,9 +5,9 @@ module.exports = {
     handler: function(request, reply) {
       let jobId = request.params.jobId;
 
-      this.models.Job
-        .get(jobId)
-        .then(doc => doc.delete())
+      this.models.Job.get(jobId)
+        .getJoin({ applications: true })
+        .then(doc => doc.deleteAll())
         .then(result => reply(true))
         .catch(err => {
           console.log(err);

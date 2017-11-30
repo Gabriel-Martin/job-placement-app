@@ -78,7 +78,8 @@ class CompanyProfile extends Component {
                   />
                   <Icon
                     onClick={() =>
-                      this.props.history.push(`/job/edit/${job.id}`)}
+                      this.props.history.push(`/job/edit/${job.id}`)
+                    }
                     style={{ margin: "0px 4px" }}
                     title={"Edit"}
                     size={"large"}
@@ -87,8 +88,13 @@ class CompanyProfile extends Component {
                 </div>
                 <div
                   onClick={() =>
-                    this.props.history.push(`/company/dashboard/${job.id}`)}
-                  style={{ overflow: "auto", padding: "5px" }}
+                    this.props.history.push(`/company/dashboard/${job.id}`)
+                  }
+                  style={{
+                    overflow: "auto",
+                    wordWrap: "break-word",
+                    padding: "5px"
+                  }}
                 >
                   <h3> {job.position} </h3>
                   <p> {job.description} </p>
@@ -100,17 +106,6 @@ class CompanyProfile extends Component {
     );
   }
 }
-
-// <AllCards>
-// {company.jobs &&
-//   company.jobs.map(job => (
-//     <Card
-//       key={job.id}
-//       onClick={() =>
-//         this.props.history.push(`/company/dashboard/${job.id}`)}
-//     >
-//       <h3> {job.position} </h3>
-//       <p> {job.description} </p>
 
 const Column = styled.div`
   display: flex;
