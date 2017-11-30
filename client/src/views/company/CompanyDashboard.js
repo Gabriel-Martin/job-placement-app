@@ -106,6 +106,24 @@ class CompanyDashboard extends Component {
   }
 }
 
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+`;
+
+const Width = styled.p`
+  width: 1000px;
+  text-align: center;
+`;
+
+const Container = styled.div`
+  background-color: #ececec;
+  min-height: 100vh;
+`;
+
 const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
 
 export default CompanyDashboard;

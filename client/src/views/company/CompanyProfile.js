@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 import apiCompany from "../../api/companyCrud";
 import apiCheckUser from "../../api/checkUserCrud";
 import apiJob from "../../api/jobCrud";
@@ -46,16 +45,25 @@ class CompanyProfile extends Component {
       <Container>
         <NavBar userType={userType} />
 
-        <Center>
-          <Title>{company.companyName}'s Profile</Title>
-          <Img src={company.logo} />
-        </Center>
-        <Center>
-          <div>{company.description}</div>
-        </Center>
-        <Center>
-          <div>{company.industry}</div>
-        </Center>
+        <Column>
+          <div>
+            <SLink to={`/company/profile/settings/${company.id}`}>
+              Company Settings &nbsp;&nbsp;
+              <Icon size={"large"} name={"settings"} />
+            </SLink>
+          </div>
+          <Center>
+            <Title>{company.companyName}'s Profile</Title>
+            <Img src={company.logo} />
+          </Center>
+          <Center>
+            <div>{company.description}</div>
+          </Center>
+          <Center>
+            <div>{company.industry}</div>
+          </Center>
+        </Column>
+
         <AllCards>
           {company.jobs &&
             company.jobs.map(job => (
@@ -68,7 +76,9 @@ class CompanyProfile extends Component {
                     name={"trash"}
                   />
                   <Icon
-                    onClick={this.props.history.push(`/job/edit/${job.id}`)}
+                    onClick={() =>
+                      this.props.history.push(`/job/edit/${job.id}`)
+                    }
                     style={{ margin: "0px 4px" }}
                     size={"large"}
                     name={"edit"}
@@ -90,6 +100,27 @@ class CompanyProfile extends Component {
     );
   }
 }
+
+// <AllCards>
+// {company.jobs &&
+//   company.jobs.map(job => (
+//     <Card
+//       key={job.id}
+//       onClick={() =>
+//         this.props.history.push(`/company/dashboard/${job.id}`)}
+//     >
+//       <h3> {job.position} </h3>
+//       <p> {job.description} </p>
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SLink = styled(Link)`
+  float: right;
+  margin: 15px;
+`;
 
 const Container = styled.div`
   background-color: #ececec;

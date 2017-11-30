@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import apiApplicant from "../../api/applicantCrud";
 import NavBar from "../../components/NavBar";
-import { Form, Input } from "semantic-ui-react";
+import { Form, Input, Button, Icon } from "semantic-ui-react";
 
 class ApplicantProfileSettings extends Component {
   constructor() {
@@ -60,7 +60,9 @@ class ApplicantProfileSettings extends Component {
       <Container>
         <NavBar userType={userType} />
         <Body>
-          <Title>Applicant Profile Settings</Title>
+          <Title>
+            Settings <Icon name={"settings"} />
+          </Title>
           <Form onSubmit={this.onFormSubmit}>
             <Form.Input
               type="text"
@@ -93,7 +95,9 @@ class ApplicantProfileSettings extends Component {
               placeholder={"Last Name"}
               required
             />
-            <Form.Input type="submit" />
+            <Button color={"instagram"} type="submit">
+              Submit
+            </Button>
           </Form>
         </Body>
       </Container>

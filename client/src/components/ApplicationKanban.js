@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import styled from "styled-components";
 import { DragDropContext } from "react-dnd";
 import HTML5Backend, { NativeTypes } from "react-dnd-html5-backend";
 
@@ -40,7 +40,7 @@ class ApplicationKanban extends Component {
     let { applications = [] } = this.props;
 
     return (
-      <div>
+      <Center>
         {statuses.map(({ accepts, value, label }, index) => (
           <ApplicationStatusColumn
             key={index}
@@ -54,9 +54,15 @@ class ApplicationKanban extends Component {
               ))}
           />
         ))}
-      </div>
+      </Center>
     );
   }
 }
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
 
 export default DragDropContext(HTML5Backend)(ApplicationKanban);
