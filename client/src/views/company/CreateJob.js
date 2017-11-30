@@ -53,6 +53,8 @@ class CreateJob extends Component {
               <Title>Post A Job</Title>
               <InputWidth>
                 <Form.TextArea
+                  cols={"40"}
+                  wrap={"hard"}
                   label={"Description"}
                   type="text"
                   name={"description"}
@@ -114,6 +116,8 @@ const Center = styled.div`
   padding: 20px;
 `;
 
-const InputWidth = styled.div`width: 400px;`;
+const InputWidth = styled.div`
+  width: 400px;
+`;
 
 export default CreateJob;

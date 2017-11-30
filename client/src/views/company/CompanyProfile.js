@@ -90,7 +90,11 @@ class CompanyProfile extends Component {
                   onClick={() =>
                     this.props.history.push(`/company/dashboard/${job.id}`)
                   }
-                  style={{ overflow: "auto", padding: "5px" }}
+                  style={{
+                    overflow: "auto",
+                    wordWrap: "break-word",
+                    padding: "5px"
+                  }}
                 >
                   <h3> {job.position} </h3>
                   <p> {job.description} </p>
