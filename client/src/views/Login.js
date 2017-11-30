@@ -138,6 +138,7 @@ class Login extends Component {
               placeholder={"Email"}
               value={this.state.email}
               onChange={this.onInputChange}
+              required
             />
             <Form.Input
               type="text"
@@ -145,6 +146,7 @@ class Login extends Component {
               placeholder={"Password"}
               value={this.state.password}
               onChange={this.onInputChange}
+              required
             />
             <Button color={"instagram"} type="submit">
               Submit
@@ -177,8 +179,6 @@ const Body = styled.div`
 
 const Padding = styled.div`padding: 10px;`;
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 export default Login;

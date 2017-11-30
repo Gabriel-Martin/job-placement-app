@@ -32,10 +32,6 @@ class ApplicantProfile extends Component {
     let processing = [];
     let status = [];
 
-    console.log(applied);
-    console.log(processing);
-    console.log(status);
-
     // filtering all applications and assigning
     // to array based on 'status' property
     if (applicant.applications) {
