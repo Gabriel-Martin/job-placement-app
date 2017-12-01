@@ -55,9 +55,8 @@ class Homepage extends Component {
                     <h2>{job.company && job.company.companyName}</h2>
                   </div>
                   <div
-                    onClick={() =>
-                      this.props.history.push(`/company/dashboard/${job.id}`)
-                    }
+                    onClick={() => this.props.history.push(`/jobs/${job.id}`)}
+                    className={"noscrollbar"}
                     style={{
                       overflow: "auto",
                       wordWrap: "break-word",

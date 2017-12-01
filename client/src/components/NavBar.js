@@ -26,7 +26,6 @@ class NavBar extends Component {
 
   render() {
     let { userType } = this.props;
-    console.log(this.props);
     return (
       <Container>
         <div>

@@ -5,6 +5,7 @@ import { Icon } from "semantic-ui-react";
 import apiApplicant from "../../api/applicantCrud";
 import apiJob from "../../api/jobCrud";
 import NavBar from "../../components/NavBar";
+import apiApp from "../../api/applicationCrud";
 
 class ApplicantProfile extends Component {
   constructor() {
@@ -25,6 +26,32 @@ class ApplicantProfile extends Component {
       });
     });
   }
+
+  removeJob = (applicantId, jobId) => {
+    apiApplicant.removeJob(applicantId, jobId).then(() => {
+      apiApplicant.getCurrent().then(applicant => {
+        this.setState(state => {
+          return {
+            userType: localStorage.getItem("userType"),
+            applicant: applicant
+          };
+        });
+      });
+    });
+  };
+
+  deleteApp = appId => {
+    apiApp.remove(appId).then(() => {
+      apiApplicant.getCurrent().then(applicant => {
+        this.setState(state => {
+          return {
+            userType: localStorage.getItem("userType"),
+            applicant: applicant
+          };
+        });
+      });
+    });
+  };
 
   render() {
     let { applicant, userType } = this.state;
@@ -53,7 +80,7 @@ class ApplicantProfile extends Component {
           app.applicationStatus === "declined"
       );
     }
-
+    console.log(applicant);
     return (
       <Container>
         <NavBar userType={userType} />
@@ -75,25 +102,59 @@ class ApplicantProfile extends Component {
 
             {applicant.jobs &&
               applicant.jobs.map(j => (
-                <MiniCard key={j.id}>{j.position}</MiniCard>
+                <MiniCard key={j.id}>
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.props.history.push(`/jobs/${j.id}`)}
+                  >
+                    {j.position}
+                  </div>
+                  <Icon
+                    onClick={() => this.removeJob(applicant.id, j.id)}
+                    style={{ margin: "0px 4px", cursor: "pointer" }}
+                    title={"Delete"}
+                    size={"small"}
+                    name={"trash"}
+                  />
+                </MiniCard>
               ))}
           </Card>
           <Card>
             <Head3>Applied</Head3>
             {applied.map(j => (
-              <MiniCard key={j.id}>{j.job && j.job.position}</MiniCard>
+              <MiniCard
+                onClick={() => this.props.history.push(`/jobs/${j.id}`)}
+                key={j.id}
+              >
+                {j.job && j.job.position}
+                <Icon
+                  onClick={() => this.deleteApp(j.id)}
+                  style={{ margin: "0px 4px", cursor: "pointer" }}
+                  title={"Delete"}
+                  size={"small"}
+                  name={"trash"}
+                />
+              </MiniCard>
             ))}
           </Card>
           <Card>
             <Head3>Processing</Head3>
             {processing.map(j => (
-              <MiniCard key={j.id}>{j.job && j.job.position}</MiniCard>
+              <MiniCard
+                onClick={() => this.props.history.push(`/jobs/${j.id}`)}
+                key={j.id}
+              >
+                {j.job && j.job.position}
+              </MiniCard>
             ))}
           </Card>
           <Card>
             <Head3>Status</Head3>
             {status.map(j => (
-              <MiniCard key={j.id}>
+              <MiniCard
+                onClick={() => this.props.history.push(`/jobs/${j.id}`)}
+                key={j.id}
+              >
                 {j.job && j.job.position}
                 {j.applicationStatus === "hired" && (
                   <Icon name={"check"} color={"green"} />
@@ -138,7 +199,9 @@ const Img = styled.img`
   height: 75px;
 `;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 const MiniCard = styled.div`
   background-color: #f8f8ff;
@@ -147,6 +210,7 @@ const MiniCard = styled.div`
   margin: 10px;
   font-size: 18px;
   text-align: center;
+  word-wrap: break-word;
 `;
 
 const Card = styled.div`

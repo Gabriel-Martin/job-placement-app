@@ -90,6 +90,7 @@ class CompanyProfile extends Component {
                   onClick={() =>
                     this.props.history.push(`/company/dashboard/${job.id}`)
                   }
+                  className={"noscrollbar"}
                   style={{
                     overflow: "auto",
                     wordWrap: "break-word",
