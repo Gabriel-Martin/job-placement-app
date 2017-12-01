@@ -124,18 +124,10 @@ class ApplicantProfile extends Component {
           <Card>
             <Head3>Applied</Head3>
             {applied.map(j => (
-<<<<<<< HEAD
-              <MiniCard
-                onClick={() => this.props.history.push(`/jobs/${j.id}`)}
-                key={j.id}
-              >
-                {j.job && j.job.position}
-=======
               <MiniCard key={j.id}>
                 <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
                   {j.job && j.job.position}
                 </div>
->>>>>>> ab0435b83e800ccf4820d1dc32beb96f856b9475
                 <div>
                   <Icon
                     onClick={() => this.deleteApp(j.id)}
@@ -234,10 +226,11 @@ const MiniCard = styled.div`
   background-color: #f8f8ff;
   border-radius: 5px;
   padding: 15px;
-  margin: 10px;
+
   font-size: 18px;
   text-align: center;
   word-wrap: break-word;
+  border-top: 6px solid #568ea3;
 `;
 
 const Card = styled.div`
@@ -245,9 +238,7 @@ const Card = styled.div`
   flex-direction: column;
   width: 20%;
   height: 100vh;
-  border: 5px solid #c0c0c0;
   border-radius: 10px;
-  background-color: #c0c0c0;
 `;
 
 const AllCards = styled.div`
@@ -258,5 +249,8 @@ const AllCards = styled.div`
 const Head3 = styled.h3.attrs({ className: "avenir fw1 f4 " })`
   text-align: center;
   font-size: 30px;
+  background-color: #f8f8ff;
+  border-top: 6px solid #550c18;
+  border-radius: 5px;
 `;
 export default ApplicantProfile;

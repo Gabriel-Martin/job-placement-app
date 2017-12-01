@@ -18,10 +18,7 @@ const style = {
   display: "flex",
   flexDirection: "column",
   width: "300px",
-  height: "100vh",
-  border: "5px solid #bdc3c7",
-  borderRadius: "10px",
-  backgroundColor: "#bdc3c7"
+  height: "100vh"
 };
 
 const columnTarget = {
@@ -47,6 +44,9 @@ const Head3 = styled.h3.attrs({ className: "avenir fw1 f4 " })`
   text-align: center;
   font-size: 30px;
   color: black;
+  background-color: #fff;
+  border-top: 6px solid #550c18;
+  border-radius: 5px;
 `;
 
 export default DropTarget(

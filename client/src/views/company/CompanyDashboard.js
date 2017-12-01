@@ -88,17 +88,19 @@ class CompanyDashboard extends Component {
     return (
       <div>
         <NavBar userType={userType} />
-        <Center>
-          <Title>Company Dashboard</Title>
-          <h3>Position: {position} </h3>
-          <Width>Description: {description} </Width>
-        </Center>
-        <div>
-          <ApplicationKanban
-            applications={applications}
-            onStatusChange={this.handleStatusChange}
-          />
-        </div>
+        <Container>
+          <Center>
+            <Title>Company Dashboard</Title>
+            <h3>Position: {position} </h3>
+            <Width>Description: {description} </Width>
+          </Center>
+          <div>
+            <ApplicationKanban
+              applications={applications}
+              onStatusChange={this.handleStatusChange}
+            />
+          </div>
+        </Container>
       </div>
     );
   }

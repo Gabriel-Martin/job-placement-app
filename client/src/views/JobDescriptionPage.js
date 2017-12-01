@@ -63,8 +63,9 @@ class JobDescriptionPage extends Component {
               <Button
                 color={"instagram"}
                 onClick={() =>
-                  this.props.history.push(`/applicant/applicationform/${jobId}`)
-                }
+                  this.props.history.push(
+                    `/applicant/applicationform/${jobId}`
+                  )}
               >
                 Apply!
               </Button>
