@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { DropTarget } from "react-dnd";
+import styled from "styled-components";
 // column that holds the applications
 // outside box
 const style = {
@@ -35,14 +36,18 @@ class ApplicationStatusColumn extends Component {
 
     return connectDropTarget(
       <div style={style}>
-        <h1 style={{ color: "black", fontFamily: "avenir fw1 f4 " }}>
-          {label}
-        </h1>
+        <Head3>{label}</Head3>
         {options}
       </div>
     );
   }
 }
+
+const Head3 = styled.h3.attrs({ className: "avenir fw1 f4 " })`
+  text-align: center;
+  font-size: 30px;
+  color: black;
+`;
 
 export default DropTarget(
   props => props.accepts,

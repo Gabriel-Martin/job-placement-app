@@ -157,9 +157,9 @@ const Card = styled.div`
   flex-direction: column;
   width: 20%;
   height: 100vh;
-  border: 5px solid #bdc3c7;
+  border: 5px solid #c0c0c0;
   border-radius: 10px;
-  background-color: #bdc3c7;
+  background-color: #c0c0c0;
 `;
 
 const AllCards = styled.div`
