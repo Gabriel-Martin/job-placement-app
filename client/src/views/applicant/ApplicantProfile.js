@@ -80,6 +80,9 @@ class ApplicantProfile extends Component {
           app.applicationStatus === "declined"
       );
     }
+
+    console.log(applied);
+
     return (
       <Container>
         <NavBar userType={userType} />
@@ -123,7 +126,10 @@ class ApplicantProfile extends Component {
             <Head3>Applied</Head3>
             {applied.map(j => (
               <MiniCard key={j.id}>
-                <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={() => this.props.history.push(`/jobs/${j.jobId}`)}
+                >
                   {j.job && j.job.position}
                 </div>
                 <div>
@@ -143,7 +149,10 @@ class ApplicantProfile extends Component {
             <Head3>Processing</Head3>
             {processing.map(j => (
               <MiniCard key={j.id}>
-                <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={() => this.props.history.push(`/jobs/${j.jobId}`)}
+                >
                   {j.job && j.job.position}
                 </div>
                 <div>
@@ -163,7 +172,10 @@ class ApplicantProfile extends Component {
             <Head3>Status</Head3>
             {status.map(j => (
               <MiniCard key={j.id}>
-                <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={() => this.props.history.push(`/jobs/${j.jobId}`)}
+                >
                   {j.job && j.job.position}
                 </div>
                 {j.applicationStatus === "hired" && (

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import apiCompany from "../../api/companyCrud";
 import apiCheckUser from "../../api/checkUserCrud";
 import apiJob from "../../api/jobCrud";
-import { Button, Icon } from "semantic-ui-react";
+import { Button, Icon, Popup } from "semantic-ui-react";
 
 import NavBar from "../../components/NavBar";
 
@@ -69,13 +69,26 @@ class CompanyProfile extends Component {
             company.jobs.map(job => (
               <Card key={job.id}>
                 <div style={{ backgroundColor: "#568EA3", padding: "5px 0px" }}>
-                  <Icon
-                    onClick={() => this.deleteJob(job.id)}
-                    style={{ margin: "0px 4px", cursor: "pointer" }}
-                    title={"Delete"}
-                    size={"large"}
-                    name={"trash"}
+                  <Popup
+                    header={"Delete Job?"}
+                    trigger={
+                      <Icon
+                        style={{ margin: "0px 4px", cursor: "pointer" }}
+                        name={"trash"}
+                        size={"large"}
+                      />
+                    }
+                    content={
+                      <Button
+                        onClick={() => this.deleteJob(job.id)}
+                        color="negative"
+                        content="Confirm"
+                      />
+                    }
+                    on="click"
+                    position="top left"
                   />
+
                   <Icon
                     onClick={() =>
                       this.props.history.push(`/job/edit/${job.id}`)

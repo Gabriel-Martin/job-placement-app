@@ -42,7 +42,7 @@ class JobDescriptionPage extends Component {
           <h3>Company: {job.company && job.company.companyName} </h3>
 
           <h4>Position: {job.position} </h4>
-          <p>
+          <p style={{ wordWrap: "break-word" }}>
             <b>Description:</b> {job.description}
           </p>
           <p>
@@ -93,10 +93,11 @@ const Container = styled.div`
 `;
 
 const Card = styled.div`
-  border: 200px solid #fff;
   margin: 10px auto;
+  padding: 50px;
   border-radius: 15px;
   background-color: #fff;
+  width: 60%;
 `;
 
 const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })`
