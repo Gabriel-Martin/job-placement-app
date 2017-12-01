@@ -80,7 +80,6 @@ class ApplicantProfile extends Component {
           app.applicationStatus === "declined"
       );
     }
-    console.log(applicant);
     return (
       <Container>
         <NavBar userType={userType} />
@@ -121,14 +120,22 @@ class ApplicantProfile extends Component {
                 </MiniCard>
               ))}
           </Card>
+
           <Card>
             <Head3>Applied</Head3>
             {applied.map(j => (
+<<<<<<< HEAD
               <MiniCard
                 onClick={() => this.props.history.push(`/jobs/${j.id}`)}
                 key={j.id}
               >
                 {j.job && j.job.position}
+=======
+              <MiniCard key={j.id}>
+                <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
+                  {j.job && j.job.position}
+                </div>
+>>>>>>> ab0435b83e800ccf4820d1dc32beb96f856b9475
                 <div>
                   <Icon
                     onClick={() => this.deleteApp(j.id)}
@@ -141,31 +148,49 @@ class ApplicantProfile extends Component {
               </MiniCard>
             ))}
           </Card>
+
           <Card>
             <Head3>Processing</Head3>
             {processing.map(j => (
-              <MiniCard
-                onClick={() => this.props.history.push(`/jobs/${j.id}`)}
-                key={j.id}
-              >
-                {j.job && j.job.position}
+              <MiniCard key={j.id}>
+                <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
+                  {j.job && j.job.position}
+                </div>
+                <div>
+                  <Icon
+                    onClick={() => this.deleteApp(j.id)}
+                    style={{ margin: "0px 4px", cursor: "pointer" }}
+                    title={"Delete"}
+                    size={"small"}
+                    name={"trash"}
+                  />
+                </div>
               </MiniCard>
             ))}
           </Card>
+
           <Card>
             <Head3>Status</Head3>
             {status.map(j => (
-              <MiniCard
-                onClick={() => this.props.history.push(`/jobs/${j.id}`)}
-                key={j.id}
-              >
-                {j.job && j.job.position}
+              <MiniCard key={j.id}>
+                <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
+                  {j.job && j.job.position}
+                </div>
                 {j.applicationStatus === "hired" && (
                   <Icon name={"check"} color={"green"} />
                 )}
                 {j.applicationStatus === "declined" && (
                   <Icon name={"delete"} color={"red"} />
                 )}
+                <div>
+                  <Icon
+                    onClick={() => this.deleteApp(j.id)}
+                    style={{ margin: "0px 4px", cursor: "pointer" }}
+                    title={"Delete"}
+                    size={"small"}
+                    name={"trash"}
+                  />
+                </div>
               </MiniCard>
             ))}
           </Card>
