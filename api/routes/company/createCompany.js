@@ -13,10 +13,7 @@ module.exports = {
 
           reply(company);
         })
-        .catch(err => {
-          console.log(err);
-          reply({ err });
-        });
+        .catch(err => reply({ err }));
     }
   }
 };

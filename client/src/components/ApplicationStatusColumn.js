@@ -15,13 +15,14 @@ const style = {
   fontSize: "1rem",
   lineHeight: "normal",
   float: "left",
+  borderTop: "6px solid #1ba39c",
   display: "flex",
   flexDirection: "column",
   width: "300px",
-  height: "100vh",
-  border: "5px solid #bdc3c7",
   borderRadius: "10px",
-  backgroundColor: "#bdc3c7"
+  height: "100vh",
+  backgroundColor: "rgba(255, 255, 255, 0.5)",
+  boxShadow: "0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)"
 };
 
 const columnTarget = {

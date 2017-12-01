@@ -27,15 +27,9 @@ module.exports = {
                   });
                 });
             })
-            .catch(error => {
-              console.log(error);
-              reply(error);
-            });
+            .catch(error => reply(error));
         })
-        .catch(error => {
-          console.log(error);
-          reply(error);
-        });
+        .catch(error => reply(error));
     }
   }
 };

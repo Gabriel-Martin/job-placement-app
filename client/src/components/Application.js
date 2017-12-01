@@ -11,7 +11,7 @@ const style = {
   marginBottom: "1.5rem",
   cursor: "move",
   float: "left",
-  backgroundColor: "#f8f8ff",
+  backgroundColor: "#ebedee",
   borderRadius: "5px"
 };
 
@@ -26,7 +26,7 @@ const boxSource = {
 class Application extends Component {
   render() {
     const { data, isDragging, connectDragSource } = this.props;
-    console.log(data);
+
     return connectDragSource(
       <div style={{ ...style, color: "black", fontSize: "18px" }}>
         <Link to={`/company/application/${data.id}`}>

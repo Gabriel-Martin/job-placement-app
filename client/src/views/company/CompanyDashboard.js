@@ -88,17 +88,20 @@ class CompanyDashboard extends Component {
     return (
       <div>
         <NavBar userType={userType} />
-        <Center>
-          <Title>Company Dashboard</Title>
-          <h3>Position: {position} </h3>
-          <Width>Description: {description} </Width>
-        </Center>
-        <div>
-          <ApplicationKanban
-            applications={applications}
-            onStatusChange={this.handleStatusChange}
-          />
-        </div>
+        <Container>
+          <Center>
+            <Title>Company Dashboard</Title>
+            <h3>Position: {position} </h3>
+            <Width>Description: {description} </Width>
+          </Center>
+
+          <div>
+            <ApplicationKanban
+              applications={applications}
+              onStatusChange={this.handleStatusChange}
+            />
+          </div>
+        </Container>
       </div>
     );
   }
@@ -118,11 +121,13 @@ const Width = styled.p`
 `;
 
 const Container = styled.div`
-  background-color: #ececec;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   min-height: 100vh;
 `;
 
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
+  padding: 20px;
+`;
 
 export default CompanyDashboard;
 

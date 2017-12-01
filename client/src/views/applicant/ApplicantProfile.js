@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Icon } from "semantic-ui-react";
+import { Icon, Popup, Button } from "semantic-ui-react";
 import apiApplicant from "../../api/applicantCrud";
 import apiJob from "../../api/jobCrud";
 import NavBar from "../../components/NavBar";
@@ -80,6 +80,7 @@ class ApplicantProfile extends Component {
           app.applicationStatus === "declined"
       );
     }
+
     return (
       <Container>
         <NavBar userType={userType} />
@@ -94,7 +95,9 @@ class ApplicantProfile extends Component {
             <Title>{applicant.firstName}'s Profile</Title>
             <Img src={applicant.image} />
           </Center>
+          <div />
         </Column>
+
         <AllCards>
           <Card>
             <Head3>Interested</Head3>
@@ -103,19 +106,35 @@ class ApplicantProfile extends Component {
               applicant.jobs.map(j => (
                 <MiniCard key={j.id}>
                   <div
-                    style={{ cursor: "pointer" }}
-                    onClick={() => this.props.history.push(`/jobs/${j.id}`)}
+                    style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    {j.position}
-                  </div>
-                  <div>
-                    <Icon
-                      onClick={() => this.removeJob(applicant.id, j.id)}
-                      style={{ margin: "0px 4px", cursor: "pointer" }}
-                      title={"Delete"}
-                      size={"small"}
-                      name={"trash"}
-                    />
+                    <div
+                      style={{ cursor: "pointer" }}
+                      onClick={() => this.props.history.push(`/jobs/${j.id}`)}
+                    >
+                      {j.position}
+                    </div>
+                    <div>
+                      <Popup
+                        header={"Delete Job?"}
+                        trigger={
+                          <Icon
+                            style={{ margin: "0px 4px", cursor: "pointer" }}
+                            name={"trash"}
+                            size={"small"}
+                          />
+                        }
+                        content={
+                          <Button
+                            onClick={() => this.removeJob(applicant.id, j.id)}
+                            color="negative"
+                            content="Confirm"
+                          />
+                        }
+                        on="click"
+                        position="top left"
+                      />
+                    </div>
                   </div>
                 </MiniCard>
               ))}
@@ -125,17 +144,36 @@ class ApplicantProfile extends Component {
             <Head3>Applied</Head3>
             {applied.map(j => (
               <MiniCard key={j.id}>
-                <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
-                  {j.job && j.job.position}
-                </div>
-                <div>
-                  <Icon
-                    onClick={() => this.deleteApp(j.id)}
-                    style={{ margin: "0px 4px", cursor: "pointer" }}
-                    title={"Delete"}
-                    size={"small"}
-                    name={"trash"}
-                  />
+                <div
+                  style={{ display: "flex", justifyContent: "space-evenly" }}
+                >
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.props.history.push(`/jobs/${j.jobId}`)}
+                  >
+                    {j.job && j.job.position}
+                  </div>
+                  <div>
+                    <Popup
+                      header={"Delete Job?"}
+                      trigger={
+                        <Icon
+                          style={{ margin: "0px 4px", cursor: "pointer" }}
+                          name={"trash"}
+                          size={"small"}
+                        />
+                      }
+                      content={
+                        <Button
+                          onClick={() => this.deleteApp(j.id)}
+                          color="negative"
+                          content="Confirm"
+                        />
+                      }
+                      on="click"
+                      position="top left"
+                    />
+                  </div>
                 </div>
               </MiniCard>
             ))}
@@ -145,17 +183,36 @@ class ApplicantProfile extends Component {
             <Head3>Processing</Head3>
             {processing.map(j => (
               <MiniCard key={j.id}>
-                <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
-                  {j.job && j.job.position}
-                </div>
-                <div>
-                  <Icon
-                    onClick={() => this.deleteApp(j.id)}
-                    style={{ margin: "0px 4px", cursor: "pointer" }}
-                    title={"Delete"}
-                    size={"small"}
-                    name={"trash"}
-                  />
+                <div
+                  style={{ display: "flex", justifyContent: "space-evenly" }}
+                >
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.props.history.push(`/jobs/${j.jobId}`)}
+                  >
+                    {j.job && j.job.position}
+                  </div>
+                  <div>
+                    <Popup
+                      header={"Delete Job?"}
+                      trigger={
+                        <Icon
+                          style={{ margin: "0px 4px", cursor: "pointer" }}
+                          name={"trash"}
+                          size={"small"}
+                        />
+                      }
+                      content={
+                        <Button
+                          onClick={() => this.deleteApp(j.id)}
+                          color="negative"
+                          content="Confirm"
+                        />
+                      }
+                      on="click"
+                      position="top left"
+                    />
+                  </div>
                 </div>
               </MiniCard>
             ))}
@@ -165,23 +222,42 @@ class ApplicantProfile extends Component {
             <Head3>Status</Head3>
             {status.map(j => (
               <MiniCard key={j.id}>
-                <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
-                  {j.job && j.job.position}
-                </div>
-                {j.applicationStatus === "hired" && (
-                  <Icon name={"check"} color={"green"} />
-                )}
-                {j.applicationStatus === "declined" && (
-                  <Icon name={"delete"} color={"red"} />
-                )}
-                <div>
-                  <Icon
-                    onClick={() => this.deleteApp(j.id)}
-                    style={{ margin: "0px 4px", cursor: "pointer" }}
-                    title={"Delete"}
-                    size={"small"}
-                    name={"trash"}
-                  />
+                <div
+                  style={{ display: "flex", justifyContent: "space-evenly" }}
+                >
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.props.history.push(`/jobs/${j.jobId}`)}
+                  >
+                    {j.job && j.job.position}
+                  </div>
+                  {j.applicationStatus === "hired" && (
+                    <Icon name={"check"} color={"green"} />
+                  )}
+                  {j.applicationStatus === "declined" && (
+                    <Icon name={"delete"} color={"red"} />
+                  )}
+                  <div>
+                    <Popup
+                      header={"Delete Job?"}
+                      trigger={
+                        <Icon
+                          style={{ margin: "0px 4px", cursor: "pointer" }}
+                          name={"trash"}
+                          size={"small"}
+                        />
+                      }
+                      content={
+                        <Button
+                          onClick={() => this.deleteApp(j.id)}
+                          color="negative"
+                          content="Confirm"
+                        />
+                      }
+                      on="click"
+                      position="top left"
+                    />
+                  </div>
                 </div>
               </MiniCard>
             ))}
@@ -221,14 +297,15 @@ const Img = styled.img`
 `;
 
 const Container = styled.div`
-  background-color: #ececec;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 `;
 
 const MiniCard = styled.div`
-  background-color: #f8f8ff;
+  background-color: #ebedee;
+  margin: 5px;
   border-radius: 5px;
   padding: 15px;
-  margin: 10px;
+  margin: 5px;
   font-size: 18px;
   text-align: center;
   word-wrap: break-word;
@@ -236,12 +313,13 @@ const MiniCard = styled.div`
 
 const Card = styled.div`
   display: flex;
+  border-top: 6px solid #1ba39c;
+  border-radius: 10px;
   flex-direction: column;
   width: 20%;
   height: 100vh;
-  border: 5px solid #c0c0c0;
-  border-radius: 10px;
-  background-color: #c0c0c0;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 `;
 
 const AllCards = styled.div`

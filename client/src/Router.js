@@ -85,6 +85,8 @@ class Router extends Component {
   }
 }
 
-const Container = styled.div.attrs({ className: "avenir" })``;
+const Container = styled.div.attrs({ className: "avenir" })`
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+`;
 
 export default Router;

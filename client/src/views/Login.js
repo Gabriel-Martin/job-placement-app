@@ -133,7 +133,8 @@ class Login extends Component {
 
           <Form size={"huge"} onSubmit={this.onFormSubmit}>
             <Form.Input
-              type="text"
+              type={"text"}
+              label={"Email"}
               name={"email"}
               placeholder={"Email"}
               value={this.state.email}
@@ -141,7 +142,8 @@ class Login extends Component {
               required
             />
             <Form.Input
-              type="text"
+              type={"password"}
+              label={"Password"}
               name={"password"}
               placeholder={"Password"}
               value={this.state.password}
@@ -177,8 +179,12 @@ const Body = styled.div`
 //   color: #f9eed6;
 // `;
 
-const Padding = styled.div`padding: 10px;`;
+const Padding = styled.div`
+  padding: 10px;
+`;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 export default Login;

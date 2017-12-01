@@ -143,6 +143,8 @@ class ApplicationForm extends Component {
               />
               <Form.Field
                 control={Select}
+                required
+                label={"Education"}
                 defaultValue=""
                 labelPosition="right"
                 placeholder={"Education"}
@@ -166,7 +168,7 @@ class ApplicationForm extends Component {
 }
 const Container = styled.div`
   min-height: 100vh;
-  background-color: #ececec;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 `;
 
 const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })``;

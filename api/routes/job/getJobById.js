@@ -9,10 +9,7 @@ module.exports = {
       this.models.Job.get(jobId)
         .getJoin({ applications: true, applicants: true, company: true })
         .then(result => reply(result))
-        .catch(err => {
-          console.log(err);
-          reply(err);
-        });
+        .catch(err => reply(err));
     }
   }
 };

@@ -77,7 +77,7 @@ const Containter = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  background-color: #ececec;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   min-height: 100vh;
 `;
 
@@ -86,6 +86,8 @@ const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })`
   text-align: center;
 `;
 
-const TextStyle = styled.div`padding: 5px;`;
+const TextStyle = styled.div`
+  padding: 5px;
+`;
 
 export default CompanyApplication;

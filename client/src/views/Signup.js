@@ -116,8 +116,9 @@ class Signup extends Component {
             </Padding>
             <Form size={"huge"} onSubmit={this.onFormSubmitApplicant}>
               <Form.Input
-                type="text"
+                type={"text"}
                 name={"firstName"}
+                label={"First Name"}
                 placeholder={"First Name"}
                 onChange={this.onInputChangeApplicant}
                 required
@@ -125,6 +126,7 @@ class Signup extends Component {
               <Form.Input
                 type="text"
                 name={"lastName"}
+                label={"Last Name"}
                 placeholder={"Last Name"}
                 onChange={this.onInputChangeApplicant}
                 required
@@ -132,13 +134,15 @@ class Signup extends Component {
               <Form.Input
                 type="text"
                 name={"email"}
+                label={"Email"}
                 placeholder={"Email"}
                 onChange={this.onInputChangeApplicant}
                 required
               />
               <Form.Input
-                type="text"
+                type={"password"}
                 name={"password"}
+                label={"Password"}
                 placeholder={"Password"}
                 onChange={this.onInputChangeApplicant}
                 required
@@ -189,7 +193,9 @@ class Signup extends Component {
   }
 }
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 const Head3 = styled.h3.attrs({ className: "avenir fw1 f1 " })`
   text-align: center;
@@ -211,6 +217,8 @@ const Body = styled.div`
 //   color: #f9eed6;
 // `;
 
-const Padding = styled.div`padding: 10px;`;
+const Padding = styled.div`
+  padding: 10px;
+`;
 
 export default Signup;
