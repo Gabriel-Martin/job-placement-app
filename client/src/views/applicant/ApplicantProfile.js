@@ -89,7 +89,7 @@ class ApplicantProfile extends Component {
         <Column>
           <div>
             <SLink to={`/applicant/profile/settings/${applicant.id}`}>
-              Applicant Settings &nbsp;&nbsp;
+              Settings &nbsp;&nbsp;
               <Icon size={"large"} name={"settings"} />
             </SLink>
           </div>
@@ -111,13 +111,15 @@ class ApplicantProfile extends Component {
                   >
                     {j.position}
                   </div>
-                  <Icon
-                    onClick={() => this.removeJob(applicant.id, j.id)}
-                    style={{ margin: "0px 4px", cursor: "pointer" }}
-                    title={"Delete"}
-                    size={"small"}
-                    name={"trash"}
-                  />
+                  <div>
+                    <Icon
+                      onClick={() => this.removeJob(applicant.id, j.id)}
+                      style={{ margin: "0px 4px", cursor: "pointer" }}
+                      title={"Delete"}
+                      size={"small"}
+                      name={"trash"}
+                    />
+                  </div>
                 </MiniCard>
               ))}
           </Card>
@@ -230,18 +232,17 @@ const Img = styled.img`
   height: 75px;
 `;
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 const MiniCard = styled.div`
   background-color: #f8f8ff;
   border-radius: 5px;
   padding: 15px;
-  margin: 10px;
+
   font-size: 18px;
   text-align: center;
   word-wrap: break-word;
+  border-top: 6px solid #568ea3;
 `;
 
 const Card = styled.div`
@@ -249,9 +250,7 @@ const Card = styled.div`
   flex-direction: column;
   width: 20%;
   height: 100vh;
-  border: 5px solid #bdc3c7;
   border-radius: 10px;
-  background-color: #bdc3c7;
 `;
 
 const AllCards = styled.div`
@@ -262,5 +261,8 @@ const AllCards = styled.div`
 const Head3 = styled.h3.attrs({ className: "avenir fw1 f4 " })`
   text-align: center;
   font-size: 30px;
+  background-color: #f8f8ff;
+  border-top: 6px solid #550c18;
+  border-radius: 5px;
 `;
 export default ApplicantProfile;

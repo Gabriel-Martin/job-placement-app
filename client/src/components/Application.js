@@ -7,11 +7,11 @@ import { Icon } from "semantic-ui-react";
 // little box in kanban
 const style = {
   padding: "1.5rem 2.5rem",
-
+  borderTop: "6px solid #568ea3",
   marginBottom: "1.5rem",
   cursor: "move",
   float: "left",
-  backgroundColor: "#f8f8ff",
+  backgroundColor: "#fff",
   borderRadius: "5px"
 };
 

@@ -75,6 +75,7 @@ class CompanyDashboard extends Component {
   };
 
   render() {
+    console.log(this.state);
     let {
       userType,
       position = "",
@@ -87,17 +88,19 @@ class CompanyDashboard extends Component {
     return (
       <div>
         <NavBar userType={userType} />
-        <Center>
-          <Title>Company Dashboard</Title>
-          <h3>Position: {position} </h3>
-          <Width>Description: {description} </Width>
-        </Center>
-        <div>
-          <ApplicationKanban
-            applications={applications}
-            onStatusChange={this.handleStatusChange}
-          />
-        </div>
+        <Container>
+          <Center>
+            <Title>Company Dashboard</Title>
+            <h3>Position: {position} </h3>
+            <Width>Description: {description} </Width>
+          </Center>
+          <div>
+            <ApplicationKanban
+              applications={applications}
+              onStatusChange={this.handleStatusChange}
+            />
+          </div>
+        </Container>
       </div>
     );
   }
@@ -121,9 +124,7 @@ const Container = styled.div`
   min-height: 100vh;
 `;
 
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
-  padding: 20px;
-`;
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
 
 export default CompanyDashboard;
 

@@ -48,7 +48,7 @@ class CompanyProfile extends Component {
         <Column>
           <div>
             <SLink to={`/company/profile/settings/${company.id}`}>
-              Company Settings &nbsp;&nbsp;
+              Settings &nbsp;&nbsp;
               <Icon size={"large"} name={"settings"} />
             </SLink>
           </div>
@@ -91,8 +91,7 @@ class CompanyProfile extends Component {
 
                   <Icon
                     onClick={() =>
-                      this.props.history.push(`/job/edit/${job.id}`)
-                    }
+                      this.props.history.push(`/job/edit/${job.id}`)}
                     style={{ margin: "0px 4px", cursor: "pointer" }}
                     title={"Edit"}
                     size={"large"}
@@ -101,8 +100,7 @@ class CompanyProfile extends Component {
                 </div>
                 <div
                   onClick={() =>
-                    this.props.history.push(`/company/dashboard/${job.id}`)
-                  }
+                    this.props.history.push(`/company/dashboard/${job.id}`)}
                   className={"noscrollbar"}
                   style={{
                     overflow: "auto",
@@ -122,6 +120,17 @@ class CompanyProfile extends Component {
     );
   }
 }
+
+// <AllCards>
+// {company.jobs &&
+//   company.jobs.map(job => (
+//     <Card
+//       key={job.id}
+//       onClick={() =>
+//         this.props.history.push(`/company/dashboard/${job.id}`)}
+//     >
+//       <h3> {job.position} </h3>
+//       <p> {job.description} </p>
 
 const Column = styled.div`
   display: flex;
