@@ -99,7 +99,7 @@ class CreateJob extends Component {
 }
 const Container = styled.div`
   min-height: 100vh;
-  background-color: #ececec;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   padding: 10px;
 `;
 

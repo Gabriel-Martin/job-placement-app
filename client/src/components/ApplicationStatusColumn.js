@@ -15,10 +15,14 @@ const style = {
   fontSize: "1rem",
   lineHeight: "normal",
   float: "left",
+  borderTop: "6px solid #1ba39c",
   display: "flex",
   flexDirection: "column",
   width: "300px",
-  height: "100vh"
+  borderRadius: "10px",
+  height: "100vh",
+  backgroundColor: "rgba(255, 255, 255, 0.5)",
+  boxShadow: "0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)"
 };
 
 const columnTarget = {
@@ -44,9 +48,6 @@ const Head3 = styled.h3.attrs({ className: "avenir fw1 f4 " })`
   text-align: center;
   font-size: 30px;
   color: black;
-  background-color: #fff;
-  border-top: 6px solid #550c18;
-  border-radius: 5px;
 `;
 
 export default DropTarget(

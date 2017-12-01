@@ -112,7 +112,7 @@ class EditJob extends Component {
 }
 
 const Container = styled.div`
-  background-color: #ececec;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 `;
 
 const Body = styled.div`

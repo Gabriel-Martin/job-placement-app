@@ -66,7 +66,7 @@ class ApplicantProfileSettings extends Component {
           <Form onSubmit={this.onFormSubmit}>
             <InputWidth>
               <Form.Input
-                type="text"
+                type={"text"}
                 label={"Email"}
                 name={"email"}
                 value={applicant.email}
@@ -75,7 +75,7 @@ class ApplicantProfileSettings extends Component {
                 required
               />
               <Form.Input
-                type="text"
+                type={"text"}
                 label={"Profile Picture"}
                 name={"image"}
                 value={applicant.image}
@@ -83,7 +83,7 @@ class ApplicantProfileSettings extends Component {
                 placeholder={"Image"}
               />
               <Form.Input
-                type="text"
+                type={"text"}
                 label={"First Name"}
                 name={"firstName"}
                 value={applicant.firstName}
@@ -92,7 +92,7 @@ class ApplicantProfileSettings extends Component {
                 required
               />
               <Form.Input
-                type="text"
+                type={"text"}
                 label={"last Name"}
                 name={"lastName"}
                 value={applicant.lastName}
@@ -100,7 +100,7 @@ class ApplicantProfileSettings extends Component {
                 placeholder={"Last Name"}
                 required
               />
-              <Button color={"instagram"} type="submit">
+              <Button color={"instagram"} type={"submit"}>
                 Submit
               </Button>
             </InputWidth>
@@ -119,10 +119,14 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const InputWidth = styled.div`width: 400px;`;
+const InputWidth = styled.div`
+  width: 400px;
+`;
 
 const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })``;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+`;
 
 export default ApplicantProfileSettings;

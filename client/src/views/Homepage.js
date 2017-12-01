@@ -32,6 +32,7 @@ class Homepage extends Component {
       <Container>
         <NavBar userType={userType} />
         <Head>!Employed</Head>
+
         <div
           style={{
             display: "flex",
@@ -50,7 +51,11 @@ class Homepage extends Component {
               >
                 <Card>
                   <div
-                    style={{ backgroundColor: "#568EA3", padding: "5px 0px" }}
+                    style={{
+                      backgroundColor: "#4b79a1",
+                      padding: "5px 4px",
+                      borderRadius: "5px"
+                    }}
                   >
                     <h2>{job.company && job.company.companyName}</h2>
                   </div>
@@ -85,7 +90,7 @@ const Head = styled.h1.attrs({ className: "avenir fw1 f1 " })`
 `;
 
 const Container = styled.div`
-  background-color: #ececec;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   min-height: 100vh;
 `;
 

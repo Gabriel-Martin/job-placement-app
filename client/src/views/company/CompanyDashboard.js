@@ -94,6 +94,7 @@ class CompanyDashboard extends Component {
             <h3>Position: {position} </h3>
             <Width>Description: {description} </Width>
           </Center>
+
           <div>
             <ApplicationKanban
               applications={applications}
@@ -120,11 +121,13 @@ const Width = styled.p`
 `;
 
 const Container = styled.div`
-  background-color: #ececec;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   min-height: 100vh;
 `;
 
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
+  padding: 20px;
+`;
 
 export default CompanyDashboard;
 

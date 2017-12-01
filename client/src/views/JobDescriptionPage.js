@@ -63,9 +63,8 @@ class JobDescriptionPage extends Component {
               <Button
                 color={"instagram"}
                 onClick={() =>
-                  this.props.history.push(
-                    `/applicant/applicationform/${jobId}`
-                  )}
+                  this.props.history.push(`/applicant/applicationform/${jobId}`)
+                }
               >
                 Apply!
               </Button>
@@ -109,7 +108,6 @@ const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })`
 const Column = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
 `;
 
 export default JobDescriptionPage;

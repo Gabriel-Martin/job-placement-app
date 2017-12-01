@@ -68,7 +68,13 @@ class CompanyProfile extends Component {
           {company.jobs &&
             company.jobs.map(job => (
               <Card key={job.id}>
-                <div style={{ backgroundColor: "#568EA3", padding: "5px 0px" }}>
+                <div
+                  style={{
+                    backgroundColor: "#4b79a1",
+                    padding: "5px 0px",
+                    borderRadius: "5px"
+                  }}
+                >
                   <Popup
                     header={"Delete Job?"}
                     trigger={
@@ -91,7 +97,8 @@ class CompanyProfile extends Component {
 
                   <Icon
                     onClick={() =>
-                      this.props.history.push(`/job/edit/${job.id}`)}
+                      this.props.history.push(`/job/edit/${job.id}`)
+                    }
                     style={{ margin: "0px 4px", cursor: "pointer" }}
                     title={"Edit"}
                     size={"large"}
@@ -100,7 +107,8 @@ class CompanyProfile extends Component {
                 </div>
                 <div
                   onClick={() =>
-                    this.props.history.push(`/company/dashboard/${job.id}`)}
+                    this.props.history.push(`/company/dashboard/${job.id}`)
+                  }
                   className={"noscrollbar"}
                   style={{
                     overflow: "auto",
@@ -143,7 +151,7 @@ const SLink = styled(Link)`
 `;
 
 const Container = styled.div`
-  background-color: #ececec;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;

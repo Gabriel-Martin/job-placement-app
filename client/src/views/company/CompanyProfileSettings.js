@@ -111,7 +111,9 @@ class CompanyProfileSettings extends Component {
   }
 }
 
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`padding: 20px;`;
+const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
+  padding: 20px;
+`;
 
 const Body = styled.div`
   display: flex;
@@ -121,8 +123,12 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const InputWidth = styled.div`width: 400px;`;
+const InputWidth = styled.div`
+  width: 400px;
+`;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+`;
 
 export default CompanyProfileSettings;
