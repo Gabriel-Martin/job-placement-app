@@ -56,7 +56,6 @@ class EditJob extends Component {
   render() {
     let { job, userType } = this.state;
 
-    console.log(this.props);
     return (
       <Container>
         <NavBar userType={userType} />

@@ -26,7 +26,7 @@ const boxSource = {
 class Application extends Component {
   render() {
     const { data, isDragging, connectDragSource } = this.props;
-    console.log(data);
+
     return connectDragSource(
       <div style={{ ...style, color: "black", fontSize: "18px" }}>
         <Link to={`/company/application/${data.id}`}>

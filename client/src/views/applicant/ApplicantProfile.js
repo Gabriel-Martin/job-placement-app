@@ -81,8 +81,6 @@ class ApplicantProfile extends Component {
       );
     }
 
-    console.log(applied);
-
     return (
       <Container>
         <NavBar userType={userType} />

@@ -17,10 +17,7 @@ module.exports = {
             }
           })
           .then(() => reply({ userType: "company" }))
-          .catch(err => {
-            console.log(err);
-            reply(err);
-          });
+          .catch(err => reply(err));
       }
 
       if (userType === "applicant") {
@@ -31,10 +28,7 @@ module.exports = {
             }
           })
           .then(() => reply({ userType: "applicant" }))
-          .catch(err => {
-            console.log(err);
-            reply(err);
-          });
+          .catch(err => reply(err));
       }
     }
   }

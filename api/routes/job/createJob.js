@@ -12,10 +12,7 @@ module.exports = {
       newJob
         .save()
         .then(result => reply(result))
-        .catch(err => {
-          console.log(err);
-          reply(err);
-        });
+        .catch(err => reply(err));
     }
   }
 };
