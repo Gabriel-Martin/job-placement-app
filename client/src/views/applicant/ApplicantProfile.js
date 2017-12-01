@@ -80,14 +80,7 @@ class ApplicantProfile extends Component {
           app.applicationStatus === "declined"
       );
     }
-<<<<<<< HEAD
-
-    console.log(status);
-    console.log(applied);
-
-=======
     console.log(applicant);
->>>>>>> 9bcf54a4cc08d0d1641c48be2e1528db6ffa3608
     return (
       <Container>
         <NavBar userType={userType} />
@@ -116,13 +109,15 @@ class ApplicantProfile extends Component {
                   >
                     {j.position}
                   </div>
-                  <Icon
-                    onClick={() => this.removeJob(applicant.id, j.id)}
-                    style={{ margin: "0px 4px", cursor: "pointer" }}
-                    title={"Delete"}
-                    size={"small"}
-                    name={"trash"}
-                  />
+                  <div>
+                    <Icon
+                      onClick={() => this.removeJob(applicant.id, j.id)}
+                      style={{ margin: "0px 4px", cursor: "pointer" }}
+                      title={"Delete"}
+                      size={"small"}
+                      name={"trash"}
+                    />
+                  </div>
                 </MiniCard>
               ))}
           </Card>
@@ -134,13 +129,15 @@ class ApplicantProfile extends Component {
                 key={j.id}
               >
                 {j.job && j.job.position}
-                <Icon
-                  onClick={() => this.deleteApp(j.id)}
-                  style={{ margin: "0px 4px", cursor: "pointer" }}
-                  title={"Delete"}
-                  size={"small"}
-                  name={"trash"}
-                />
+                <div>
+                  <Icon
+                    onClick={() => this.deleteApp(j.id)}
+                    style={{ margin: "0px 4px", cursor: "pointer" }}
+                    title={"Delete"}
+                    size={"small"}
+                    name={"trash"}
+                  />
+                </div>
               </MiniCard>
             ))}
           </Card>
@@ -206,9 +203,7 @@ const Img = styled.img`
   height: 75px;
 `;
 
-const Container = styled.div`
-  background-color: #ececec;
-`;
+const Container = styled.div`background-color: #ececec;`;
 
 const MiniCard = styled.div`
   background-color: #f8f8ff;
