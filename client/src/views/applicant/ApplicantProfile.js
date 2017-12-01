@@ -124,18 +124,10 @@ class ApplicantProfile extends Component {
           <Card>
             <Head3>Applied</Head3>
             {applied.map(j => (
-<<<<<<< HEAD
-              <MiniCard
-                onClick={() => this.props.history.push(`/jobs/${j.id}`)}
-                key={j.id}
-              >
-                {j.job && j.job.position}
-=======
               <MiniCard key={j.id}>
                 <div onClick={() => this.props.history.push(`/jobs/${j.id}`)}>
                   {j.job && j.job.position}
                 </div>
->>>>>>> ab0435b83e800ccf4820d1dc32beb96f856b9475
                 <div>
                   <Icon
                     onClick={() => this.deleteApp(j.id)}
@@ -228,7 +220,9 @@ const Img = styled.img`
   height: 75px;
 `;
 
-const Container = styled.div`background-color: #ececec;`;
+const Container = styled.div`
+  background-color: #ececec;
+`;
 
 const MiniCard = styled.div`
   background-color: #f8f8ff;
