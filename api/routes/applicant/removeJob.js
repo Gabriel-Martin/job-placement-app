@@ -3,13 +3,16 @@ module.exports = {
   path: "/api/applicant/{applicantId}/job",
   config: {
     handler: function(request, reply) {
-      let applicantId = request.params.applicantId;
-      let job = request.payload;
+      let applicantId = request.auth.credentials.id;
+      let jobId = request.payload;
 
       this.models.Applicant.get(applicantId)
-        .then(applicant => applicant.removeRelation("jobs", job))
+        .then(applicant => applicant.removeRelation("jobs", jobId))
         .then(result => reply(result))
-        .catch(err => reply(err));
+        .catch(err => {
+          console.log(err);
+          reply(err);
+        });
     }
   }
 };

@@ -33,7 +33,6 @@ class JobDescriptionPage extends Component {
     let { jobId } = this.props.match.params;
 
     let { job = {}, userType = "" } = this.state;
-
     return (
       <Container>
         <NavBar userType={userType} />
@@ -52,22 +51,33 @@ class JobDescriptionPage extends Component {
           <p>
             <b>Experience:</b> {job.experience}
           </p>
-          {userType === "applicant" && (
+          {(userType === "applicant" && (
             <Column>
-              <Button onClick={() => this.interested(jobId)}>
+              <Button
+                color={"instagram"}
+                onClick={() => this.interested(jobId)}
+              >
                 Interested?
               </Button>
 
               <Button
+                color={"instagram"}
                 onClick={() =>
-                  this.props.history.push(
-                    `/applicant/applicationform/${jobId}`
-                  )}
+                  this.props.history.push(`/applicant/applicationform/${jobId}`)
+                }
               >
                 Apply!
               </Button>
             </Column>
-          )}
+          )) ||
+            (userType === "none" && (
+              <Button
+                color={"instagram"}
+                onClick={() => this.props.history.push(`/signup`)}
+              >
+                Apply!
+              </Button>
+            ))}
         </Card>
       </Container>
     );

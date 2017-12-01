@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Card, Table } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 import apiJobs from "../api/jobCrud";
 
 import NavBar from "../components/NavBar";
@@ -44,27 +44,31 @@ class Homepage extends Component {
               <div
                 key={job.id}
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  flexWrap: "wrap",
-                  width: "400px",
-                  padding: "10px",
-                  justifyContent: "space-evenly"
+                  width: "450px",
+                  padding: "5px"
                 }}
               >
-                <Card
-                  style={{
-                    height: "200px",
-                    overflow: "auto",
-                    wordWrap: "break-word"
-                  }}
-                  fluid
-                  link
-                  href={`/jobs/${job.id}`}
-                  header={job.company && job.company.companyName}
-                  meta={job.position}
-                  description={job.description}
-                />
+                <Card>
+                  <div
+                    style={{ backgroundColor: "#568EA3", padding: "5px 0px" }}
+                  >
+                    <h2>{job.company && job.company.companyName}</h2>
+                  </div>
+                  <div
+                    onClick={() => this.props.history.push(`/jobs/${job.id}`)}
+                    className={"noscrollbar"}
+                    style={{
+                      overflow: "auto",
+                      wordWrap: "break-word",
+                      padding: "5px",
+                      cursor: "pointer",
+                      height: "100%"
+                    }}
+                  >
+                    <h3> {job.position} </h3>
+                    <p> {job.description} </p>
+                  </div>
+                </Card>
               </div>
             ))}
         </div>
@@ -83,4 +87,13 @@ const Head = styled.h1.attrs({ className: "avenir fw1 f1 " })`
 const Container = styled.div`
   background-color: #ececec;
   min-height: 100vh;
+`;
+
+const Card = styled.div`
+  display: flex;
+  margin: 5px;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: #fff;
+  height: 200px;
 `;

@@ -23,7 +23,8 @@ class EditJob extends Component {
     apiJob.getById(this.props.match.params.jobId).then(job => {
       this.setState(state => {
         return {
-          job: job
+          job: job,
+          userType: localStorage.getItem("userType")
         };
       });
     });
@@ -53,10 +54,12 @@ class EditJob extends Component {
   };
 
   render() {
-    let { job } = this.state;
+    let { job, userType } = this.state;
+
+    console.log(this.props);
     return (
       <Container>
-        <NavBar />
+        <NavBar userType={userType} />
         <Body>
           <h1>EditJob</h1>
           <Form onSubmit={this.onFormSubmit}>
@@ -120,6 +123,8 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const InputWidth = styled.div`width: 400px;`;
+const InputWidth = styled.div`
+  width: 400px;
+`;
 
 export default EditJob;

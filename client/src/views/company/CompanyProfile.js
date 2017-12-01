@@ -71,7 +71,7 @@ class CompanyProfile extends Component {
                 <div style={{ backgroundColor: "#568EA3", padding: "5px 0px" }}>
                   <Icon
                     onClick={() => this.deleteJob(job.id)}
-                    style={{ margin: "0px 4px" }}
+                    style={{ margin: "0px 4px", cursor: "pointer" }}
                     title={"Delete"}
                     size={"large"}
                     name={"trash"}
@@ -79,7 +79,7 @@ class CompanyProfile extends Component {
                   <Icon
                     onClick={() =>
                       this.props.history.push(`/job/edit/${job.id}`)}
-                    style={{ margin: "0px 4px" }}
+                    style={{ margin: "0px 4px", cursor: "pointer" }}
                     title={"Edit"}
                     size={"large"}
                     name={"edit"}
@@ -88,10 +88,13 @@ class CompanyProfile extends Component {
                 <div
                   onClick={() =>
                     this.props.history.push(`/company/dashboard/${job.id}`)}
+                  className={"noscrollbar"}
                   style={{
                     overflow: "auto",
                     wordWrap: "break-word",
-                    padding: "5px"
+                    padding: "5px",
+                    cursor: "pointer",
+                    height: "100%"
                   }}
                 >
                   <h3> {job.position} </h3>
@@ -139,7 +142,6 @@ const Card = styled.div`
   flex-direction: column;
   border-radius: 8px;
   background-color: #fff;
-  cursor: pointer;
   width: 300px;
   height: 200px;
 `;

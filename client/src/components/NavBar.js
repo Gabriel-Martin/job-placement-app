@@ -5,6 +5,12 @@ import apiCheckUser from "../api/checkUserCrud.js";
 
 class NavBar extends Component {
   signout = () => {
+    if (this.props.location.pathname === "/") {
+      localStorage.removeItem("token");
+      localStorage.setItem("userType", "none");
+      window.location.reload();
+    }
+
     localStorage.removeItem("token");
     localStorage.setItem("userType", "none");
     this.props.history.push("/");
