@@ -17,10 +17,12 @@ class ApplicantProfile extends Component {
   }
 
   componentDidMount() {
+    const userType = localStorage.getItem("userType");
+
     apiApplicant.getCurrent().then(applicant => {
       this.setState(state => {
         return {
-          userType: localStorage.getItem("userType"),
+          userType: userType,
           applicant: applicant
         };
       });

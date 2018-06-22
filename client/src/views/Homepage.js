@@ -26,7 +26,7 @@ class Homepage extends Component {
   }
 
   render() {
-    let { jobs, userType } = this.state;
+    let { jobs = [], userType } = this.state;
 
     return (
       <Container>

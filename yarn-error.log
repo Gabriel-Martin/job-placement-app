@@ -1,0 +1,32 @@
+Arguments: 
+  /Users/gabrielmartin/.nvm/versions/node/v9.11.1/bin/node /Users/gabrielmartin/.nvm/versions/node/v9.11.1/bin/yarn start
+
+PATH: 
+  /Users/gabrielmartin/.nvm/versions/node/v9.11.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.11.1
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find a package.json file in "/Users/gabrielmartin/Documents/personal-projects/job-placement-app"
+      at new MessageError (/Users/gabrielmartin/.nvm/versions/node/v9.11.1/lib/node_modules/yarn/lib/cli.js:186:110)
+      at /Users/gabrielmartin/.nvm/versions/node/v9.11.1/lib/node_modules/yarn/lib/cli.js:40048:15
+      at Generator.next (<anonymous>)
+      at step (/Users/gabrielmartin/.nvm/versions/node/v9.11.1/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /Users/gabrielmartin/.nvm/versions/node/v9.11.1/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>

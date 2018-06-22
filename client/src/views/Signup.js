@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { Form, Input, Button } from "semantic-ui-react";
+
+import styled from "styled-components";
 import apiCompany from "../api/companyCrud";
 import apiApplicant from "../api/applicantCrud";
-import styled from "styled-components";
+
+import { Form, Input, Button } from "semantic-ui-react";
 
 import NavBar from "../components/NavBar";
 
@@ -116,36 +118,36 @@ class Signup extends Component {
             </Padding>
             <Form size={"huge"} onSubmit={this.onFormSubmitApplicant}>
               <Form.Input
+                required
                 type={"text"}
                 name={"firstName"}
                 label={"First Name"}
                 placeholder={"First Name"}
                 onChange={this.onInputChangeApplicant}
-                required
               />
               <Form.Input
+                required
                 type="text"
                 name={"lastName"}
                 label={"Last Name"}
                 placeholder={"Last Name"}
                 onChange={this.onInputChangeApplicant}
-                required
               />
               <Form.Input
+                required
                 type="text"
                 name={"email"}
                 label={"Email"}
                 placeholder={"Email"}
                 onChange={this.onInputChangeApplicant}
-                required
               />
               <Form.Input
+                required
                 type={"password"}
                 name={"password"}
                 label={"Password"}
                 placeholder={"Password"}
                 onChange={this.onInputChangeApplicant}
-                required
               />
               <Button color={"instagram"} type="submit">
                 Submit
@@ -162,25 +164,28 @@ class Signup extends Component {
             </Padding>
             <Form size={"huge"} onSubmit={this.onFormSubmitCompany}>
               <Form.Input
+                required
                 type="text"
                 name={"companyName"}
+                label={"Company Name"}
                 placeholder={"Company Name"}
                 onChange={this.onInputChangeCompany}
-                required
               />
               <Form.Input
+                required
                 type="text"
                 name={"email"}
+                label={"Email"}
                 placeholder={"Email"}
                 onChange={this.onInputChangeCompany}
-                required
               />
               <Form.Input
+                required
                 type="text"
                 name={"password"}
+                label={"Password"}
                 placeholder={"Password"}
                 onChange={this.onInputChangeCompany}
-                required
               />
               <Button color={"instagram"} type="submit">
                 Submit

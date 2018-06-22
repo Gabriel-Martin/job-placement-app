@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
+
 import apiCheckUser from "../api/checkUserCrud.js";
 
 class NavBar extends Component {

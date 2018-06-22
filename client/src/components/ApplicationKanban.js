@@ -63,6 +63,11 @@ const Center = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  padding: 0 1.5rem;
+
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+  }
 `;
 
 export default DragDropContext(HTML5Backend)(ApplicationKanban);

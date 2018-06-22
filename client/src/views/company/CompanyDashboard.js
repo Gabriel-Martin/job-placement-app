@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Button } from "semantic-ui-react";
-import NavBar from "../../components/NavBar";
-import ApplicationKanban from "../../components/ApplicationKanban";
 
+import styled from "styled-components";
 import apiJobs from "../../api/jobCrud";
 import application from "../../api/applicationCrud";
+
+import NavBar from "../../components/NavBar";
+import ApplicationKanban from "../../components/ApplicationKanban";
 
 class CompanyDashboard extends Component {
   constructor() {
@@ -130,60 +129,3 @@ const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
 `;
 
 export default CompanyDashboard;
-
-// <div style={{ display: "flex", justifyContent: "space-around" }}>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     border: "1px solid black",
-//     width: "20%",
-//     height: "100vh"
-//   }}
-// >
-//   <h3>All Applications</h3>
-//   <div>
-//     {applications.map(app => (
-//       <div key={app.id}>
-//         Name:
-//         <Link to={`/company/application/${app.id}`}>
-//           {app.firstName} {app.lastName}
-//         </Link>
-//       </div>
-//     ))}
-//   </div>
-// </div>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     border: "1px solid black",
-//     width: "20%",
-//     height: "100vh"
-//   }}
-// >
-//   <h3>Interested</h3>
-// </div>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     border: "1px solid black",
-//     width: "20%",
-//     height: "100vh"
-//   }}
-// >
-//   <h3>Processing</h3>
-// </div>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     border: "1px solid black",
-//     width: "20%",
-//     height: "100vh"
-//   }}
-// >
-//   <h3>Hired</h3>
-// </div>
-// </div>
