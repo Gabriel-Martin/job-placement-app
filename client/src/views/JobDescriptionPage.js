@@ -86,18 +86,17 @@ class JobDescriptionPage extends Component {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  background-color: #ececec;
   min-height: 100vh;
+  flex-direction: column;
+  background-color: #ececec;
 `;
 
 const Card = styled.div`
-  margin: 10px auto;
+  width: 60%;
   padding: 50px;
+  margin: 10px auto;
   border-radius: 15px;
   background-color: #fff;
-  width: 60%;
 `;
 
 const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })`

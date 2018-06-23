@@ -16,6 +16,6 @@
   },
   "scripts": {
     "dev": "nodemon ./index.js",
-    "test": "node ./test.js"
+    "seed": "node ./seed.js"
   }
 }

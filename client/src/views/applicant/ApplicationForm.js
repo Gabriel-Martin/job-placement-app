@@ -65,120 +65,119 @@ class ApplicationForm extends Component {
     return (
       <Container>
         <NavBar userType={userType} />
-        <Padding>
-          <Title>ApplicationForm</Title>
-          <Form onSubmit={this.onFormSubmit}>
-            <InputWidth>
-              <Form.Input
-                label={"First Name"}
-                type="text"
-                name={"firstName"}
-                placeholder={"First Name"}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Input
-                label={"Last Name"}
-                type="text"
-                name={"lastName"}
-                placeholder={"Last Name"}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Input
-                label={"Address"}
-                type="text"
-                name={"address"}
-                placeholder={"Address"}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Input
-                label={"City"}
-                type="text"
-                name={"city"}
-                placeholder={"City"}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Input
-                label={"State"}
-                type="text"
-                name={"state"}
-                placeholder={"State"}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Input
-                label={"Zip Code"}
-                type="text"
-                name={"zip"}
-                placeholder={"Zip Code"}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Input
-                label={"Phone"}
-                type="tel"
-                name={"phone"}
-                placeholder={"###-###-####"}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Input
-                label={"Email"}
-                type="email"
-                name={"email"}
-                placeholder={"Email"}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Input
-                label={"Date"}
-                type="date"
-                name={"date"}
-                placeholder={"date"}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Field
-                control={Select}
-                required
-                label={"Education"}
-                defaultValue=""
-                labelPosition="right"
-                placeholder={"Education"}
-                options={[
-                  { text: "highschool", value: "highschool" },
-                  { text: "GED", value: "GED" },
-                  { text: "college", value: "college" }
-                ]}
-              />
-              <Padding>
-                <Button color={"instagram"} type="submit">
-                  Submit
-                </Button>
-              </Padding>
-            </InputWidth>
-          </Form>
-        </Padding>
+        <Title>Application Form</Title>
+        <Form
+          onSubmit={this.onFormSubmit}
+          style={{ maxWidth: "450px", width: "95%" }}
+        >
+          <Form.Input
+            required
+            type="text"
+            name={"firstName"}
+            label={"First Name"}
+            placeholder={"First Name"}
+            onChange={this.onInputChange}
+          />
+          <Form.Input
+            required
+            type="text"
+            name={"lastName"}
+            label={"Last Name"}
+            placeholder={"Last Name"}
+            onChange={this.onInputChange}
+          />
+          <Form.Input
+            required
+            type="text"
+            name={"address"}
+            label={"Address"}
+            placeholder={"Address"}
+            onChange={this.onInputChange}
+          />
+          <Form.Input
+            required
+            type="text"
+            name={"city"}
+            label={"City"}
+            placeholder={"City"}
+            onChange={this.onInputChange}
+          />
+          <Form.Input
+            required
+            type="text"
+            name={"state"}
+            label={"State"}
+            placeholder={"State"}
+            onChange={this.onInputChange}
+          />
+          <Form.Input
+            required
+            type="text"
+            name={"zip"}
+            label={"Zip Code"}
+            placeholder={"Zip Code"}
+            onChange={this.onInputChange}
+          />
+          <Form.Input
+            required
+            type="tel"
+            label={"Phone"}
+            name={"phone"}
+            placeholder={"###-###-####"}
+            onChange={this.onInputChange}
+          />
+          <Form.Input
+            required
+            type="email"
+            name={"email"}
+            label={"Email"}
+            placeholder={"Email"}
+            onChange={this.onInputChange}
+          />
+          <Form.Input
+            required
+            type="date"
+            name={"date"}
+            label={"Date"}
+            placeholder={"date"}
+            onChange={this.onInputChange}
+          />
+          <Form.Field
+            required
+            defaultValue=""
+            control={Select}
+            upward
+            label={"Education"}
+            placeholder={"Education"}
+            options={[
+              { text: "highschool", value: "highschool" },
+              { text: "GED", value: "GED" },
+              { text: "college", value: "college" }
+            ]}
+          />
+          <Button type="submit" color={"instagram"} style={{ padding: "10px" }}>
+            Submit
+          </Button>
+        </Form>
       </Container>
     );
   }
 }
 const Container = styled.div`
+  display: flex;
   min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 `;
 
-const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })``;
-
-const Padding = styled.div`
-  padding: 10px;
+const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })`
+  text-align: center;
 `;
 
 const InputWidth = styled.div`
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 `;
 
 export default ApplicationForm;

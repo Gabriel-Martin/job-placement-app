@@ -99,6 +99,7 @@ const SLink = styled(Link)`
 
 const Container = styled.div`
   background: #4b79a1; /* fallback for old browsers */
+  width: 100%;
   background: -webkit-linear-gradient(
     to right,
     #283e51,
