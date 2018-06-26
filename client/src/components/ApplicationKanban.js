@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { DragDropContext } from "react-dnd";
-import HTML5Backend, { NativeTypes } from "react-dnd-html5-backend";
+import HTML5Backend from "react-dnd-html5-backend";
 
 import ApplicationStatusColumn from "./ApplicationStatusColumn";
 import Application from "./Application";

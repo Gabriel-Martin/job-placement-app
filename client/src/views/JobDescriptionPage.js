@@ -92,9 +92,9 @@ const Container = styled.div`
 `;
 
 const Card = styled.div`
-  width: 60%;
+  width: 80%;
   padding: 50px;
-  margin: 10px auto;
+  margin: auto;
   border-radius: 15px;
   background-color: #fff;
 `;

@@ -41,6 +41,7 @@ class CompanyDashboard extends Component {
         idx = i;
         return true;
       }
+      return false;
     });
 
     if (idx === -1) {
@@ -74,15 +75,12 @@ class CompanyDashboard extends Component {
   };
 
   render() {
-    console.log(this.state);
     let {
       userType,
       position = "",
       description = "",
       applications = []
     } = this.state;
-
-    console.log(this.state);
 
     return (
       <div>
@@ -115,7 +113,7 @@ const Center = styled.div`
 `;
 
 const Width = styled.p`
-  width: 1000px;
+  width: 100%;
   text-align: center;
 `;
 
@@ -124,7 +122,7 @@ const Container = styled.div`
   min-height: 100vh;
 `;
 
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
+const Title = styled.h2.attrs({ className: "avenir fw1 f1 " })`
   padding: 20px;
 `;
 

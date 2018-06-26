@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 
-import apiCheckUser from "../api/checkUserCrud.js";
-
 class NavBar extends Component {
   signout = () => {
     if (this.props.location.pathname === "/") {
@@ -54,13 +52,15 @@ class NavBar extends Component {
               <SLink to={"/company/profile"}>Profile</SLink>
               <SLink to={"/job/new"}>Create Job</SLink>
 
-              <Span
-                onClick={() => {
-                  this.signout();
-                }}
-              >
-                Signout
-              </Span>
+              <CompanySpan>
+                <Span
+                  onClick={() => {
+                    this.signout();
+                  }}
+                >
+                  Signout
+                </Span>
+              </CompanySpan>
             </div>
           )}
         </div>
@@ -70,13 +70,15 @@ class NavBar extends Component {
             <div>
               <SLink to={"/"}>Home</SLink>
               <SLink to={"/applicant/profile"}>Profile</SLink>
-              <Span
-                onClick={() => {
-                  this.signout();
-                }}
-              >
-                Signout
-              </Span>
+              <UserSpan>
+                <Span
+                  onClick={() => {
+                    this.signout();
+                  }}
+                >
+                  Signout
+                </Span>
+              </UserSpan>
             </div>
           )}
         </div>
@@ -125,4 +127,16 @@ const Span = styled.span`
   }
 `;
 
+const UserSpan = styled.div`
+  display: inline-block;
+`;
+
+const CompanySpan = styled.div`
+  display: inline-block;
+  @media (max-width: 386px) {
+    position: relative;
+    left: -4px;
+    top: 8px;
+  }
+`;
 export default withRouter(NavBar);

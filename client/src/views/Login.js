@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import apiCompany from "../api/companyCrud";
 import apiApplicant from "../api/applicantCrud";
-import { Form, Input, Button } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 
 import NavBar from "../components/NavBar";
 

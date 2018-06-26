@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import apiApplicant from "../../api/applicantCrud";
 import NavBar from "../../components/NavBar";
-import { Form, Input, Button, Icon } from "semantic-ui-react";
+import { Form, Button, Icon } from "semantic-ui-react";
 
 class ApplicantProfileSettings extends Component {
   constructor() {
@@ -57,61 +57,62 @@ class ApplicantProfileSettings extends Component {
     let { applicant, userType } = this.state;
 
     return (
-      <Container>
+      <div>
         <NavBar userType={userType} />
-        <Body>
+        <Container>
           <Title>
             Settings <Icon name={"settings"} />
           </Title>
-          <Form onSubmit={this.onFormSubmit}>
-            <InputWidth>
-              <Form.Input
-                type={"text"}
-                label={"Email"}
-                name={"email"}
-                value={applicant.email}
-                onChange={this.onInputChange}
-                placeholder={"Email"}
-                required
-              />
-              <Form.Input
-                type={"text"}
-                label={"Profile Picture"}
-                name={"image"}
-                value={applicant.image}
-                onChange={this.onInputChange}
-                placeholder={"Image"}
-              />
-              <Form.Input
-                type={"text"}
-                label={"First Name"}
-                name={"firstName"}
-                value={applicant.firstName}
-                onChange={this.onInputChange}
-                placeholder={"First Name"}
-                required
-              />
-              <Form.Input
-                type={"text"}
-                label={"last Name"}
-                name={"lastName"}
-                value={applicant.lastName}
-                onChange={this.onInputChange}
-                placeholder={"Last Name"}
-                required
-              />
-              <Button color={"instagram"} type={"submit"}>
-                Submit
-              </Button>
-            </InputWidth>
-          </Form>
-        </Body>
-      </Container>
+          <SettingForm onSubmit={this.onFormSubmit}>
+            <Form.Input
+              type={"text"}
+              label={"Email"}
+              name={"email"}
+              value={applicant.email}
+              onChange={this.onInputChange}
+              placeholder={"Email"}
+              required
+            />
+            <Form.Input
+              type={"text"}
+              label={"Profile Picture"}
+              name={"image"}
+              value={applicant.image}
+              onChange={this.onInputChange}
+              placeholder={"Image"}
+            />
+            <Form.Input
+              type={"text"}
+              label={"First Name"}
+              name={"firstName"}
+              value={applicant.firstName}
+              onChange={this.onInputChange}
+              placeholder={"First Name"}
+              required
+            />
+            <Form.Input
+              type={"text"}
+              label={"last Name"}
+              name={"lastName"}
+              value={applicant.lastName}
+              onChange={this.onInputChange}
+              placeholder={"Last Name"}
+              required
+            />
+            <Button color={"instagram"} type={"submit"}>
+              Submit
+            </Button>
+          </SettingForm>
+        </Container>
+      </div>
     );
   }
 }
 
-const Body = styled.div`
+const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })``;
+
+const Container = styled.div`
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,14 +120,8 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const InputWidth = styled.div`
-  width: 400px;
+const SettingForm = styled(Form)`
+  width: 88%;
+  padding: 20px;
 `;
-
-const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })``;
-
-const Container = styled.div`
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-`;
-
 export default ApplicantProfileSettings;

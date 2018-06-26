@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { DragSource } from "react-dnd";
 import { Link } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
@@ -25,7 +24,7 @@ const boxSource = {
 
 class Application extends Component {
   render() {
-    const { data, isDragging, connectDragSource } = this.props;
+    const { data, connectDragSource } = this.props;
 
     return connectDragSource(
       <div style={{ ...style, color: "black", fontSize: "18px" }}>

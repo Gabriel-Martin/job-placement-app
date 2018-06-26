@@ -57,64 +57,59 @@ class EditJob extends Component {
     let { job, userType } = this.state;
 
     return (
-      <Container>
+      <div>
         <NavBar userType={userType} />
-        <Body>
-          <h1>EditJob</h1>
-          <Form onSubmit={this.onFormSubmit}>
-            <InputWidth>
-              <Form.TextArea
-                label={"Description"}
-                type={"text"}
-                name={"description"}
-                placeholder={"Description"}
-                onChange={this.onInputChange}
-                value={job.description}
-                required
-              />
-              <Form.Input
-                label={"Experience"}
-                type={"text"}
-                placeholder={"Experience"}
-                onChange={this.onInputChange}
-                name={"experience"}
-                value={job.experience}
-                required
-              />
-              <Form.Input
-                label={"Pay Rate"}
-                type={"text"}
-                placeholder={"Pay Rate"}
-                onChange={this.onInputChange}
-                name={"payRate"}
-                value={job.payRate}
-                required
-              />
-              <Form.Input
-                label={"Position"}
-                type={"text"}
-                placeholder={"Position"}
-                onChange={this.onInputChange}
-                name={"position"}
-                value={job.position}
-                required
-              />
-              <Button color={"instagram"} type={"submit"}>
-                Submit
-              </Button>
-            </InputWidth>
-          </Form>
-        </Body>
-      </Container>
+        <Container>
+          <h2>EditJob</h2>
+          <EditForm onSubmit={this.onFormSubmit}>
+            <Form.TextArea
+              label={"Description"}
+              type={"text"}
+              name={"description"}
+              placeholder={"Description"}
+              onChange={this.onInputChange}
+              value={job.description}
+              required
+            />
+            <Form.Input
+              label={"Experience"}
+              type={"text"}
+              placeholder={"Experience"}
+              onChange={this.onInputChange}
+              name={"experience"}
+              value={job.experience}
+              required
+            />
+            <Form.Input
+              label={"Pay Rate"}
+              type={"text"}
+              placeholder={"Pay Rate"}
+              onChange={this.onInputChange}
+              name={"payRate"}
+              value={job.payRate}
+              required
+            />
+            <Form.Input
+              label={"Position"}
+              type={"text"}
+              placeholder={"Position"}
+              onChange={this.onInputChange}
+              name={"position"}
+              value={job.position}
+              required
+            />
+            <Button color={"instagram"} type={"submit"}>
+              Submit
+            </Button>
+          </EditForm>
+        </Container>
+      </div>
     );
   }
 }
 
 const Container = styled.div`
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-`;
-
-const Body = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,8 +117,9 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const InputWidth = styled.div`
-  width: 400px;
+const EditForm = styled(Form)`
+  width: 88%;
+  padding: 20px;
 `;
 
 export default EditJob;

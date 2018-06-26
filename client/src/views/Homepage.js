@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Table } from "semantic-ui-react";
 import apiJobs from "../api/jobCrud";
 
 import NavBar from "../components/NavBar";
@@ -87,11 +86,15 @@ export default Homepage;
 const Head = styled.h1.attrs({ className: "avenir fw1 f1 " })`
   text-align: center;
   font-size: 75px;
+  @media (max-width: 372px) {
+    font-size: 60px;
+  }
 `;
 
 const Container = styled.div`
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   min-height: 100vh;
+  width: 100%;
 `;
 
 const Card = styled.div`

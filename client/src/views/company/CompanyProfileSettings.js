@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import apiCompany from "../../api/companyCrud";
-import { Form, Input, Button, Icon, TextArea } from "semantic-ui-react";
+import { Form, Button, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 import NavBar from "../../components/NavBar";
 
@@ -55,67 +55,62 @@ class CompanyProfileSettings extends Component {
     let { userType, company } = this.state;
 
     return (
-      <Container>
+      <div>
         <NavBar userType={userType} />
-        <Body>
-          <div>
-            <Title>
-              Settings <Icon name={"settings"} />
-            </Title>
-          </div>
-          <Form onSubmit={this.onFormSubmit}>
-            <InputWidth>
-              <Form.Input
-                type="text"
-                label={"Email"}
-                name={"email"}
-                placeholder={"email"}
-                value={company.email}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Input
-                type="text"
-                label={"Logo"}
-                name={"logo"}
-                placeholder={"Logo"}
-                value={company.logo}
-                onChange={this.onInputChange}
-              />
-              <Form.TextArea
-                type="text"
-                label={"Description of your Company"}
-                name={"description"}
-                placeholder={"Description"}
-                value={company.description}
-                onChange={this.onInputChange}
-                required
-              />
-              <Form.Input
-                type="text"
-                label={"Industry"}
-                name={"industry"}
-                placeholder={"Industry"}
-                value={company.industry}
-                onChange={this.onInputChange}
-                required
-              />
-              <Button color={"instagram"} type="submit">
-                Submit
-              </Button>
-            </InputWidth>
-          </Form>
-        </Body>
-      </Container>
+        <Container>
+          <Title>
+            Settings <Icon name={"settings"} />
+          </Title>
+          <SettingForm onSubmit={this.onFormSubmit}>
+            <Form.Input
+              type="text"
+              label={"Email"}
+              name={"email"}
+              placeholder={"email"}
+              value={company.email}
+              onChange={this.onInputChange}
+              required
+            />
+            <Form.Input
+              type="text"
+              label={"Logo"}
+              name={"logo"}
+              placeholder={"Logo"}
+              value={company.logo}
+              onChange={this.onInputChange}
+            />
+            <Form.TextArea
+              type="text"
+              label={"Description of your Company"}
+              name={"description"}
+              placeholder={"Description"}
+              value={company.description}
+              onChange={this.onInputChange}
+              required
+            />
+            <Form.Input
+              type="text"
+              label={"Industry"}
+              name={"industry"}
+              placeholder={"Industry"}
+              value={company.industry}
+              onChange={this.onInputChange}
+              required
+            />
+            <Button color={"instagram"} type="submit">
+              Submit
+            </Button>
+          </SettingForm>
+        </Container>
+      </div>
     );
   }
 }
 
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
-  padding: 20px;
-`;
+const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })``;
 
-const Body = styled.div`
+const Container = styled.div`
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,12 +118,9 @@ const Body = styled.div`
   height: 100vh;
 `;
 
-const InputWidth = styled.div`
-  width: 400px;
-`;
-
-const Container = styled.div`
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+const SettingForm = styled(Form)`
+  width: 88%;
+  padding: 20px;
 `;
 
 export default CompanyProfileSettings;

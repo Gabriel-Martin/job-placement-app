@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import apiCompany from "../../api/companyCrud";
-import apiCheckUser from "../../api/checkUserCrud";
 import apiJob from "../../api/jobCrud";
 import { Button, Icon, Popup } from "semantic-ui-react";
 
@@ -57,7 +56,7 @@ class CompanyProfile extends Component {
             <Img src={company.logo} />
           </Center>
           <Center>
-            <div>{company.description}</div>
+            <p style={{ width: "800px" }}>{company.description}</p>
           </Center>
           <Center>
             <div>{company.industry}</div>
@@ -178,17 +177,23 @@ const Center = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 15px;
-`;
-
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
-  font-size: 50px;
   padding: 20px;
 `;
 
+const Title = styled.h2.attrs({ className: "avenir fw1 f1 " })`
+  font-size: 50px;
+  padding: 20px;
+  @media (max-width: 360px) {
+    font-size: 40px;
+  }
+`;
+
 const Img = styled.img`
-  border-radius: 50%;
   height: 75px;
+  border-radius: 50%;
+  @media (max-width: 426px) {
+    padding-right: 12px;
+  }
 `;
 
 export default CompanyProfile;

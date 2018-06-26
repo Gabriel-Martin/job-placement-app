@@ -29,65 +29,78 @@ class CompanyApplication extends Component {
   render() {
     let { applications, userType } = this.state;
     return (
-      <Containter>
+      <div>
         <NavBar userType={userType} />
-        <Title>Application</Title>
-        <Card>
-          <TextStyle>
-            <div>
-              Name:
-              {applications.firstName} {applications.lastName}
-            </div>
-          </TextStyle>
-          <TextStyle>
-            <div>Address: {applications.address}</div>
-          </TextStyle>
-          <TextStyle>
-            <div>City: {applications.city}</div>
-          </TextStyle>
-          <TextStyle>
-            <div>State: {applications.state}</div>
-          </TextStyle>
-          <TextStyle>
-            <div>Zip: {applications.zip}</div>
-          </TextStyle>
-          <TextStyle>
-            <div>Email: {applications.email}</div>
-          </TextStyle>
-          <TextStyle>
-            <div>Phone: {applications.phone}</div>
-          </TextStyle>
-          <TextStyle>
-            <div>Education: {applications.education}</div>
-          </TextStyle>
-        </Card>
-      </Containter>
+        <Container>
+          <h2>Application</h2>
+          <Card>
+            <App>
+              <Label>Name:</Label>
+              <p>
+                {applications.firstName} {applications.lastName}
+              </p>
+            </App>
+            <App>
+              <Label>Address:</Label> <p>{applications.address}</p>
+            </App>
+            <App>
+              <Label>City:</Label> <p>{applications.city}</p>
+            </App>
+            <App>
+              <Label>State:</Label> <p>{applications.state}</p>
+            </App>
+            <App>
+              <Label>Zip:</Label> <p>{applications.zip}</p>
+            </App>
+            <App>
+              <Label>Email:</Label> <p>{applications.email}</p>
+            </App>
+            <App>
+              <Label>Phone:</Label> <p>{applications.phone}</p>
+            </App>
+            <App>
+              <Label>Education:</Label> <p>{applications.education}</p>
+            </App>
+          </Card>
+        </Container>
+      </div>
     );
   }
 }
 
-const Card = styled.div`
-  border: 275px solid #fff;
-  margin: 10px auto;
-  border-radius: 15px;
-  background-color: #fff;
-`;
-
-const Containter = styled.div`
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
+const Container = styled.div`
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
-const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })`
-  font-size: 60px;
-  text-align: center;
+const Label = styled.b`
+  margin-right: 5px;
 `;
 
-const TextStyle = styled.div`
+const App = styled.div`
+  display: flex;
+  width: fit-content;
   padding: 5px;
+  @media (max-width: 427px) {
+    flex-direction: column;
+  }
 `;
 
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+  width: 80%;
+  height: auto;
+  padding: 60px;
+  @media (max-width: 320px) {
+    padding: 40px;
+  }
+`;
 export default CompanyApplication;

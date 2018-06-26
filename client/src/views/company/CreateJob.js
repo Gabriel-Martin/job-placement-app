@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import apiJobs from "../../api/jobCrud";
 import styled from "styled-components";
-import { Form, Input, Button, TextArea } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 import NavBar from "../../components/NavBar";
 
 class CreateJob extends Component {
@@ -48,76 +48,68 @@ class CreateJob extends Component {
       <div>
         <NavBar userType={userType} />
         <Container>
-          <Center>
-            <Form onSubmit={this.formSubmit}>
-              <Title>Post A Job</Title>
-              <InputWidth>
-                <Form.TextArea
-                  cols={"40"}
-                  wrap={"hard"}
-                  label={"Description"}
-                  type="text"
-                  name={"description"}
-                  placeholder={"description"}
-                  onChange={this.inputChange}
-                  required
-                />
-                <Form.Input
-                  label={"Experience"}
-                  type="text"
-                  name={"experience"}
-                  placeholder={"experience"}
-                  onChange={this.inputChange}
-                  required
-                />
-                <Form.Input
-                  label={"Position"}
-                  type="text"
-                  name={"position"}
-                  placeholder={"position"}
-                  onChange={this.inputChange}
-                  required
-                />
-                <Form.Input
-                  label={"Pay Rate"}
-                  type="text"
-                  name={"payRate"}
-                  placeholder={"pay rate"}
-                  onChange={this.inputChange}
-                  required
-                />
-                <Button color={"instagram"} type="submit">
-                  Submit
-                </Button>
-              </InputWidth>
-            </Form>
-          </Center>
+          <CreateForm onSubmit={this.formSubmit}>
+            <Title>Post A Job</Title>
+            <Form.TextArea
+              cols={"40"}
+              wrap={"hard"}
+              label={"Description"}
+              type="text"
+              name={"description"}
+              placeholder={"description"}
+              onChange={this.inputChange}
+              required
+            />
+            <Form.Input
+              label={"Experience"}
+              type="text"
+              name={"experience"}
+              placeholder={"experience"}
+              onChange={this.inputChange}
+              required
+            />
+            <Form.Input
+              label={"Position"}
+              type="text"
+              name={"position"}
+              placeholder={"position"}
+              onChange={this.inputChange}
+              required
+            />
+            <Form.Input
+              label={"Pay Rate"}
+              type="text"
+              name={"payRate"}
+              placeholder={"pay rate"}
+              onChange={this.inputChange}
+              required
+            />
+            <Button color={"instagram"} type="submit">
+              Submit
+            </Button>
+          </CreateForm>
         </Container>
       </div>
     );
   }
 }
-const Container = styled.div`
-  min-height: 100vh;
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-  padding: 10px;
-`;
 
 const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
   padding: 15px;
   margin-bottom: 10px;
 `;
 
-const Center = styled.div`
+const Container = styled.div`
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
+
+const CreateForm = styled(Form)`
+  width: 88%;
   padding: 20px;
 `;
-
-const InputWidth = styled.div`
-  width: 400px;
-`;
-
 export default CreateJob;

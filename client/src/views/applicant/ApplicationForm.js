@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Input, Form, Button, Select } from "semantic-ui-react";
+import { Form, Button, Select } from "semantic-ui-react";
 import apiApplication from "../../api/applicationCrud.js";
-import apiJob from "../../api/applicantCrud";
 
 import NavBar from "../../components/NavBar";
 
@@ -61,7 +60,7 @@ class ApplicationForm extends Component {
   };
 
   render() {
-    let { userType, application } = this.state;
+    let { userType } = this.state;
     return (
       <Container>
         <NavBar userType={userType} />
@@ -173,11 +172,6 @@ const Container = styled.div`
 
 const Title = styled.h1.attrs({ className: "avenir fw1 f1 " })`
   text-align: center;
-`;
-
-const InputWidth = styled.div`
-  width: 100%;
-  max-width: 400px;
 `;
 
 export default ApplicationForm;

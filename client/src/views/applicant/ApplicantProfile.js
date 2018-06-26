@@ -267,7 +267,7 @@ const Center = styled.div`
   justify-content: center;
 `;
 
-const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
+const Title = styled.h2.attrs({ className: "avenir fw1 f1 " })`
   padding: 20px;
   font-size: 50px;
   text-align: center;
@@ -276,6 +276,9 @@ const Title = styled.div.attrs({ className: "avenir fw1 f1 " })`
 const Img = styled.img`
   height: 75px;
   border-radius: 50%;
+  @media (max-width: 426px) {
+    padding-right: 12px;
+  }
 `;
 
 const Container = styled.div`
@@ -293,10 +296,6 @@ const MiniCard = styled.div`
   min-height: fit-content;
   justify-content: center;
   background-color: #ebedee;
-`;
-
-const DeleteButton = styled(Button)`
-  margin-left: auto;
 `;
 
 const Card = styled.div`
